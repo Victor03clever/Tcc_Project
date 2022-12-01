@@ -15,6 +15,10 @@ class Login extends Controller
     public function __construct()
     {
         $this->Data = $this->model("admin\Usuarios");
+        if (Sessao::nivel1()) :
+            session_destroy();
+            Url::redireciona('home');
+        endif;
     }
 
     public function exemplo()
@@ -29,14 +33,13 @@ class Login extends Controller
 
     public function index()
     {
-        if (Sessao::nivel1()) :
-            
-            Url::redireciona('home');
+        if (Sessao::nivel0()) :
+            Url::redireciona('admin/home');
         endif;
 
         $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-         var_dump($formulario);
-        if (isset($formulario['login'])) :
+        //  var_dump($formulario);
+        if (isset($formulario['btn_log'])) :
             $dados = [
                 'login' => trim($formulario['login']),
                 'senha' => trim($formulario['senha']),
@@ -47,7 +50,7 @@ class Login extends Controller
             if (in_array("", $formulario)) :
 
                 if (empty($formulario['login'])) :
-                    $dados['erro_email'] = "preencha o campo login";
+                    $dados['erro_login'] = "preencha o campo login";
                 endif;
 
                 if (empty($formulario['senha'])) :
@@ -57,23 +60,24 @@ class Login extends Controller
             else :
                
                     $checarlogin=$this->Data->checalogin($dados['login'],$dados['senha'],0);
-                    if ($checarlogin) :
-                        Sessao::mensagem('usuarios','Login realizado com sucesso');
+                    var_dump($checarlogin);
+                    // if ($checarlogin) :
+                    //     Sessao::sms('usuarios','Login realizado com sucesso');
                         
-                        $this->criarsessao($checarlogin);
-                        Url::redireciona('admin/home');
-                        // var_dump($_SESSION);
+                    //     Url::redireciona('admin/home');
+                    //     $this->criarsessao($checarlogin);
+                    //     // var_dump($_SESSION);
                         
-                    else :
-                        Sessao::mensagem('usuario','Dados Invalidos','alerta');
-                        $dados['erro_login'] = "Dados invalidos";
-                        $dados['erro_senha'] = "Dados invalidos";
-                    endif;
+                    // else :
+                    //     Sessao::sms('usuario','Dados Invalidos','alert alert-danger');
+                    //     $dados['erro_login'] = "Dados invalidos";
+                    //     $dados['erro_senha'] = "Dados invalidos";
+                    // endif;
                         
                
 
             endif;
-        //  var_dump($formulario);
+         var_dump($formulario);
         else :
             $dados = [
                 'login' => '',
@@ -91,13 +95,15 @@ class Login extends Controller
         
         $_SESSION['usuarios_id']= $usuario['id'];
         $_SESSION['usuarios_nome']= $usuario['nome'];
-        $_SESSION['usuarios_login']= $usuario['email'];
+        $_SESSION['usuarios_login']= $usuario['login'];
+        $_SESSION['usuarios_email']= $usuario['email'];
        
     }
     public function sair(){
         unset($_SESSION['usuarios_id']);
         unset($_SESSION['usuarios_nome']);
         unset($_SESSION['usuarios_login']);
+        unset($_SESSION['usuarios_email']);
         session_destroy();
         Url::redireciona('admin/login');
     }
