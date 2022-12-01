@@ -1,0 +1,95 @@
+{
+    "packages": [
+        {
+            "name": "balint-horvath/dotenv-php",
+            "version": "1.0.0",
+            "version_normalized": "1.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/balint-horvath/dotenv-php.git",
+                "reference": "8a7098e6915e4948466d0b3c075509c3a26dac07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/balint-horvath/dotenv-php/zipball/8a7098e6915e4948466d0b3c075509c3a26dac07",
+                "reference": "8a7098e6915e4948466d0b3c075509c3a26dac07",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "kahlan/kahlan": "^4.0"
+            },
+            "time": "2017-10-23T19:30:01+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "BalintHorvath\\DotEnv\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Bálint Horváth",
+                    "email": "balint@balint.digital"
+                }
+            ],
+            "description": "Simple .env file parser and ENV loader (.env to getenv() and $_ENV) based on standard PHP INI parser (parse_ini_file).",
+            "support": {
+                "issues": "https://github.com/balint-horvath/dotenv-php/issues",
+                "source": "https://github.com/balint-horvath/dotenv-php/tree/master"
+            },
+            "install-path": "../balint-horvath/dotenv-php"
+        },
+        {
+            "name": "william-costa/dot-env",
+            "version": "v0.1.0",
+            "version_normalized": "0.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/william-costa/dot-env.git",
+                "reference": "e5eb9b0384b57f2812215fab0e3853c16a4b368e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/william-costa/dot-env/zipball/e5eb9b0384b57f2812215fab0e3853c16a4b368e",
+                "reference": "e5eb9b0384b57f2812215fab0e3853c16a4b368e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "time": "2021-03-19T19:28:14+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "WilliamCosta\\DotEnv\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "William Costa",
+                    "email": "canalwdev@gmail.com"
+                }
+            ],
+            "description": "A simple library for managing environment variables in PHP.",
+            "support": {
+                "issues": "https://github.com/william-costa/dot-env/issues",
+                "source": "https://github.com/william-costa/dot-env/tree/v0.1.0"
+            },
+            "install-path": "../william-costa/dot-env"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

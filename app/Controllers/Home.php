@@ -9,9 +9,9 @@ use App\Libraries\Controller;
 class Home extends Controller
 {
     public function index(){
-        $page = 'php';
+    
         
-    $this->view('layouts/app',compact('page'));
+    $this->view('homepage');
         
     }
 }
