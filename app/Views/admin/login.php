@@ -7,13 +7,13 @@ use App\Helpers\Sessao;
                                     <div class="card-body">
                                     
                                         <form method="Post" action="<?=URL?>admin/login">
-                                        <?=Sessao::sms('usuario')?>
+                                        <?=Sessao::sms('login')?>
                                         
                                             <div class="form-floating mb-3">
-                                                <input class="form-control <?=$dados['erro_login']?'is-invalid':'' ?>" value="<?=$dados['login']?>"  type="text" id="login" placeholder="login" name="login" />
-                                                <label for="login">Login</label>
+                                                <input class="form-control <?=$dados['erro_nome']?'is-invalid':'' ?>" value="<?=$dados['nome']?>"  type="text" id="nome" placeholder="login" name="nome" />
+                                                <label for="nome">Nome</label>
                                                 <div class="invalid-feedback">
-                                                    <?=$dados['erro_login']?>
+                                                    <?=$dados['erro_nome']?>
                                                 </div>
                                             </div>
                                             <div class="form-floating mb-3">
