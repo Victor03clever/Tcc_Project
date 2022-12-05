@@ -16,8 +16,24 @@ class Valida{
                 return false;
             }
         }
-        public static function senhatamanho($senha){
+        public static function length_senha($senha){
             if(strlen($senha) < 8){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        public static function length_nome($nome){
+            if(strlen($nome) <= 100){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        public static function length($var){
+            if(strlen($var) <= 255){
                 return true;
             }
             else{
