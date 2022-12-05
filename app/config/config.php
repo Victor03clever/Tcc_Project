@@ -11,6 +11,7 @@ global $auth;
 global $projecto;
 
 
+
 $base_url = getenv('BASE_URL')? getenv('BASE_URL'):'http://localhost:8080/refeitorio/';
 $auth = getenv('AUTH_SESSION_KEY')? getenv('AUTH_SESSION_KEY'):'AUTH_USER';
 $projecto = getenv('APP_NAME')? getenv('APP_NAME'):'Projecto';

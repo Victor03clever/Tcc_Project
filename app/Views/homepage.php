@@ -8,6 +8,8 @@
 </head>
 <body>
     <h1>HOMEPAGE</h1>
-    <?=getenv('DB_PASS')?>
+    <?php 
+        var_dump(getenv('DB_HOST'));
+    ?>
 </body>
 </html>
