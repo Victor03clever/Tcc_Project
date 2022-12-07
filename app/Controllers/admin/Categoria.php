@@ -16,17 +16,18 @@ class Categoria extends Controller
             Url::redireciona('home');
         endif;
         $this->data = $this->model("admin\Categoria");
+    
     }
 
-    public function index($v)
+    public function index()
     {
-        if (!Sessao::nivel0()) :
-            Url::redireciona('home');
-        endif;
+        // if (!Sessao::nivel0()) :
+        //     Url::redireciona('home');
+        // endif;
         $dados = $this->data->read_c();
 
 
-var_dump($v);
+
         $file="listar_categoria";
         return $this->view('layouts/admin/app',compact('file', 'dados'));
         
@@ -35,9 +36,9 @@ var_dump($v);
     public function create()
     {
         
-        if (!Sessao::nivel0()) :
-            Url::redireciona('home');
-        endif;
+        // if (!Sessao::nivel0()) :
+        //     Url::redireciona('home');
+        // endif;
         $formulario = filter_input_array(INPUT_POST,FILTER_DEFAULT);
         
         if (isset($formulario['btn_save'])) :

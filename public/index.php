@@ -1,22 +1,19 @@
 <?php
 session_start();
 ob_start();
-// use App\Libraries\Router;
+use App\Libraries\Router;
 include '../app/config/phperror.php';
 include '../vendor/autoload.php';
 include '../app/config/config.php';
 
-use  App\Http\Router;
 
 
 
 
 
-$route=new Router(URL);
 
-include '../app/Routes/Page.php';
+$route=new Router();
 
-$route->run()->sendResponse();
         
 
 

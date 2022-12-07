@@ -21,13 +21,7 @@ class Login extends Controller
         endif;
     }
 
-    public function exemplo()
-    {
     
-        $file='php'; 
-        print $this->view('layouts/admin/app',compact('file'));
-        
-    }
 
 
     public function index()

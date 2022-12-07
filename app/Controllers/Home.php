@@ -12,9 +12,11 @@ class  Home  extends Controller
     {
         return $controller();
     }
-    public function index(){
+    public function index($id){
     
-     
+        echo '<pre>';
+        var_dump($id);
+        echo '</pre>';
     $this->view('homepage');
         
     }
