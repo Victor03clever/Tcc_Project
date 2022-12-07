@@ -18,27 +18,34 @@ class Categoria extends Controller
         $this->data = $this->model("admin\Categoria");
     }
 
-    public function index()
+    public function index($v)
     {
         if (!Sessao::nivel0()) :
             Url::redireciona('home');
         endif;
-        echo "Listar categorias";
+        $dados = $this->data->read_c();
+
+
+var_dump($v);
+        $file="listar_categoria";
+        return $this->view('layouts/admin/app',compact('file', 'dados'));
+        
     }
 
-    public function cadastrar()
+    public function create()
     {
+        
         if (!Sessao::nivel0()) :
             Url::redireciona('home');
         endif;
-        $formulario=filter_input_array(INPUT_POST,FILTER_DEFAULT);
-        var_dump($formulario);
-
+        $formulario = filter_input_array(INPUT_POST,FILTER_DEFAULT);
+        
         if (isset($formulario['btn_save'])) :
+            
             $dados = [
                 'nome' => trim($formulario['nome']),
-                'status' => trim($formulario['nome']),
-                'descricao' => trim($formulario['senha']),
+                'status' => trim($formulario['status']),
+                'descricao' => trim($formulario['descricao']),
                 'erro_nome'=>'',
                 'erro_status'=>'',
                 'erro_descricao'=>''
@@ -53,45 +60,60 @@ class Categoria extends Controller
                 if (empty($formulario['descricao'])) :
                     $dados['erro_descricao'] = "preencha a descrição";
                 endif;
-            else :
-                    if ($this->Data->checa_nome($formulario['nome'])) :
-                        $dados['erro_nome'] = "nome já cadastrado";
-    
-                    elseif (Valida::length_nome($formulario['nome'])) :
-                        $dados['erro_nome'] = "máximo 100 dígitos";
-                    else:
+            
 
-                        $cadastrar=$this->Data->store_c($dados);
-                        var_dump($cadastrar);
+            else :
+                // echo'm';
+                    if ($this->data->checa_nome($formulario['nome'])) :
+                        $dados['erro_nome'] = "nome já cadastrado";
+                    elseif (Valida::length_nome($formulario['nome'])) :
+                    $dados['erro_nome'] = "máximo 100 dígitos";
+                    else :
+                    
+                        // echo 'ok';
+                        // var_dump($formulario);
+                        $cadastrar=$this->data->store_c($dados);
                         if ($cadastrar) :
+                            // var_dump($cadastrar);
                             Sessao::sms('cadastrar','Categoria cadastrada com sucesso');
                             
-                            Url::redireciona('admin/categoria');
-                            
-                            
-                            
+                            // Url::redireciona('admin/categoria');
+                                    
                         else :
                             Sessao::sms('cadastrar','Erro com banco de dados','alert alert-danger');
                             
                         endif;
-                   endif;    
+                    endif;    
                 
-                        
-               
 
             endif;
         
         else :
             $dados = [
                 'nome' => '',
-                'senha' => '',
+                'descricao' => '',
+                'status'=>'',
                 'erro_nome'=>'',
-                'erro_senha'=>''
+                'erro_descricao'=>'',
+                'erro_status'=>''
             ];
         endif;
 
 
         $file="cadastrar_categoria";
-        return $this->view('layouts/admin/app',compact('file'));
+        return $this->view('layouts/admin/app',compact('file','dados'));
+    }
+
+    public function edite($it)
+    {
+        if(!Sessao::nivel0()):
+            Url::redireciona('home');
+        endif;
+        // $id = filter_var($id,FILTER_VALIDATE_INT);
+        var_dump($it);
+            $file = 'editar_categoria';
+            return $this->view('layouts/admin/app',compact('file'));
+        
+
     }
 }

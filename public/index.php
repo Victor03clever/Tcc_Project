@@ -1,20 +1,24 @@
 <?php
 session_start();
 ob_start();
+// use App\Libraries\Router;
 include '../app/config/phperror.php';
 include '../vendor/autoload.php';
 include '../app/config/config.php';
-use App\Helpers\Sessao;
-use App\Libraries\Router;
-// ( new App\config\Environment(dirname(__DIR__)))->load();
 
-// Carregando arquivos dotenv
+use  App\Http\Router;
 
 
-// load(dirname(__DIR__));
 
-$rota = new Router;
-// print_r(getenv()) ;echo'<br>';
+
+
+$route=new Router(URL);
+
+include '../app/Routes/Page.php';
+
+$route->run()->sendResponse();
+        
+
 
 foreach ($helpers as $key => $value) {
     $helper = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'app' 
