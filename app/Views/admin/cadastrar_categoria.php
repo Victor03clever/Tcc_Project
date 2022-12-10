@@ -7,7 +7,7 @@
         <?= sessao::sms('cadastrar');?>
         <section class="container mt-5 mb-5">
             <h2 class="titulo-secao mb-4">Cadastrar categoria de produto</h2>
-            <form action="<?=URL?>admin/categoria/cadastrar" method="POST">
+            <form action="<?=URL?>/admin/categoria/create" method="POST">
                 <div class="row">
                     <div class="form-group col-12 col-md-6">
                         <label for="nome">Nome*</label>

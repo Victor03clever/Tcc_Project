@@ -25,7 +25,7 @@ class Valida{
             }
         }
         public static function length_nome($nome){
-            if(strlen($nome) >= 100){
+            if(strlen($nome) >= 101){
                 return true;
             }
             else{

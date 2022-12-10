@@ -52,4 +52,38 @@ class Categoria
         
         endif; 
     }
+    public function edit_c(int $id)
+    {
+        $this->db->query("SELECT * FROM categoria WHERE id=:id");
+        $this->db->bind(':id',$id);
+        if($this->db->executa() AND $this->db->total()):
+            $resultado = $this->db->resultado();
+            return $resultado;
+        else:
+            return false;
+        endif;
+    }
+    public function update_c(array $dados, int $id)
+    {
+        $this->db->query("UPDATE categoria SET nome=:nome , descricao=:descricao , status=:status WHERE id=:id");
+        $this->db->bind(':nome',$dados['nome']);
+        $this->db->bind(':descricao',$dados['descricao']);
+        $this->db->bind(':status',$dados['status']);
+        $this->db->bind(':id',$id);
+        if($this->db->executa() AND $this->db->total()):
+            return true;
+        else:
+            return false;
+        endif;
+    }
+    public function delete_c(int $id)
+    {
+        $this->db->query('DELETE FROM categoria WHERE id=:id');
+        $this->db->bind(':id',$id);
+        if($this->db->executa() AND $this->db->total()):
+            return true;
+        else:
+            return false;
+        endif;
+    }
  }
