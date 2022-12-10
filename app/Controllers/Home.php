@@ -8,10 +8,7 @@ use App\Libraries\Controller;
 
 class  Home  extends Controller
 {
-    public static function class($controller)
-    {
-        return $controller();
-    }
+    
     public function index($id){
     
         echo '<pre>';
