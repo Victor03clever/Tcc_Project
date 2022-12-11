@@ -32,7 +32,8 @@ class Valida{
                 return false;
             }
         }
-        public static function length($var){
+        public static function length($var)
+        {
             if(strlen($var) <= 255){
                 return true;
             }
@@ -40,15 +41,22 @@ class Valida{
                 return false;
             }
         }
-        public static function pass_segura($senha){
+        public static function pass_segura($senha)
+        {
             return password_hash($senha,PASSWORD_DEFAULT);
         }
-        public static function ANG($dado){
+        public static function ANG($dado)
+        {
             return date('d/m/Y H:i:s' , strtotime($dado));
         }
-        public static function idade($dado){
+        public static function idade($dado)
+        {
             $nasc=explode('-',$dado);
             return date('Y') - $nasc[0];
         }
-      
+      public static function regex( $var ,$rule=null)
+      {
+        $rule=$rule?? '/^([áàãâéèêíìîóòôõúùûaÁÀÃÂÉÈÊÍÌÎÓÒÔÕÚÙÛA-zZ]+)+((\s[áàãâéèêíìîóòôõúùûaÁÀÃÂÉÈÊÍÌÎÓÒÔÕÚÙÛA-zZ]+)+)?$/';
+        return preg_match($rule,$var);
+      }
 }

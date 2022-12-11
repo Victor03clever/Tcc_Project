@@ -21,6 +21,65 @@ class Sessao
             endif;
         endif;
     }
+    public static function izitoast($nome, $titulo=null, $texto=null, $classe=null, $position=null){
+        if(!empty($nome)):
+            if(!empty($texto)  AND !empty($titulo) AND empty($_SESSION[$nome])):
+                if(!empty($_SESSION[$nome])):
+                    unset($_SESSION[$nome]);
+                endif;
+                $_SESSION[$nome]=$texto;
+                $_SESSION[$nome.'titulo']=$titulo;
+                $_SESSION[$nome.'classe']=$classe;
+                $_SESSION[$nome.'position']=$position;
+
+            elseif(!empty($_SESSION[$nome]) AND empty($texto) AND empty($titulo) ): 
+                $classe= !empty($_SESSION[$nome.'classe'])?empty($_SESSION[$nome.'classe']):'success';  
+                $position= !empty($_SESSION[$nome.'position'])?empty($_SESSION[$nome.'position']):'topRight';  
+                $titulo=!empty($_SESSION[$nome.'titulo'])?$_SESSION[$nome.'titulo']:'Nao editado';
+                echo "<script>
+                $(document).ready(function(){
+                        iziToast.$classe({
+                                 title:'$titulo',
+                                 position:'$position',
+                                 message:'$_SESSION[$nome]'
+                             });
+                    });
+                    </script>";
+               
+                unset( $_SESSION[$nome]);
+                unset($_SESSION[$nome.'titulo']);
+                unset($_SESSION[$nome.'classe']);
+                unset($_SESSION[$nome.'position']);
+            endif;
+        endif;
+    }
+    public static function notify($nome, $texto=null, $classe=null, $position=null){
+        if(!empty($nome)):
+            if(!empty($texto) AND empty($_SESSION[$nome])):
+                if(!empty($_SESSION[$nome])):
+                    unset($_SESSION[$nome]);
+                endif;
+                $_SESSION[$nome]=$texto;
+                $_SESSION[$nome.'classe']=$classe;
+                $_SESSION[$nome.'position']=$position;
+
+            elseif(!empty($_SESSION[$nome]) AND empty($texto)  ): 
+                $classe= !empty($_SESSION[$nome.'classe'])?empty($_SESSION[$nome.'classe']):'success';  
+                $position= !empty($_SESSION[$nome.'position'])?empty($_SESSION[$nome.'position']):'top right';  
+                
+                echo "<script>
+                $(document).ready(function(){
+                             $.notify('$_SESSION[$nome]', {position: '$position', className:'$classe'});
+                    });
+                    </script>";
+                    
+               
+                unset( $_SESSION[$nome]);
+                unset($_SESSION[$nome.'classe']);
+                unset($_SESSION[$nome.'position']);
+            endif;
+        endif;
+    }
     // public static function mensagem($nome, $texto = null, $estilo = null)
     // {
     //     if (!empty($nome)) :

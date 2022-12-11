@@ -38,15 +38,14 @@ define('DB',[
         define('BOOTJS', "bootstrap5.2".DIRECTORY_SEPARATOR."node_modules".DIRECTORY_SEPARATOR."bootstrap".DIRECTORY_SEPARATOR."dist".DIRECTORY_SEPARATOR."js".DIRECTORY_SEPARATOR."bootstrap.bundle.min.js");
         define('BOOTPOPPER', "bootstrap5.2".DIRECTORY_SEPARATOR."node_modules".DIRECTORY_SEPARATOR."@popperjs".DIRECTORY_SEPARATOR."core".DIRECTORY_SEPARATOR."dist".DIRECTORY_SEPARATOR."umd".DIRECTORY_SEPARATOR."popper.min.js");
 
+//Jquery
+define('JQUERY', "js".DIRECTORY_SEPARATOR."jquery-3.6.1.min.js");
 
-// define('DB',[
-//     'HOST'=>'oi',
-//     'PORT'=>getenv('DB_PORT'),
-//     'USER'=>getenv('DB_USEER'),
-//     'PASS'=>getenv('DB_PASS'),
-//     'DBNAME'=>getenv('DB_NAME'),
-//     'SGBD'=>getenv('DB_SGBD')
-// ]);
+// Notify
+define('NOTIFY', "js".DIRECTORY_SEPARATOR."notify.min.js");
+define('IZOCSS', "css".DIRECTORY_SEPARATOR."iziToast.min.css");
+define('IZOJS', "js".DIRECTORY_SEPARATOR."iziToast.min.js");
+
 
 
 
