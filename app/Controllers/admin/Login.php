@@ -51,25 +51,22 @@ class Login extends Controller
                     $dados['erro_senha'] = "preencha o campo senha";
                 endif;
 
-            else :        
-                // Sessao::sms('login','Login realizado com sucesso');
-                // Sessao::izitoast('teste','bemvindo','testes');
-                Sessao::notify('teste','isso ai');
+            else :                        
                 
-                    // $checarlogin=$this->Data->checalogin($dados['nome'],$dados['senha'],0);
-                    // var_dump($checarlogin);
-                    // if ($checarlogin) :
-                    //     Sessao::sms('login','Login realizado com sucesso');
+                    $checarlogin=$this->Data->checalogin($dados['nome'],$dados['senha'],0);
+                    var_dump($checarlogin);
+                    if ($checarlogin) :
+                        Sessao::sms('login','Login realizado com sucesso');
                         
-                    //     Url::redireciona('admin/home');
-                    //     $this->criarsessao($checarlogin);
-                    //     // var_dump($_SESSION);
+                        Url::redireciona('admin/home');
+                        $this->criarsessao($checarlogin);
+                        // var_dump($_SESSION);
                         
-                    // else :
-                    //     Sessao::sms('login','Dados Invalidos','alert alert-danger');
-                    //     $dados['erro_nome'] = "Dados invalidos";
-                    //     $dados['erro_senha'] = "Dados invalidos";
-                    // endif;
+                    else :
+                        Sessao::sms('login','Dados Invalidos','alert alert-danger');
+                        $dados['erro_nome'] = "Dados invalidos";
+                        $dados['erro_senha'] = "Dados invalidos";
+                    endif;
                         
                
 
@@ -83,7 +80,9 @@ class Login extends Controller
                 'erro_senha'=>''
             ];
         endif;
-
+Sessao::sms('login','Login realizado com sucesso');
+                Sessao::notify('teste','bemvindo',null,'top left',"('#form')");
+                        Sessao::izitoast('teste','deu certo','success'); 
 
         $file='login';
        return $this->view('layouts/admin/app', compact('file','dados'));

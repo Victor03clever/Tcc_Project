@@ -7,11 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="<?=asset(BOOTCSS)?>">
+  <link rel="stylesheet" href="<?=asset(IZOCSS)?>">
+  <script src="<?=asset(JQUERY)?>"></script>
+  <script src="<?=asset(IZOJS)?>"></script>
+  <!-- <script src="<=asset(NOTIFY)?>"></script> -->
 </head>
 <body>
 
 
 <main id="main" class="main">
+  
 
 <?php
 $file = dirname(dirname(__DIR__)). DIRECTORY_SEPARATOR . 'admin'.DIRECTORY_SEPARATOR. str_replace('.php','',$file).'.php';

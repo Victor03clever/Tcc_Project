@@ -1,13 +1,15 @@
 <?php
 
 use App\Helpers\Sessao;
-Sessao::notify('teste');
+// Sessao::notify('teste');
+Sessao::izitoast('teste');
 ?>
+
     <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                                    <div class="card-body">
+                                    <div class="card-body" >
                                     
-                                        <form method="Post" action="<?=URL?>/admin/login">
+                                        <form method="Post" id="form" action="<?=URL?>/admin/login">
                                         <?=Sessao::sms('login')?>
                                         
                                             <div class="form-floating mb-3">
