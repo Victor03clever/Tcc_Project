@@ -7,7 +7,7 @@ use App\Helpers\Sessao;
 use App\Helpers\Url;
 use App\Helpers\Valida;
 
-use function App\Helpers\asset;
+
 
 
 class Login extends Controller
@@ -54,7 +54,7 @@ class Login extends Controller
             else :                        
                 
                     $checarlogin=$this->Data->checalogin($dados['nome'],$dados['senha'],0);
-                    var_dump($checarlogin);
+                    // var_dump($checarlogin);
                     if ($checarlogin) :
                         Sessao::sms('login','Login realizado com sucesso');
                         
@@ -80,9 +80,7 @@ class Login extends Controller
                 'erro_senha'=>''
             ];
         endif;
-Sessao::sms('login','Login realizado com sucesso');
-                Sessao::notify('teste','bemvindo',null,'top left',"('#form')");
-                        Sessao::izitoast('teste','deu certo','success'); 
+ 
 
         $file='login';
        return $this->view('layouts/admin/app', compact('file','dados'));

@@ -28,7 +28,7 @@ class Categoria extends Controller
 
 
 
-        $file = "listar_categoria";
+        $file = 'categoria'.DIRECTORY_SEPARATOR."listar_categoria";
         return $this->view('layouts/admin/app', compact('file', 'dados'));
     }
 
@@ -99,7 +99,7 @@ class Categoria extends Controller
         endif;
 
 
-        $file = "cadastrar_categoria";
+        $file = 'categoria'.DIRECTORY_SEPARATOR."cadastrar_categoria";
         return $this->view('layouts/admin/app', compact('file', 'dados'));
     }
 
@@ -175,7 +175,7 @@ class Categoria extends Controller
         else :
             Sessao::sms('edit', 'String passado na url. Passe uma (int)', 'alert alert-danger');
         endif;
-        $file = 'editar_categoria';
+        $file = 'categoria'.DIRECTORY_SEPARATOR.'editar_categoria';
         return $this->view('layouts/admin/app', compact('file', 'dados', 'edit'));
     }
     public function delete($id)

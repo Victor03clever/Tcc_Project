@@ -36,6 +36,11 @@ class Router
             $carregar = "\\App\\Controllers\\" . $this->controller;
             $this->controller = new $carregar;
             }
+            else {
+                $this->controller = "Error";
+                $carregar = "\\App\\Controllers\\" . $this->controller;
+                $this->controller = new $carregar;
+            }
         }
         elseif(!isset($url[0]))
         {
@@ -43,13 +48,21 @@ class Router
                 $this->controller = ucwords('login');
                 $carregar = "\\App\\Controllers\\admin\\" . $this->controller;
                 $this->controller = new $carregar;
+            
+            else :
+                $this->controller = "Error";
+                $carregar = "\\App\\Controllers\\" . $this->controller;
+                $this->controller = new $carregar;
             endif;
         }
-         else {
+        elseif (!file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . "Controllers" . DIRECTORY_SEPARATOR . ucwords($url[0]) . ".php")  AND  !file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . "Controllers" . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . ucwords($url[1]) . ".php")) 
+        {
             $this->controller = "Error";
             $carregar = "\\App\\Controllers\\" . $this->controller;
             $this->controller = new $carregar;
         }
+
+         
         if(isset($url[0]))
         {
         if (isset($url[1])) {

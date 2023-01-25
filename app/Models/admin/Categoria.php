@@ -14,7 +14,7 @@ class Categoria
 
     public function checa_nome(string $nome){
         $this->db->query("SELECT nome FROM categoria WHERE nome=:nome");
-        $this->db->bind(':nome',$nome);
+        $this->db->bind(':nome', $nome);
         $this->db->executa();
         if($this->db->executa() AND $this->db->total()):
             return true;
@@ -52,6 +52,20 @@ class Categoria
         
         endif; 
     }
+    public function read1_c(int $id)
+    {
+        $this->db->query("SELECT * FROM  categoria WHERE id=:id");
+        $this->db->bind(':id',$id);
+        if ($this->db->executa() AND $this->db->total()): 
+            $resultado=$this->db->resultado();
+            return $resultado;
+
+        else :
+            return false;
+        
+        endif; 
+    }
+
     public function edit_c(int $id)
     {
         $this->db->query("SELECT * FROM categoria WHERE id=:id");

@@ -161,4 +161,10 @@ class Post
             return false;
         }
     }
+
+
+
+    'DELETE produto,codigo_barra FROM codigo_barra INNER JOIN produto  ON codigo_barra.id=produto.codigo_barra WHERE codigo_barra.id=:id'
+
+    
 }

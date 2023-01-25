@@ -74,9 +74,16 @@ class uploads
         if(move_uploaded_file($this->arquivo['tmp_name'],$this->diretorio.DIRECTORY_SEPARATOR.$this->pasta.DIRECTORY_SEPARATOR.$this->nome)):
             $this->exito= $this->nome;
             $this->erro=false;
+
+            if(!empty($_SESSION['path'])):
+                unset($_SESSION['path']);
+            endif;
+        
+            $_SESSION['path']=$this->diretorio.DIRECTORY_SEPARATOR.$this->pasta.DIRECTORY_SEPARATOR.$this->nome;
         else:
             $this->exito=false;
             $this->erro="Erro ao mover a imagem";
         endif;
+        
     }
 }
