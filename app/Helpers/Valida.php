@@ -9,6 +9,16 @@ class Valida{
                 return false;
             endif;
         }
+        public static function number($numero){
+            if(strlen($numero) > 9){
+                return true;
+            }elseif(strlen($numero) <9){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
         public static function samepass($senha, $c_senha){
             if ($senha != $c_senha) {
                 return true;                

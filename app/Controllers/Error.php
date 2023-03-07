@@ -11,8 +11,8 @@ class  Error  extends Controller
     
     public function index(){
     
-       echo'pagina de erro' ;
-    // $this->view('homepage');
+    //    echo'pagina de erro' ;
+    $this->view('404page');
         
     }
 }

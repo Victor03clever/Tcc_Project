@@ -16,7 +16,7 @@ class Router
     public function __construct()
     {
         $url = $this->url() ?? [0];
-        
+
 
         if (file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . "Controllers" . DIRECTORY_SEPARATOR . ucwords($url[0]) . ".php")) {
 
@@ -30,49 +30,41 @@ class Router
             $carregar = "\\App\\Controllers\\admin\\" . $this->controller;
             $this->controller = new $carregar;
         } elseif (isset($url[0])) {
-            if(empty($url[0]))
-            {
-            $this->controller = ucwords("home");
-            $carregar = "\\App\\Controllers\\" . $this->controller;
-            $this->controller = new $carregar;
-            }
-            else {
+            if (empty($url[0])) {
+                $this->controller = ucwords("home");
+                $carregar = "\\App\\Controllers\\" . $this->controller;
+                $this->controller = new $carregar;
+            } else {
                 $this->controller = "Error";
                 $carregar = "\\App\\Controllers\\" . $this->controller;
                 $this->controller = new $carregar;
             }
-        }
-        elseif(!isset($url[0]))
-        {
+        } elseif (!isset($url[0])) {
             if (empty($this->url1[1])) :
                 $this->controller = ucwords('login');
                 $carregar = "\\App\\Controllers\\admin\\" . $this->controller;
                 $this->controller = new $carregar;
-            
+
             else :
                 $this->controller = "Error";
                 $carregar = "\\App\\Controllers\\" . $this->controller;
                 $this->controller = new $carregar;
             endif;
-        }
-        elseif (!file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . "Controllers" . DIRECTORY_SEPARATOR . ucwords($url[0]) . ".php")  AND  !file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . "Controllers" . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . ucwords($url[1]) . ".php")) 
-        {
+        } elseif (!file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . "Controllers" . DIRECTORY_SEPARATOR . ucwords($url[0]) . ".php")  and  !file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . "Controllers" . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . ucwords($url[1]) . ".php")) {
             $this->controller = "Error";
             $carregar = "\\App\\Controllers\\" . $this->controller;
             $this->controller = new $carregar;
         }
 
-         
-        if(isset($url[0]))
-        {
-        if (isset($url[1])) {
-            if (method_exists($this->controller, $url[1])) :
-                $this->metodo = $url[1];
-                unset($url[1]);
-            endif;
-        }}
-        else
-        {
+
+        // if (isset($url[0])) {
+            if (isset($url[1])) {
+                if (method_exists($this->controller, $url[1])) :
+                    $this->metodo = $url[1];
+                    unset($url[1]);
+                endif;
+            // }
+        } else {
             if (isset($url[2])) {
                 if (method_exists($this->controller, $url[2])) :
                     $this->metodo = $url[2];

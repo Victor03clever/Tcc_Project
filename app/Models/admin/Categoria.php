@@ -100,4 +100,16 @@ class Categoria
             return false;
         endif;
     }
+    public function storeupload(){
+        $caminho='public/img/undraw_profile_2.svg';
+        $id=$this->db->ultimoid();
+        $this->db->query("INSERT INTO uploads(path,id_usuario) VALUES(:pathh, :id_usuarios)");
+        $this->db->bind(':pathh',$caminho,'');
+        $this->db->bind(':id_usuarios',$id,'');
+        if ($this->db->executa()AND $this->db->total()) {
+            return true;
+        } else {
+            return false;
+        } 
+    }
  }

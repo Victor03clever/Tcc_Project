@@ -51,7 +51,7 @@ class Produto
     }
     public function read_p()
     {
-        $this->db->query("SELECT *, produto.id as p_id, produto.nome as p_nome, produto.create_at as p_crate_at, produto.update_at as p_update_at, categoria.id as c_id, categoria.nome as c_nome, categoria.create_at as c_create_at, categoria.update_at as c_update_at, codigo_barra.id as b_id, codigo_barra.categoria as b_categoria  FROM  produto INNER JOIN categoria on produto.categoria = categoria.id INNER JOIN codigo_barra on produto.codigo_barra = codigo_barra.id");
+        $this->db->query("SELECT *, produto.id as p_id, produto.nome as p_nome, produto.create_at as p_create_at, produto.update_at as p_update_at, categoria.id as c_id, categoria.nome as c_nome, categoria.create_at as c_create_at, categoria.update_at as c_update_at, codigo_barra.id as b_id, codigo_barra.categoria as b_categoria  FROM  produto INNER JOIN categoria on produto.categoria = categoria.id INNER JOIN codigo_barra on produto.codigo_barra = codigo_barra.id ");
 
         if ($this->db->executa() AND $this->db->total()): 
             $resultado=$this->db->resultados();

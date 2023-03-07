@@ -2,38 +2,59 @@
 
 use App\Helpers\Sessao;
 // Sessao::notify('teste');
-Sessao::izitoast('teste');
+
 ?>
 
-    <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                                    <div class="card-body" >
-                                    
-                                        <form method="Post" id="form" action="<?=URL?>/admin/login">
-                                        <?=Sessao::sms('login')?>
-                                        
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control <?=$dados['erro_nome']?'is-invalid':'' ?>" value="<?=$dados['nome']?>"  type="text" id="nome" placeholder="login" name="nome" />
-                                                <label for="nome">Nome</label>
-                                                <div class="invalid-feedback">
-                                                    <?=$dados['erro_nome']?>
-                                                </div>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control <?=$dados['erro_senha']?'is-invalid':''?>"  type="password" placeholder="Password" id="senha" value="<?=$dados['senha']?>" name="senha"/>
-                                                <label for="senha">Password</label>
-                                                <div class="invalid-feedback">
-                                                    <?=$dados['erro_senha']?>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="d-flex align-items-center justify-content-end mt-4 mb-0">
-                                                
-                                               <button class="btn btn-secondary" type="submit" name="btn_log" value="logar">Login</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small">Victor Clever</div>
-                                    </div>
-                                </div>
+
+
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="<?= asset(BOOTCSS) ?>">
+    <link rel="stylesheet" href="<?= asset(IZOCSS) ?>">
+    <script src="<?= asset(JQUERY) ?>"></script>
+    <script src="<?= asset(IZOJS) ?>"></script>
+    <link rel="stylesheet" href="<?=asset("css/admin/style1.css")?>">
+  <link rel="shortcut icon" href="<?=asset("img/favicon.png")?>" type="image/x-icon">
+
+    <!-- <script src="<=asset(NOTIFY)?>"></script> -->
+</head>
+
+<body>
+    <?=Sessao::izitoast('loginE');?>
+    <main class="wrapper">
+        <img src="<?=asset("img/logo.png")?>" alt="logotipo de um refeitorio">
+        <form action="<?= URL ?>/admin/login" method="post">
+            <h1>Faça login</h1>
+            <p>
+                
+                <label for="nome">Nome</label><br>
+                <input style="background: transparent; color: var(--text);" type="text" class="form-control <?= $dados['erro_nome'] ? 'is-invalid' : '' ?>" value="<?= $dados['nome'] ?>" id="nome" name="nome" placeholder="Exemplo: Victor clever">
+                <span class="invalid-feedback">
+                    <?= $dados['erro_nome'] ?>
+                </span>
+                
+            </p>
+            <p>
+                <label for="senha">Senha</label><br>
+                <input style="background: transparent; color: var(--text);" type="password" class="form-control <?= $dados['erro_senha'] ? 'is-invalid' : '' ?>" name="senha" id="senha" value="<?= $dados['senha']?>" name="senha"  placeholder="Digite a sua senha">
+                <span class="invalid-feedback">
+                    <?= $dados['erro_senha'] ?>
+                </span>
+            </p>
+            <p>
+                <button type="submit" name="btn_log" value="logar"><span id='efeito_botao'></span>Entrar</button>
+            </p>
+
+        </form>
+    </main>
+    <script src="<?=asset(BOOTJS)?>"></script>
+<script src="<?=asset(BOOTPOPPER)?>"></script>
+</body>
+
+</html>

@@ -1,0 +1,359 @@
+/* index */
+/* geral */
+
+/*  */
+svg.btn-subtract path,svg.btn-plus path{
+  fill: var(--text);
+}
+/*  */
+/* +++++BackToTopButton+++++++++++++++++++++++++++++ */
+
+
+
+
+div.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.4rem;
+  gap: 1.2rem;
+  isolation: isolate;
+
+  min-width: 21rem;
+  height: 29.2rem;
+
+  background: var(--dark300);
+
+  border: 0.1rem solid var(--border);
+  border-radius: 0.8rem;
+}
+h6.price {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 100%;
+
+  text-align: center;
+
+  color: var(--red1);
+}
+form div.add {
+  width: 10rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.4rem;
+}
+
+div.cards {
+  display: flex;
+  flex-direction: row;
+  gap: 1.6rem;
+  /* min-width: 42.8rem; */
+  overflow-x: auto;
+}
+
+div.card {
+  padding-block: 2.4rem;
+  padding-inline: 2.4rem;
+}
+/* Nav */
+
+/* header */
+header {
+  width: 39.6rem;
+  height: 12rem;
+
+  background: var(--gra);
+  border-radius: 0.291696rem;
+
+  display: flex;
+  flex-direction: row;
+
+  margin-bottom: 6.2rem;
+}
+
+header span {
+  width: 21.5rem;
+  color: var(--textS);
+  margin-block: auto;
+  text-align: start;
+}
+header img {
+  position: relative;
+  width: 20.1rem;
+  height: 14.9rem;
+
+  left: -2rem;
+  top: -2.9rem;
+  opacity: 0.8;
+}
+header span h1 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.8rem;
+  line-height: 140%;
+}
+header span p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 140%;
+}
+/* Refeicoes */
+
+section#refeicoes h4 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.8rem;
+  text-align: start;
+  color: var(--text);
+
+  line-height: 140%;
+  margin-bottom: 2.4rem;
+}
+/* Produtos */
+div.category {
+  margin-block: 2rem;
+}
+div.category div.cats {
+  display: flex;
+  gap: 1.2rem;
+  padding-block: 1rem;
+  overflow-x: auto;
+  
+}
+div.category div.cats form#cat button.cat {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  padding-inline: 0.8rem;
+  width: initial;
+  min-width: 12.3rem;
+  height: 3.2rem;
+  border: 0.1rem solid var(--blue2);
+  background: transparent;
+  border-radius: 0.5rem;
+  
+}
+div.category div.cats form#cat button.active {
+  background: var(--blue2);
+}
+div.category div.cats button.cat img {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+div.category div.cats button.cat h6 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2.3rem;
+  letter-spacing: -0.03em;
+  /* margin-block: auto; */
+  margin: 0;
+}
+section#produtos h4 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.8rem;
+  text-align: start;
+  color: var(--text);
+
+  line-height: 140%;
+  margin-bottom: 2.4rem;
+}
+
+
+/* Desktop */
+@media (min-width: 994px) {
+  /* geral */
+  body {
+    overflow: auto;
+  }
+  .wrapper {
+    width: min(100rem, 100%);
+  }
+  .nav-link {
+    padding: 0;
+  }
+  ::-webkit-scrollbar {
+    width: 0.6rem;
+    height: 0.8rem;
+  }
+  section#produtos h4 ,section#refeicoes h4 {
+    font-weight: 500;
+    font-size: 3.2rem;
+    line-height: 140%;
+  }
+  /* header */
+  header {
+    height: 26rem;
+  }
+  header span {
+    width: 40rem;
+    color: var(--textS);
+    margin-block: auto;
+    text-align: start;
+  }
+  header img {
+    position: relative;
+    width: 55rem;
+    height: 35rem;
+
+    left: -2rem;
+    top: -9rem;
+    opacity: 0.8;
+  }
+  header span h1 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 4rem;
+    line-height: 140%;
+  }
+  header span p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 100%;
+  }
+  /* NAV */
+  nav {
+    height: 10.4rem;
+    margin-bottom: 16.4rem;
+  }
+
+  nav div.container-fluid.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: auto;
+  }
+  .navbar-collapse {
+    flex-grow: initial;
+
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav form label {
+    height: 5rem;
+    margin-left: 13rem;
+    margin-right: 2rem;
+  }
+  nav form button.btn {
+    width: 0;
+    border: initial;
+    display: none;
+  }
+  nav button.pedidos {
+    width: initial;
+    height: 4.7rem;
+    background: var(--blue2);
+    margin-right: 16rem;
+  }
+  nav button.pedidos:hover {
+    background: var(--blue2);
+    filter: brightness(1.3);
+  }
+
+  nav button.pedidos h6 {
+    text-align: initial;
+    font-size: initial;
+    margin: 0;
+  }
+
+  nav button.logout {
+    width: initial;
+  }
+  nav button.logout h6 {
+    display: none;
+  }
+
+  nav button.cfg {
+    width: initial;
+  }
+  nav button.cfg h6 {
+    display: none;
+  }
+
+  /* refeicoes e produtos */
+  h6.title {
+    font-size: 2.4rem;
+    line-height: 140%;
+    text-align: center;
+  }
+  svg {
+    cursor: pointer;
+  }
+  div.card {
+    gap: 1.5rem;
+    min-width: 30.4rem;
+    height: 46.2rem;
+    margin-bottom: 2rem;
+  }
+  div.card img {
+    width: 17.6rem;
+    height: 17.6rem;
+  }
+  h6.price {
+    font-size: 32px;
+    line-height: 160%;
+  }
+
+  button {
+    width: 9.2rem;
+    height: 4.8rem;
+  }
+
+  div.cards {
+    gap: 2.7rem;
+  }
+
+/* category */
+
+div.category div.cats {
+  justify-content: start;
+  align-items: center;
+}
+div.category div.cats form#cat button.cat {
+  min-width: 14.1rem;
+  height: 5rem;
+  border: 0.1rem solid var(--blue2);
+}
+div.category div.cats button.cat img {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+div.category div.cats button.cat h6 {
+  font-size: 1.6rem;
+}
+
+  /* footer */
+  footer .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1rem;
+    gap: 0.8rem;
+  }
+}
+@media(max-width: 300px){
+  .wrapper{
+    width: 30rem;
+  }
+  footer{
+    width: 30rem;
+  }
+  nav{
+    width: 30rem;
+  }
+  header span p{
+    font-size: 1rem;
+  }
+  header span h1{
+    font-size: 1.5rem;
+  }
+}

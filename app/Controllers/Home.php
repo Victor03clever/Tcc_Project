@@ -10,9 +10,12 @@ class  Home  extends Controller
 {
     
     public function index(){
-    
+        if (Sessao::nivel2()) :
+            Url::redireciona('client');
+        endif;
         
-    $this->view('homepage');
+        $file = 'homepage';
+        return $this->view('layouts/client/app', compact('file'));
         
     }
 }

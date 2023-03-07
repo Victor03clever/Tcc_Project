@@ -55,15 +55,16 @@ class Login extends Controller
                 
                     $checarlogin=$this->Data->checalogin($dados['nome'],$dados['senha'],0);
                     // var_dump($checarlogin);
+                    // exit;
                     if ($checarlogin) :
-                        Sessao::sms('login','Login realizado com sucesso');
                         
+                        Sessao::izitoast('loginS','Bemvindo','Login realizado com sucesso');
                         Url::redireciona('admin/home');
                         $this->criarsessao($checarlogin);
                         // var_dump($_SESSION);
                         
                     else :
-                        Sessao::sms('login','Dados Invalidos','alert alert-danger');
+                        Sessao::izitoast('loginE','Erro','Nome ou senha estão errados','error');
                         $dados['erro_nome'] = "Dados invalidos";
                         $dados['erro_senha'] = "Dados invalidos";
                     endif;
@@ -82,20 +83,22 @@ class Login extends Controller
         endif;
  
 
-        $file='login';
-       return $this->view('layouts/admin/app', compact('file','dados'));
+        
+       return $this->view('admin/login', compact('dados'));
     }
     private function  criarsessao(array $usuario){
         
         $_SESSION['usuarios_id']= $usuario['usuario_id'];
         $_SESSION['usuarios_nome']= $usuario['u_nome'];
         $_SESSION['usuarios_email']= $usuario['email'];
+        $_SESSION['usuarios_img']= !empty($usuario['imagem'])?URL.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.$usuario['imagem']:URL.'/public/img/user-logo.jpg';
        
     }
     public function sair(){
-        unset($_SESSION['usuario_id']);
+        unset($_SESSION['usuarios_id']);
         unset($_SESSION['usuarios_nome']);
         unset($_SESSION['usuarios_email']);
+        unset($_SESSION['usuarios_img']);
         session_destroy();
         Url::redireciona('admin/login');
     }

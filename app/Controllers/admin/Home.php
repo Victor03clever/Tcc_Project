@@ -21,7 +21,7 @@ class Home extends Controller
         if (!Sessao::nivel0()) :
             Url::redireciona('home');
         endif;
-        echo $_SESSION['usuarios_nome'];
+        // echo $_SESSION['usuarios_nome'];
         $file='home'; 
         return $this->view('layouts/admin/app',compact('file'));
     }

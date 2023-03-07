@@ -1,0 +1,191 @@
+/* index */
+/* geral */
+
+/* ========================================================================= */
+/* CardBox */
+.cardBox {
+  position: relative;
+  padding: 10rem .2rem 2rem 0.2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  width: 100%;
+}
+.cardBox .cards {
+  position: relative;
+  background: var(--primary-color);
+  border-radius: 2rem;
+  padding: 1.5rem;
+
+  width: 23.2%;
+  height: 12rem;
+  cursor: pointer;
+}
+.cardBox .cards .cardName {
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.2rem;
+  padding-bottom: 2rem;
+}
+.cardBox .cards .number {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.8rem;
+  line-height: 1.7rem;
+}
+.cardBox .cards .iconBox{
+    position: absolute;
+    right: 0.2rem;
+    top: 2.7rem;
+}
+/* Charts */
+/* chart donut = grafico analitico*/
+.charts{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    margin-left: .2rem;
+    width: 100%;
+}
+.card{
+    border: none;
+    border-radius: 2rem;
+    background-color: var(--primary-color);
+    
+}
+.card-body{
+    background: var(--primary-color);
+    color: var(--text);
+    border-radius: 2rem;
+    padding: 2rem;
+
+}
+
+/* recent */
+.recent{
+    position: relative;
+    width: 30%;
+    background: var(--primary-color);
+    height: 36rem;
+    padding: 1.5rem 1.5rem 1.5rem 3rem;
+    border-radius: 2rem;
+    display: flex;
+    gap: 1;
+    flex-direction: column;
+}
+.recent span.span{
+    position: relative;
+    margin-bottom: 1rem;
+}
+.pedidos{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: auto;
+    /* column-gap: 2rem; */
+}
+.pedidos img{
+    max-width: 4rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+.span1{
+    font-weight: 400;
+    padding-inline: 1rem;
+    border-radius: 1rem;
+}
+.span1:hover{
+    background: var(--hover);
+}
+/* cards */
+@media (max-width: 1101px){
+  .cardBox {
+    width: initial;
+    flex-wrap: wrap;
+  }
+  .cardBox .cards {
+    width: 23rem;
+  }
+}
+/* cards */
+@media (max-width: 999px){
+  .cardBox .cards {
+    width: 48.5%;
+  }
+}
+@media (max-width: 934px){
+  .cardBox .cards {
+    width: 47.5%;
+  }
+}
+@media (max-width:675px){
+  .cardBox .cards {
+    width: 100%;
+  }
+}
+/* <!-- charts and recent activities --> */
+
+@media (max-width: 990px){
+.charts{
+  width: initial;
+  flex-wrap: wrap;
+}
+.recent{
+  width: 30rem;
+}
+div.col-lg-8{
+  width: 99.3%;
+}
+}
+/* sidebar
+@media (max-width:560px){
+  .navigation{
+    width: 21rem;
+  }
+  .main{
+  width: calc(100% - 22rem);
+  left: 22rem;
+  }
+  .main .topbar{
+    width: calc(100% - 22rem);
+  }
+}
+@media (max-width: 500px){
+  .line{
+    display: none;
+  }
+  .navigation{
+    width: 7rem;
+  }
+  .main{
+    width: calc(100% - 8rem);
+    left: 8rem;
+    }
+    .main .topbar{
+      width: calc(100% - 8rem);
+    }
+
+  .navigation ul li:nth-child(1) img {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .navigation ul li:hover a::before {
+    top: -99%;
+    right: -40%;
+    box-shadow: 3rem 3rem 0 1rem var(--hover);
+  }
+  .navigation.navigation ul li:hover a::after {
+    bottom: -99%;
+    right: -40%;
+    box-shadow: 3.7rem -3rem 0 1rem var(--hover);
+  }
+
+} */

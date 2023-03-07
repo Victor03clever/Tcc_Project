@@ -1,0 +1,335 @@
+/* main */
+/* geral */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.2s;
+  }
+  ::-webkit-scrollbar {
+    color: #ecedf1;
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(transparent, var(--red1), transparent);
+    border-radius: 0.9rem;
+  }
+  
+  :root {
+    --def: 190;
+    --primary-color: #1c1d2b;
+    --text: #dce0ea;
+    --hover: #181926;
+  
+    font-size: 62.5%; /*1rem igual 10px*/
+  }
+  body {
+    background: var(--hover);
+    font-family: DM Sans;
+    min-height: 100vh;
+    overflow-x: hidden;
+  
+    color: var(--text);
+    font-size: 1.3rem;
+    overflow-x: hidden;
+  }
+  .line {
+    position: relative;
+    display: block;
+    border-bottom: 2px solid var(--hover);
+  
+    width: 20rem;
+  }
+
+  /*  */
+ .navigation svg path , .topbar svg path{
+    stroke: var(--text);
+  }
+  .toggler .btn svg path{
+    fill: var(--text);
+  }
+  
+  
+  button.btn.btn-primary{
+    width: 10rem;
+    padding: .7rem;
+    font-size: 1.5rem;
+    
+}
+input.form-control{
+  height: 3rem;
+  font-size: 1.3rem;
+}
+  
+  /* nav aside */
+  
+  .container {
+    position: relative;
+    width: 100%;
+  }
+  .navigation {
+    position: fixed;
+    width: 25rem;
+    height: 100%;
+    /* -boot  */
+    left: 0;
+    background: var(--primary-color);
+    border-left: 1rem solid var(--primary-color);
+  
+    overflow: hidden;
+    transition: 0.5s;
+  }
+  .navigation.active {
+    width: 7rem;
+  }
+  .navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+  }
+  .navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    padding-inline: 1rem;
+    border-top-left-radius: 3rem;
+    border-bottom-left-radius: 3rem;
+  }
+  .navigation ul li:hover {
+    background: var(--hover);
+  }
+  .navigation ul li:nth-child(1) {
+    position: relative;
+    margin-bottom: 1.3rem;
+    margin-top: 1rem;
+    pointer-events: none;
+    margin-inline: auto;
+  }
+  .navigation ul li:nth-child(1) img {
+    padding-bottom: 1rem;
+  }
+  .navigation.active ul li:nth-child(1) img {
+    opacity: 0;
+    visibility: hidden;
+  }
+ 
+  .navigation ul li a {
+    position: relative;
+    width: 103.9%;
+    text-decoration: none;
+    display: block;
+    color: var(--text);
+    display: flex;
+  }
+  .navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 4rem;
+    /* -boot line-height 6.2 */
+    height: 5rem;
+    line-height: 5rem;
+    text-align: center;
+  }
+  .navigation ul li a .icon svg {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+  .navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 1rem;
+    line-height: 5rem;
+    text-align: start;
+    white-space: nowrap;
+  }
+  /* curvas fora no hover */
+  .navigation ul li:hover a::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -100%;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    box-shadow: 3rem 3rem 0 1rem var(--hover);
+    background: transparent;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .navigation.active ul li:hover a::before {
+    top: -99%;
+    right: -40%;
+    box-shadow: 3rem 3rem 0 1rem var(--hover);
+  }
+  .navigation ul li:hover a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -100%;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    box-shadow: 3rem -3rem 0 1rem var(--hover);
+    background: transparent;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .navigation.navigation.active ul li:hover a::after {
+    bottom: -99%;
+    right: -40%;
+    box-shadow: 3.7rem -3rem 0 1rem var(--hover);
+  }
+  /* main */
+  .main {
+    position: absolute;
+    width: calc(100% - 26rem);
+    left: 26rem;
+    min-height: 100vh;
+    background: var(--hover);
+    transition: 0.2s;
+  }
+  .main.active {
+    width: calc(100% - 8rem);
+    left: 8rem;
+  }
+  /* main topbar */
+  .main .topbar {
+    position: fixed;
+    width: calc(100% - 26rem);
+    height: 9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    background: var(--primary-color);
+    border-bottom-left-radius: 2rem;
+    border-top-right-radius: 4rem;
+    box-shadow: 0px .1rem .9rem black;
+    z-index: 1;
+  }
+  .main.active .topbar {
+    width: calc(100% - 8rem);
+  }
+  .toggler {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .toggler .btn {
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.5rem;
+  }
+  .user {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    /* right: 27rem; */
+  }
+  .lightdark {
+    cursor: pointer;
+  }
+  .lightdark .dark {
+    display: none;
+  }
+  .user .dropdown {
+    cursor: pointer;
+  }
+  .user .img {
+    position: relative;
+    min-width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .user .img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+/* +++++BackToTopButton+++++++++++++++++++++++++++++ */
+
+#backToTopButton {
+  position: fixed;
+  bottom: 3rem;
+  right: 1.5rem;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+#backToTopButton.show {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s;
+}
+.btn-primary{
+  background: #065E7C;
+  border: none;
+  color: #dce0ea;
+}
+.btn-primary:hover{
+  background: #065E7C;
+  filter: brightness(1.3);
+}
+
+
+
+  /* sidebar */
+@media (max-width:560px){
+    .navigation{
+      width: 21rem;
+    }
+    .main{
+    width: calc(100% - 22rem);
+    left: 22rem;
+    }
+    .main .topbar{
+      width: calc(100% - 22rem);
+    }
+  }
+  @media (max-width: 500px){
+    .line{
+      display: none;
+    }
+    .navigation{
+      width: 7rem;
+    }
+    .main{
+      width: calc(100% - 8rem);
+      left: 8rem;
+      }
+      .main .topbar{
+        width: calc(100% - 8rem);
+      }
+  
+    .navigation ul li:nth-child(1) img {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .navigation ul li:hover a::before {
+      top: -99%;
+      right: -40%;
+      box-shadow: 3rem 3rem 0 1rem var(--hover);
+    }
+    .navigation.navigation ul li:hover a::after {
+      bottom: -99%;
+      right: -40%;
+      box-shadow: 3.7rem -3rem 0 1rem var(--hover);
+    }
+  
+}

@@ -3,11 +3,24 @@ use App\Helpers\Sessao;
 Sessao::sms('edit');
 ?>
 
+<?php
 
+use App\Helpers\Valida;
+
+
+?>
+<link rel="stylesheet" href="<?= asset("css/admin/style3.css") ?>">
+<section class="section">
+    <?= Sessao::izitoast('categoriaA'); ?>
+    <?= Sessao::izitoast('categoriaS'); ?>
+    <?= Sessao::izitoast('categoriaE'); ?>
+    <?= Sessao::sms('metodo'); ?>
+    <h1>Categorias / Actualizar</h1>
+    <?= Sessao::sms('metodo'); ?>
+    
 <main>
-        <?= sessao::sms('cadastrar');?>
+        
         <section class="container mt-5 mb-5">
-            <h2 class="titulo-secao mb-4">Actualizar categoria de produto</h2>
             <form action="<?=URL?>/admin/categoria/edit/<?=$edit['id']?>" method="POST">
                 <div class="row">
                     <div class="form-group col-12 col-md-6">
@@ -34,7 +47,7 @@ Sessao::sms('edit');
                         </select>
                     </div>
                 </div><br>
-                <button type="submit" class="btn btn-warning" name="btn_save" value="salvar">Salvar</button>
+                <button type="submit" class="btn btn-primary" name="btn_save" value="salvar">Actualizar</button>
             </form>
         </section>
     </main>

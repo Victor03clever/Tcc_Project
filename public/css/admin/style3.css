@@ -1,0 +1,35 @@
+/* Category */
+section.section{
+    padding-top: 10rem;
+    margin-inline: 2.5rem;
+}
+section.section  h1{
+    padding-bottom: 5rem;
+}
+
+
+
+#modalTitleId{
+    color: var(--primary-color);
+}
+/* estilizandooo todas as tabelas*/
+div.card{
+    border: none;
+}
+div.card-body{
+    background: var(--primary-color);
+    color: var(--text);
+}
+table *{
+    color: var(--text);
+}
+.dataTable-sorter::after {
+    border-bottom: 4px solid var(--text);
+}
+.dataTable-sorter::before {
+    border-top: 4px solid var(--text);
+}
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-accent-bg: var(--text);
+    color: var(--primary-color);
+}

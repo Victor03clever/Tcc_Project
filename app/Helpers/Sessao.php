@@ -21,6 +21,7 @@ class Sessao
             endif;
         endif;
     }
+    #com izitoast
     public static function izitoast($nome, $titulo=null, $texto=null, $classe=null, $position=null){
         if(!empty($nome)):
             if(!empty($texto)  AND !empty($titulo) AND empty($_SESSION[$nome])):
@@ -54,6 +55,7 @@ class Sessao
             endif;
         endif;
     }
+    # com notify
     public static function notify($nome, $texto=null, $classe=null, $position=null, $element=null){
         if(!empty($nome)):
             if(!empty($texto) AND empty($_SESSION[$nome])):
@@ -85,7 +87,7 @@ class Sessao
         endif;
     }
 
-
+    #com css puro
     // public static function mensagem($nome, $texto = null, $estilo = null)
     // {
     //     if (!empty($nome)) :
@@ -111,8 +113,18 @@ class Sessao
     //         endif;
     //     endif;
     // }
+
+
+    // # Variaveis importantes para sessoes
+    public static function nivel2(){
+        if(isset($_SESSION['usuarioC_id'])):
+            return true;
+        else:
+            return false;    
+        endif;
+    }
     public static function nivel1(){
-        if(isset($_SESSION['usuario_id'])):
+        if(isset($_SESSION['usuarioV_id'])):
             return true;
         else:
             return false;    

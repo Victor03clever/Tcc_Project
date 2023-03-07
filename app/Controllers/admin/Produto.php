@@ -13,7 +13,7 @@ class Produto extends Controller
     private $Data;
     private $Cat;
     public function __construct()
-    {
+    { 
         $this->Data = $this->model("admin\Produto");
         $this->Cat = $this->model("admin\Categoria");
         if (Sessao::nivel1()) :
@@ -29,7 +29,8 @@ class Produto extends Controller
 
         $dados = $this->Data->read_p();
         // var_dump($dados);
-        $file = 'produto' . DIRECTORY_SEPARATOR . 'listar_produto';
+        // exit;
+        $file = 'produto' . DIRECTORY_SEPARATOR . 'produto';
         return $this->view('layouts/admin/app', compact('file', 'dados'));
     }
     public function create()
@@ -48,11 +49,12 @@ class Produto extends Controller
                 'name' => trim($formulario['name']),
                 'value' => trim($formulario['value']),
                 'code' => trim($formulario['code']),
-
+                'upload'=>trim($formulario['upload']),
                 'cat' => trim($formulario['cat']),
                 'err_name' => '',
                 'err_value' => '',
                 'err_code' => '',
+                'err_img' => '',
                 'err_cat' => '',
                 'read_c' => $this->Cat->read_c()
             ];
@@ -70,7 +72,10 @@ class Produto extends Controller
                     $dados['err_code'] = "Forneça o codigo de barra";
                 endif;
                 if (empty($formulario['cat'])) :
-                    $dados['err_cat'] = "A categoria nao pode estar vazia";
+                    $dados['err_cat'] = "A categoria não pode estar vazia";
+                endif;
+                if (empty($formulario['upload'])) :
+                    $dados['err_img'] = "Escolha a imagem para o produto";
                 endif;
                 
                 else :
@@ -89,7 +94,7 @@ class Produto extends Controller
 
 
                     endif;
-                    $imagem = $_SESSION['path'] ?? 'uploads\Produtos\refrigerante\exemplo.jpg';
+                    $imagem = !empty($_SESSION['path']) ?$_SESSION['path']: 'uploads\Produtos\exemplo.jpg';
 
                     if ($upload->getexito()) :
                         
@@ -97,12 +102,13 @@ class Produto extends Controller
                         $cadastrar = $this->Data->store_p($dados, $imagem);
                         if ($cadastrar) :
 
-                            Sessao::sms('produto', 'Produto cadastrado com sucessso');
+                            Sessao::izitoast('produto', 'success','Produto cadastrado com sucessso');
                             Sessao::sms('upload', $upload->getexito() . ' movida com sucesso');
+                            Url::redireciona('admin/produto');
 
-
+                            exit;
                         else :
-                            Sessao::sms('produto', 'Erro com banco de dados', 'alert alert-danger');
+                            Sessao::izitoast('produto', 'erro','Erro com banco de dados', 'error');
 
                         endif;
                     else :
@@ -120,10 +126,12 @@ class Produto extends Controller
                 'name' => '',
                 'value' => '',
                 'code' => '',
+                'upload'=>trim($formulario['upload']),
                 'cat' => $this->Cat->read_c(),
                 'err_name' => '',
                 'err_value' => '',
                 'err_code' => '',
+                'err_img' => '',
                 'err_cat' => '',
                 'read_c' => $this->Cat->read_c()
             ];
@@ -139,10 +147,12 @@ class Produto extends Controller
         $id = filter_var($id, FILTER_VALIDATE_INT);
         if ($id) :
             $edit = $this->Data->edit_p($id);
+        // var_dump($edit);
+        // exit;
             $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
             if (isset($formulario['edit'])) :
-                $imagem = $_SESSION['path'] ?? 'uploads\Produtos\refrigerante\exemplo.jpg';
+                $imagem = !empty($_SESSION['path']) ?$_SESSION['path']: 'uploads\Produtos\exemplo.jpg';
                 $dados = [
                     'name' => trim($formulario['name']),
                     'value' => trim($formulario['value']),
@@ -159,17 +169,17 @@ class Produto extends Controller
                 if (in_array("", $formulario)) :
 
                     if (empty($formulario['name'])) :
-                        $dados['err_name'] = "Digite o nome do produto";
+                        $dados['err_name'] = "Os campos não podem estar vazios";
                     endif;
 
                     if (empty($formulario['value'])) :
-                        $dados['err_value'] = "Informe o preço do produto";
+                        $dados['err_value'] = "Os campos não podem estar vazios";
                     endif;
                     if (empty($formulario['code'])) :
-                        $dados['err_code'] = "Forneça o codigo de barra";
+                        $dados['err_code'] = "Os campos não podem estar vazios";
                     endif;
                     if (empty($formulario['cat'])) :
-                        $dados['err_code'] = "A categoria nao pode estar vazia";
+                        $dados['err_code'] = "Os campos não podem estar vazios";
                     endif;
 
 
@@ -194,13 +204,14 @@ class Produto extends Controller
 
                         if ($actualiza) :
 
-                            Sessao::sms('produto', 'Produto cadastrado com sucessso');
+                            Sessao::izitoast('produto', 'Success','Produto actualizado com sucessso');
 
 
                             Url::redireciona('admin/produto');
+                            exit;
 
                         else :
-                            Sessao::sms('produto', 'Erro com banco de dados', 'alert alert-danger');
+                            Sessao::sms('upload', 'Erro com banco de dados', 'alert alert-danger');
 
 
                         endif;
@@ -225,9 +236,10 @@ class Produto extends Controller
             endif;
 
         else :
-            Sessao::sms('produto', 'String passado na url. Passe uma (int)', 'alert alert-danger');
+            Sessao::sms('upload', 'String passado na url. Passe um numero(int)', 'alert alert-danger');
+            Url::redireciona('admin/produto');
+            exit;
         endif;
-        // var_dump($edit);
 
         $file = 'produto' . DIRECTORY_SEPARATOR . 'editar_produto';
         return $this->view('layouts/admin/app', compact('file', 'dados', 'edit'));
@@ -240,14 +252,14 @@ class Produto extends Controller
         if ($id and $metodo == 'POST') :
             $delete = $this->Data->delete_p($id);
             if ($delete) :
-                Sessao::sms('lista', 'Success');
+                Sessao::izitoast('produto', 'Success','Delectado');
                 Url::redireciona('admin/produto');
             else :
-                Sessao::sms('lista', 'Error', 'alert alert-danger');
+                Sessao::izitoast('produto', 'Erro', 'Não delectado, consulte BD','error');
             endif;
         else :
-            Sessao::sms('lista', 'Metodo de envio \'GET\' não é permitido', 'alert alert-danger');
-            Url::redireciona('admin/categoria');
+            Sessao::sms('upload', 'Metodo de envio \'GET\' não é permitido', 'alert alert-danger');
+            Url::redireciona('admin/produto');
         endif;
     }
 }

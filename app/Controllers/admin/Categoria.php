@@ -2,10 +2,12 @@
 
 namespace App\Controllers\admin;
 
-use App\Libraries\Controller;
-use App\Helpers\Sessao;
 use App\Helpers\Url;
+use App\Helpers\Sessao;
+use App\Libraries\Controller;
 use App\Helpers\Valida;
+use App\Libraries\Uploads;
+use LDAP\Result;
 
 class Categoria extends Controller
 {
@@ -21,28 +23,19 @@ class Categoria extends Controller
 
     public function index()
     {
+                        
+        
         if (!Sessao::nivel0()) :
             Url::redireciona('home');
         endif;
         $dados = $this->data->read_c();
 
-
-
-        $file = 'categoria'.DIRECTORY_SEPARATOR."listar_categoria";
-        return $this->view('layouts/admin/app', compact('file', 'dados'));
-    }
-
-    public function create()
-    {
-
-        if (!Sessao::nivel0()) :
-            Url::redireciona('home');
-        endif;
+       
         $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
         if (isset($formulario['btn_save'])) :
 
-            $dados = [
+            $dados1 = [
                 'nome' => trim($formulario['nome']),
                 'status' => trim($formulario['status']),
                 'descricao' => trim($formulario['descricao']),
@@ -54,33 +47,44 @@ class Categoria extends Controller
             if (in_array("", $formulario)) :
 
                 if (empty($formulario['nome'])) :
-                    $dados['erro_nome'] = "Digite o nome";
+                    $dados1['erro_nome'] = "Digite o nome";
                 endif;
 
                 if (empty($formulario['descricao'])) :
-                    $dados['erro_descricao'] = "preencha a descrição";
+                    $dados1['erro_descricao'] = "preencha a descrição";
                 endif;
-
+                Sessao::izitoast('categoriaA','Alert','Algo deu errado, tente cadastrar novamente','warning');
 
             else :
               
                 if ($this->data->checa_nome($formulario['nome'])) :
-                    $dados['erro_nome'] = "nome já cadastrado";
+                    $dados1['erro_nome'] = "nome já cadastrado";
+                    Sessao::izitoast('categoriaA','Alert','Algo deu errado, tente cadastrar novamente','warning');
                 elseif (Valida::length_nome($formulario['nome'])) :
-                    $dados['erro_nome'] = "máximo 100 dígitos";
+                    $dados1['erro_nome'] = "máximo 100 dígitos";
+                    Sessao::izitoast('categoriaA','Alert','Algo deu errado, tente cadastrar novamente','warning');
                 else :
 
                    
-                    $cadastrar = $this->data->store_c($dados);
-                    if ($cadastrar) :
+                    $cadastrar = $this->data->store_c($dados1);
                     
-                        Sessao::sms('cadastrar', 'Categoria cadastrada com sucesso');
-
-                    // Url::redireciona('admin/categoria');
-
-                    else :
-                        Sessao::sms('cadastrar', 'Erro com banco de dados', 'alert alert-danger');
-
+                    if ($cadastrar):
+                                            
+                       $sms= Sessao::izitoast('categoriaS','success','Categoria cadastrada com sucesso');
+                       Url::redireciona('admin/categoria');     
+                       
+                       
+                       // limpando as variaveis;
+                       $dados1['erro_nome'] = "";
+                       $dados1['nome'] = "";
+                       $dados1['erro_descricao'] = "";
+                       $dados1['descricao'] = "";
+                       exit;
+                        
+                    else:
+                        
+                        Sessao::izitoast('categoriaE','Erro','Erro com banco de dados','error');
+                        
                     endif;
                 endif;
 
@@ -88,7 +92,7 @@ class Categoria extends Controller
             endif;
 
         else :
-            $dados = [
+            $dados1 = [
                 'nome' => '',
                 'descricao' => '',
                 'status' => '',
@@ -98,10 +102,11 @@ class Categoria extends Controller
             ];
         endif;
 
-
-        $file = 'categoria'.DIRECTORY_SEPARATOR."cadastrar_categoria";
-        return $this->view('layouts/admin/app', compact('file', 'dados'));
+        $file = 'categoria'.DIRECTORY_SEPARATOR."categoria";
+        return $this->view('layouts/admin/app', compact('file', 'dados','dados1'));
     }
+
+  
 
     public function edit($id)
     {
@@ -149,11 +154,16 @@ class Categoria extends Controller
                         $actualiza = $this->data->update_c($dados, $id);
                         if ($actualiza) :
 
-                            Sessao::sms('lista', 'Categoria cadastrada com sucesso');
+                            // Sessao::sms('lista', 'Categoria cadastrada com sucesso');
+                            Sessao::izitoast('categoriaS','Success','Categoria actualizada com sucesso');
+
                             Url::redireciona('admin/categoria');
+                            exit;
 
                         else :
-                            Sessao::sms('edit', 'Dados não actualizados', 'alert alert-warning');
+                            
+                            Sessao::izitoast('categoriaE','Erro','Dados não actualizados','error');
+
 
                         endif;
                     endif;
@@ -173,7 +183,8 @@ class Categoria extends Controller
             endif;
 
         else :
-            Sessao::sms('edit', 'String passado na url. Passe uma (int)', 'alert alert-danger');
+            Sessao::sms('metodo', 'String passado na url. Passe um (int)', 'alert alert-danger');
+            
         endif;
         $file = 'categoria'.DIRECTORY_SEPARATOR.'editar_categoria';
         return $this->view('layouts/admin/app', compact('file', 'dados', 'edit'));
@@ -186,13 +197,14 @@ class Categoria extends Controller
         if($id AND $metodo=='POST'):
             $delete= $this->data->delete_c($id);
             if($delete):
-                Sessao::sms('lista','Success');
+                Sessao::izitoast('categoriaS','Success','delectada com sucesso');
                 Url::redireciona('admin/categoria');
             else:
-                Sessao::sms('lista','Error','alert alert-danger');
+                Sessao::izitoast('categoriaE','Erro','Erro com banco de dados','error');
+
             endif;
         else:
-            Sessao::sms('lista','Metodo de envio \'GET\' não é permitido','alert alert-danger');
+            Sessao::sms('metodo','Metodo de envio \'GET\' não é permitido','alert alert-danger');
             Url::redireciona('admin/categoria');
         endif;
     }
