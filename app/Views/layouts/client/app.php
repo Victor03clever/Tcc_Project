@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- <meta http-equiv="refresh" content="10;"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Refeitorio-Cliente</title>
+    <title>Refeitorio | Cliente</title>
     <link rel="stylesheet" href="<?= asset(BOOTCSS) ?>">
     <link rel="stylesheet" href="<?= asset(IZOCSS) ?>">
     <script src="<?= asset(JQUERY) ?>"></script>
@@ -107,7 +107,7 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item" onclick="clearCart()">
                             <a class="nav-link last" aria-current="page" href="<?= URL ?>/client/sair">
                                 <button class="logout">
                                     <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
