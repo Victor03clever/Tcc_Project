@@ -1,4 +1,5 @@
 /* geral */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +15,9 @@
   border-radius: 0.9rem;
 }
 /*  */
+/* #nav-taps .row.gy-4{
+  margin-left: -5rem;
+} */
 /* +++++BackToTopButton+++++++++++++++++++++++++++++ */
 
 #backToTopButton {
@@ -97,7 +101,11 @@ button {
   color: var(--textS);
   background: var(--blue2);
   border: none;
+  outline: none;
   border-radius: 0.5rem;
+}
+button, input, optgroup, select, textarea{
+  border: none;
 }
 button:hover {
   filter: brightness(1.3);
@@ -305,6 +313,11 @@ footer span {
     width: 0.6rem;
     height: 0.8rem;
   }
+  /* cfg */
+  /* #nav-taps .row.gy-4{
+    margin-left: 5rem;
+    margin-right: -2rem;
+} */
   /* NAV */
   nav {
     height: 10.4rem;

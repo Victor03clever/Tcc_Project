@@ -24,10 +24,7 @@
     border: none;
     outline: none;
 }
-#nav-taps .row.gy-4{
-    margin-left: 5rem;
-    margin-right: -2rem;
-}
+
 .card {
     background: var(--dark300);
 }

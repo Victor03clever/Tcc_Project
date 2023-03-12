@@ -144,7 +144,7 @@ use App\Helpers\Sessao;
                                 <div class="card">
                                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                                        <img src="<?= $_SESSION['usuarioC_img'] ?>" alt="Profile" class="rounded-circle" width="120">
+                                        <img src="<?= $_SESSION['usuarioC_img'] ?>" alt="Profile" class="rounded-circle" width="120" height="120">
                                         <h2><?= $dados['nome'] ?></h2>
                                         <h3>Cliente</h3>
                                         <div class="social-links mt-2">
