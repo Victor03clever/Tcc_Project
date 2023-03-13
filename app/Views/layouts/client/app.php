@@ -45,7 +45,7 @@
                     </form>
                     <?php if (isset($_SESSION['usuarioC_id'])) : ?>
                         <li class="nav-item">
-                            <a class="nav-link p-0" href="pedido.html">
+                            <a class="nav-link p-0" href="<?= URL ?>/request">
                                 <button class="pedidos" style="position: relative;">
                                     <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M8.96094 13C8.96094 12.4477 9.40865 12 9.96094 12H22.9609C23.5132 12 23.9609 12.4477 23.9609 13C23.9609 13.5523 23.5132 14 22.9609 14H9.96094C9.40865 14 8.96094 13.5523 8.96094 13Z" fill="white" />
@@ -148,6 +148,7 @@
             </span>
         </div>
     </footer>
+    
     <a id="backToTopButton" class="" href="#">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="20" cy="20" r="20" fill="#065E7C" />

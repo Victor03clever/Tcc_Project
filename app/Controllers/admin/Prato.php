@@ -109,6 +109,7 @@ class Prato extends Controller
         // exit;
             $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
+            
             if (isset($formulario['edit'])) :
                 $dados = [
                     'name' => trim($formulario['name']),
@@ -121,7 +122,6 @@ class Prato extends Controller
                     'err_status' => '',
                     
                 ];
-
                 if (in_array("", $formulario)) :
 
                     if (empty($formulario['name'])) :
@@ -139,16 +139,16 @@ class Prato extends Controller
                 else :
 
                    
-                        if (isset($_FILES['img'])) :
+                        if (isset($_FILES['imag'])) :
                             $upload = new Uploads();
-                            $upload->imagem($_FILES['img'], 7, 'Pratos');
-
+                            $upload->imagem($_FILES['imag'], 7, 'Pratos');
+                            $dados['img'] = !empty($_SESSION['path']) ?$_SESSION['path']: 'uploads\Pratos\exemplo.svg';
+                            
                         endif;
                         if ($upload->geterro() or $upload->getexito()) :
                             Sessao::sms('img', $upload->geterro(), 'alert alert-danger');
                             Sessao::sms('img', $upload->getexito() . ' movida com sucesso');
                         endif;
-                        $dados['img'] = !empty($_SESSION['path']) ?$_SESSION['path']: 'uploads\Pratos\exemplo.svg';
                        
                         $actualiza = $this->Data->update_prato($dados, $id);
 

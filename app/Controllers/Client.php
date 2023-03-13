@@ -12,22 +12,33 @@ class  Client  extends Controller
 {
     private $Data;
     private $Perfil;
+    private $Food;
+    private $Request;
     public function __construct()
     {
         $this->Data = $this->model("client\Usuarios");
         $this->Perfil = $this->model("client\Perfil");
+        $this->Food = $this->model("client\Home");
+        $this->Request = $this->model("client\Request");
+
     }
+
+    // funcao para chamar os pratos do bd
     public function index()
     {
 
         if (!Sessao::nivel2()) :
             Url::redireciona('client/login');
         endif;
-
-
+        $allFood= $this->Food->getFood();
+        $totalRequest=$this->Request->totalRequest();
+        
         $file = 'homepage';
-        return $this->view('layouts/client/app', compact('file'));
+        return $this->view('layouts/client/app', compact('file','allFood','totalRequest'));
     }
+
+
+    // Autenticacao do usuario
     public function login()
     {
         if (Sessao::nivel2()) :
@@ -361,5 +372,32 @@ class  Client  extends Controller
             Sessao::sms('upload', 'imagem não deletado, erro com a Model Perfil->deletefoto', 'alert alert-danger');
         // Url::redireciona('admin/config');
         endif;
+    }
+
+    // Function para pedidos
+    public function makeRequest(){
+        $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        
+        if(isset($formulario['status1'])){
+            $id=trim($formulario['idgiven']);
+            if($this->Food->getFoodByOne($id)){
+
+                $dados = $this->Food->getFoodByOne($id);
+                $qtd=trim($formulario['qtd']);
+
+                if($this->Food->makeRequestR($dados,$qtd)){
+                    URL::redireciona("client");
+                    Sessao::izitoast("pedido","Success","Pedido feito com sucesso");
+                }else{
+                    URL::redireciona("client");
+                    Sessao::izitoast("pedido","Alert","Algo deu errado","warning");
+                }
+                
+            }else{
+                URL::redireciona("client");
+                Sessao::izitoast("pedido","Alert","Algo deu errado","warning");
+            }
+
+        }
     }
 }

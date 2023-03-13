@@ -114,7 +114,7 @@ use App\Helpers\Sessao;
                     </p>
                     <div class="row">
                         <p class="form-group col-12 col-md-6">
-                            escolha o nome do produto <br>
+                            escolha o nome do prato <br>
                             <input type="text" class="form-control <?= $dados['err_name'] ? 'is-invalid' : '' ?>" name="name" id="">
                             <span class="invalid-feedback">
                                 <?= $dados['err_name'] ?>

@@ -17,7 +17,8 @@ use App\Helpers\Sessao;
    
                     <p>
                         escolha a sua imagem
-                        <input type="file" class="form-control <?= $dados['err_img'] ? 'is-invalid' : '' ?>" name="img" id="" value="<?=URL.'/'.$refeicoes['imagem']?>">
+                        <input type="file" class="form-control <?= $dados['err_img'] ? 'is-invalid' : '' ?>"  id="" name="imag">
+                        <input type="text" name="img" value="<?=$refeicoes['imagem']?>" hidden readonly>
                         <span class="invalid-feedback">
                             <?= $dados['err_img']?>
                         </span>
