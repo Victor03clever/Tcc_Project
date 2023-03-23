@@ -3,6 +3,146 @@ const body = document.querySelector("body");
 var gcs = getComputedStyle(root);
 let dark = document.querySelector(".dark");
 let light = document.querySelector(".light");
+const url = document.querySelector(".cards-products").getAttribute("data-url");
+
+setInterval(function() {
+  fetch(`${url}/api`)
+  .then((response) => response.json())
+  .then((data) => {
+    let products = data;
+    const buttonCats = document.querySelectorAll("button.cat");
+
+    let currentProducts = products;
+    for (let index = 0; index < buttonCats.length; index++) {
+      buttonCats[index].addEventListener("click", () => {
+        toggle(buttonCats[index]);
+        productsFilters(buttonCats[index].getAttribute("data-category"));
+      });
+    }
+
+    function toggle(button) {
+      let isCurrentCategory = button.getAttribute("data-category");
+      if (
+        Number(isCurrentCategory) ===
+        Number(button.getAttribute("data-category"))
+      ) {
+        button.classList.add("active");
+      }
+
+      for (let index = 0; index < buttonCats.length; index++) {
+        if (
+          buttonCats[index].getAttribute("data-category") !==
+          button.getAttribute("data-category")
+        ) {
+          buttonCats[index].classList.remove("active");
+        }
+      }
+    }
+
+    function createElement(element) {
+      return document.createElement(element);
+    }
+
+    function appendChild(element, children) {
+      element.appendChild(children);
+    }
+
+    function handleProducts() {
+      const cards = document.querySelector(".cards-products");
+      cards.innerHTML = "";
+      for (let i = 0; i < currentProducts.length; i++) {
+        const card = createElement("div");
+        const title = createElement("h6");
+        const price = createElement("h6");
+        const image = createElement("img");
+        const add = createElement("div");
+        const btnLess = createElement("span");
+        const btnMore = createElement("span");
+        const input = createElement("input");
+        const btnInclude = createElement("button");
+        const a = createElement("a");
+        const inputGo = createElement("input");
+        const form = createElement("form");
+
+        form.action=`${url}/client/makeRequest`; 
+        form.setAttribute("method", "post");
+
+        inputGo.type = "text";
+        inputGo.value = products[i].id;
+        inputGo.setAttribute("hidden", "");
+        inputGo.setAttribute("name", "idGo");
+
+        input.style ="width: 2rem; background: transparent; color: var(--text); border: none; outline: none";
+        add.style=" width: initial; margin-bottom: 1rem;";
+        input.setAttribute("name", "qtdP");
+        input.value = "01";
+        input.setAttribute("readonly", "");
+
+        image.src = cards.getAttribute("data-url") +"/public/" +currentProducts[i].image;
+        // image.style.width = "100px";
+        // image.style.height = "200px";
+        image.setAttribute("width", "100");
+        image.setAttribute("height", "100");
+
+        title.innerHTML = currentProducts[i].title;
+        price.innerHTML = currentProducts[i].price;
+        btnLess.innerHTML = "-";
+        btnMore.innerHTML = "+";
+        btnInclude.innerHTML = "Adicionar";
+        btnInclude.setAttribute("type", "submit");
+        btnInclude.setAttribute("name", "statusP1");
+        btnInclude.setAttribute("value", "submit");
+        a.setAttribute(
+          "href",
+          `${cards.getAttribute("data-url")}/client/login`
+        );
+
+        card.classList.add("card");
+        title.classList.add("title");
+        price.classList.add("price");
+        btnLess.classList.add("btn-subtract");
+        btnMore.classList.add("btn-plus");
+        add.classList.add("add");
+        btnInclude.classList.add("include");
+
+        appendChild(card, image);
+        appendChild(card, title);
+        appendChild(card, price);
+        appendChild(form, add);
+        appendChild(add, btnLess);
+        appendChild(add, input);
+        appendChild(add, btnMore);
+        appendChild(card, form);
+        if (cards.getAttribute("data-authenticated") === "false") {
+          appendChild(card, a);
+          appendChild(a, btnInclude);
+        } else {
+          appendChild(form, inputGo);
+          appendChild(form, btnInclude);
+        }
+
+        appendChild(cards, card);
+      }
+    }
+
+    function productsFilters(category_id) {
+      if (Number(category_id) !== 0) {
+        currentProducts = products.filter(
+          (product) => product.category_id === Number(category_id)
+        );
+        handleProducts();
+      } else {
+        currentProducts = products;
+        handleProducts();
+      }
+    }
+    
+    handleProducts();
+    includeButton();
+  });
+}, 111);
+
+
 
 function SetTheme(theme) {
   if (theme == "light") {
@@ -58,7 +198,7 @@ function useColorModeDark(theme) {
 
 function setDefault() {
   const theme = localStorage.getItem("PanelTheme");
-  let inCart = localStorage.getItem("inCart");
+  let inCart = localStorage.getItem("inCart")??0;
 
   if (theme == "light") {
     light.style.display = "none";
@@ -71,6 +211,7 @@ function setDefault() {
     useColorModeDark(theme);
   }
   if (inCart) {
+    // console.log("inCart")
     document.querySelector(".cart").textContent = inCart;
   }
 }
@@ -106,6 +247,7 @@ function excluidButton() {
     });
   });
 }
+
 function clearCart() {
   // let clear = localStorage.clear();
   let clear = localStorage.removeItem("inCart");
@@ -113,6 +255,7 @@ function clearCart() {
   document.querySelector(".cart").textContent = 0;
 }
 
+// handleProducts();
 includeButton();
 excluidButton();
 setDefault();

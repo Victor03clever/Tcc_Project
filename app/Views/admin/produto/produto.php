@@ -49,7 +49,7 @@ use App\Helpers\Sessao;
 
                       <td><?= $i++ ?></td>
                       <td><?= $value['id'] ?></td>
-                      <td><img src="<?= URL ?>/public/<?= $value['imagem'] ?>" alt="" width="35"></td>
+                      <td><img src="<?= URL ?>/public/<?= $value['imagem'] ?>" alt="" width="35" height="40"></td>
                       <td><?= $value['p_nome'] ?></td>
                       <td><?= $value['preco'] ?></td>
                       <td><?= $value['c_nome'] ?></td>

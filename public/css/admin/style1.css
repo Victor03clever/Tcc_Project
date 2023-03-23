@@ -55,6 +55,20 @@
     min-width: 21.3rem;
     height: 9.5rem;
   }
+  main span.togglePass{
+    position: absolute;
+    top: 4.6rem;
+    right: 1rem;
+    cursor: pointer;
+  }
+  main span.togglePass img{
+    min-width: initial;
+    width: 2rem;
+    height: 2rem;
+  }
+  main span.togglePass img.display{
+    display: none;
+  }
   main form {
     display: flex;
     flex-direction: column;

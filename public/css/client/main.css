@@ -165,7 +165,7 @@ nav form label {
   outline: none;
   cursor: pointer;
 
-  width: 30rem;
+  width: 100%;
   height: 4rem;
 
   background: var(--darkshadow);
@@ -385,6 +385,9 @@ footer span {
     justify-content: space-between;
     padding-block: 1rem;
     gap: 0.8rem;
+  }
+  nav form label{
+    width: 30rem;
   }
 }
 @media (max-width: 438px) {

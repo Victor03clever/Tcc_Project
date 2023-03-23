@@ -53,14 +53,14 @@ use App\Helpers\Sessao;
                                         <h5 class="card-title">Detalhes de perfil</h5>
 
                                         <div class="row">
-                                            <div class="col-lg-3 col-md-4 label ">Nome</div>
+                                            <div class="col-lg-3 col-md-4 label ">Nome :</div>
                                             <div class="col-lg-9 col-md-8"><?= $dados['nome'] ?></div>
                                         </div>
 
 
 
                                         <div class="row">
-                                            <div class="col-lg-3 col-md-4 label">Telefone</div>
+                                            <div class="col-lg-3 col-md-4 label">Telefone :</div>
                                             <div class="col-lg-9 col-md-8"><?= $dados['telefone'] ?></div>
                                         </div>
 
@@ -175,7 +175,7 @@ use App\Helpers\Sessao;
                                                 </div>
                                             </div>
                                         </div>
-                                    
+                                    <hr>
                                     
                                         <div class="row mb-3">
                                             <label for="nome" class="col-md-4 col-lg-3 col-form-label">Nome Completo</label>
@@ -224,3 +224,4 @@ use App\Helpers\Sessao;
         </div>
     </div>
 </section>
+<div class="cards-products d-none" data-url="<?=URL?>" ></div>

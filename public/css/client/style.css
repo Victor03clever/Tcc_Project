@@ -37,7 +37,15 @@ h6.price {
 
   color: var(--red1);
 }
-form div.add {
+span.btn-subtract,
+span.btn-plus {
+  cursor: pointer;
+  font-size: 3rem;
+  height: 3rem;
+  text-align: center;
+  line-height: 100%;
+}
+div.add {
   width: 10rem;
   display: flex;
   flex-direction: row;
@@ -123,7 +131,7 @@ div.category div.cats {
   overflow-x: auto;
   
 }
-div.category div.cats form#cat button.cat {
+div.category div.cats #cat button.cat {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -139,7 +147,7 @@ div.category div.cats form#cat button.cat {
   border-radius: 0.5rem;
   
 }
-div.category div.cats form#cat button.active {
+div.category div.cats #cat button.active {
   background: var(--blue2);
 }
 div.category div.cats button.cat img {
@@ -317,7 +325,7 @@ div.category div.cats {
   justify-content: start;
   align-items: center;
 }
-div.category div.cats form#cat button.cat {
+div.category div.cats #cat button.cat {
   min-width: 14.1rem;
   height: 5rem;
   border: 0.1rem solid var(--blue2);
