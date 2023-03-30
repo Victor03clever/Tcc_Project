@@ -5,6 +5,9 @@ use App\Helpers\Sessao;
 ?>
 <?= Sessao::izitoast('loginS'); ?>
 <?= Sessao::izitoast('pedido'); ?>
+
+<?= Sessao::browser('browser'); ?>
+  
 <link rel="stylesheet" href="<?= asset("css/client/style.css") ?>">
 <span class="dataActual"></span>
 <header class="wrapper header" id="header">

@@ -1,5 +1,5 @@
 /* geral */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -54,6 +54,47 @@
 
   font-size: 62.5%; /*1rem igual 10px*/
 }
+/* preloader */
+/*  */
+/* ================================== */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: var(--primary-color);
+}
+/*  */
+#preloader img {
+  position: fixed;
+  width: 20rem;
+  top: calc(50% - 7rem);
+  left: calc(50% - 7rem);
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: scale(0%);
+  }
+  100% {
+    transform: scale(50%);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: scale(0%);
+  }
+  100% {
+    transform: scale(50%);
+  }
+}
+/* end preloader */
 a {
   text-decoration: none;
   color: var(--text);
@@ -104,7 +145,11 @@ button {
   outline: none;
   border-radius: 0.5rem;
 }
-button, input, optgroup, select, textarea{
+button,
+input,
+optgroup,
+select,
+textarea {
   border: none;
 }
 button:hover {
@@ -386,7 +431,7 @@ footer span {
     padding-block: 1rem;
     gap: 0.8rem;
   }
-  nav form label{
+  nav form label {
     width: 30rem;
   }
 }
@@ -415,7 +460,7 @@ footer span {
     height: 3rem;
   }
 }
-@media(max-width:360px){
+@media (max-width: 360px) {
   .wrapper {
     width: min(30.8rem, 100%);
   }

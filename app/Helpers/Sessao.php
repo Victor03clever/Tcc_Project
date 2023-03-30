@@ -21,6 +21,8 @@ class Sessao
             endif;
         endif;
     }
+   
+
     #com izitoast
     public static function izitoast($nome, $titulo=null, $texto=null, $classe=null, $position=null){
         if(!empty($nome)):
@@ -86,6 +88,39 @@ class Sessao
             endif;
         endif;
     }
+
+    // Notificacao dos browsers
+    public static function browser($nome, $title=null, $body=null){
+      if(!empty($nome)):
+          if(!empty($title) AND empty($_SESSION[$nome])):
+              if(!empty($_SESSION[$nome])):
+                  unset($_SESSION[$nome]);
+              endif;
+              $_SESSION[$nome]=$title;
+              $_SESSION[$nome.'body']=$body;
+          elseif(!empty($_SESSION[$nome]) AND empty($title)):
+              $body= $_SESSION[$nome.'body'];
+              echo "<script>
+              async function start() {
+                try {
+                  await init()
+                  browserNotify({
+                    title: '{$_SESSION[$nome]}',
+                    body: '{$body}',
+                    icon: 'http://localhost:8080/refeitorio/public/img/favicon.png'
+                  })
+                } catch (error) {
+                  console.log(error.message)
+                }
+              }
+              start()
+              </script>";
+              unset($_SESSION[$nome]);
+              unset($_SESSION[$nome.'body']);
+          endif;
+      endif;
+  }
+
 
     #com css puro
     // public static function mensagem($nome, $texto = null, $estilo = null)

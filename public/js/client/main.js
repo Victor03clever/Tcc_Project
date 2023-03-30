@@ -5,7 +5,7 @@ let dark = document.querySelector(".dark");
 let light = document.querySelector(".light");
 const url = document.querySelector(".cards-products").getAttribute("data-url");
 
-setInterval(function() {
+
   fetch(`${url}/api`)
   .then((response) => response.json())
   .then((data) => {
@@ -56,8 +56,8 @@ setInterval(function() {
         const price = createElement("h6");
         const image = createElement("img");
         const add = createElement("div");
-        const btnLess = createElement("span");
-        const btnMore = createElement("span");
+        const btnLess = createElement("svg");
+        const btnMore = createElement("svg");
         const input = createElement("input");
         const btnInclude = createElement("button");
         const a = createElement("a");
@@ -88,6 +88,8 @@ setInterval(function() {
         price.innerHTML = currentProducts[i].price;
         btnLess.innerHTML = "-";
         btnMore.innerHTML = "+";
+        btnLess.style= "font-size:3rem";
+        btnMore.style= "font-size:3rem";
         btnInclude.innerHTML = "Adicionar";
         btnInclude.setAttribute("type", "submit");
         btnInclude.setAttribute("name", "statusP1");
@@ -139,8 +141,8 @@ setInterval(function() {
     
     handleProducts();
     includeButton();
-  });
-}, 111);
+  }).catch(err=>console.log(err));
+
 
 
 
@@ -254,6 +256,21 @@ function clearCart() {
   clear;
   document.querySelector(".cart").textContent = 0;
 }
+
+// =============================================================================
+// preloader
+// =============================================================================
+let preloader = document.querySelector("#preloader");;
+if (preloader) {
+  window.addEventListener("load", () => {
+    setTimeout(() => removePreloader(), 2000)
+  });
+}
+function removePreloader() {
+  preloader.remove();
+}
+
+// =============================================================================
 
 // handleProducts();
 includeButton();

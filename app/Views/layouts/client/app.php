@@ -13,6 +13,39 @@
   <script src="<?= asset(IZOJS) ?>"></script>
   <link rel="stylesheet" href="<?= asset("css/client/main.css") ?>">
   <link rel="shortcut icon" href="<?= asset("img/favicon.png") ?>" type="image/x-icon">
+  <script>
+    async function init() {
+      const permission = await Notification.requestPermission()
+      if (permission !== "granted") {
+        throw new Error("Notificação negada!")
+      }
+
+    }
+
+    function browserNotify({
+      title,
+      body,
+      icon
+    }) {
+      new Notification(title, {
+        body,
+        icon
+      })
+    }
+    // async function start() {
+    //   try {
+    //     await init()
+    //     browserNotify({
+    //       title: "title",
+    //       body: "Minha primeira notificação",
+    //       icon: "http://localhost:8080/refeitorio/public/img/favicon.png"
+    //     })
+    //   } catch (error) {
+    //     console.log(error.message)
+    //   }
+    // }
+    // start()
+  </script>
 
 </head>
 
@@ -141,7 +174,9 @@
   require_once $file;
 
   ?>
-
+  <div id="preloader">
+    <img src="<?= asset("img/logo.png") ?>" alt="preloader">
+  </div>
   <footer>
     <div class="wrapper">
       <img src="<?= asset("img/logo.png") ?>" alt="Logotipo para refeitorio" width="100">

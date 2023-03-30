@@ -20,7 +20,8 @@ div.card {
   isolation: isolate;
 
   min-width: 21rem;
-  height: 29.2rem;
+  /* height: 29.2rem; */
+  height: auto;
 
   background: var(--dark300);
 
@@ -298,7 +299,8 @@ section#produtos h4 {
   div.card {
     gap: 1.5rem;
     min-width: 30.4rem;
-    height: 46.2rem;
+    /* height: 46.2rem; */
+    height: auto;
     margin-bottom: 2rem;
   }
   div.card img {
