@@ -4,14 +4,12 @@ use App\Helpers\Sessao;
 
 ?>
 <?= Sessao::izitoast('request'); ?>
-<div class="wrapper">
-  <?= Sessao::sms('sms'); ?>
-</div>
+
 <link rel="stylesheet" href="<?= asset("css/client/style2.css") ?>">
 <main class="wrapper">
   <div class="d-flex flex-wrap justify-content-around align-items-center">
     <div id="all">
-      <h1>Meus pedido/Refeições</h1>
+      <h1>/Refeições</h1>
       <div class="pedidos">
         <?php $totalR = 0;
         foreach ($allRequest as $key => $value) : ?>
@@ -35,7 +33,7 @@ use App\Helpers\Sessao;
     </div>
 
     <div id="all">
-      <h1>Meus pedido/Produtos</h1>
+      <h1>/Produtos</h1>
 
       <div class="pedidos">
         <?php $totalP = 0;

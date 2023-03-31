@@ -1,7 +1,9 @@
-#nav-taps{
-    
-    margin-bottom: 50vh;
+#nav-taps.wrapper{
+  margin-top: auto;
+  margin-bottom: 23vh;
+  padding-top: 13rem;
 }
+
 #nav-taps h1{
     padding-bottom: 5rem;
 }
@@ -32,3 +34,74 @@ input.form-control {
     height: 3rem;
     font-size: 1.3rem;
 }
+@media (min-width: 994px) {
+  /* geral */
+  body {
+    overflow: auto;
+  }
+  
+  .nav-link {
+    padding: 0;
+  }
+  ::-webkit-scrollbar {
+    width: 0.6rem;
+    height: 0.8rem;
+  }
+  /* NAV */
+  nav#nav {
+    height: 10.4rem;
+    margin-bottom: 3.4rem;
+  }
+
+  nav#nav div.container-fluid.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: auto;
+  }
+  .navbar-collapse {
+    flex-grow: initial;
+
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav#nav form label {
+    height: 5rem;
+    margin-left: 13rem;
+    margin-right: 2rem;
+  }
+  nav#nav form button.btn {
+    width: 0;
+    border: initial;
+    display: none;
+  }
+  nav#nav button.pedidos:hover {
+    background: var(--blue2);
+    filter: brightness(1.3);
+  }
+  nav#nav button.pedidos {
+    width: initial;
+    height: 4.7rem;
+    background: var(--blue2);
+    margin-right: 16rem;
+  }
+
+  nav#nav button.pedidos h6 {
+    text-align: initial;
+    font-size: initial;
+    margin: 0;
+  }
+
+  nav#nav button.logout {
+    width: initial;
+  }
+  nav#nav button.logout h6 {
+    display: none;
+  }
+
+  nav#nav button.cfg {
+    width: initial;
+  }
+  nav#nav button.cfg h6 {
+    display: none;
+  }}

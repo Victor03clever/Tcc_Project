@@ -142,8 +142,8 @@
               </a>
             </li>
 
-            <li class="nav-item" onclick="clearCart()">
-              <a class="nav-link last" aria-current="page" href="<?= URL ?>/client/sair">
+            <li class="nav-item" >
+              <a class="nav-link last" aria-current="page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <button class="logout">
                   <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22.2891 11.75L27.5391 17M27.5391 17L22.2891 22.25M27.5391 17H13.5391M13.5391 28H6.53906C6.27385 28 6.01949 27.8946 5.83196 27.7071C5.64442 27.5196 5.53906 27.2652 5.53906 27V7C5.53906 6.73478 5.64442 6.48043 5.83196 6.29289C6.01949 6.10536 6.27385 6 6.53906 6H13.5391" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -168,15 +168,37 @@
     </div>
 
   </nav>
-
+  <!-- ================================================================= -->
   <?php
   $file = dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'client' . DIRECTORY_SEPARATOR . str_replace('.php', '', $file) . '.php';
   require_once $file;
 
   ?>
+  <!-- =============================================================== -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog        ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Terminar Sessão?</h5>
+          <button type="button" class="btn-close bg-white " data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- <div class="modal-body">
+          ...
+        </div> -->
+        <div class="modal-footer">
+        <a class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancelar</a>
+          <a href="<?= URL ?>/client/sair" class="btn btn-primary btn-lg" onclick="clearCart()">Sair</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="preloader">
     <img src="<?= asset("img/logo.png") ?>" alt="preloader">
   </div>
+
   <footer>
     <div class="wrapper">
       <img src="<?= asset("img/logo.png") ?>" alt="Logotipo para refeitorio" width="100">
@@ -194,6 +216,8 @@
     </svg>
 
   </a>
+
+
 
   <script>
     // operacao com o burger

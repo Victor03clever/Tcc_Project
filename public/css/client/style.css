@@ -68,9 +68,9 @@ div.card {
 }
 /* Nav */
 
-/* header */
-header {
-  width: 39.6rem;
+/* header#header */
+header#header {
+  /* width: 39.6rem; */
   height: 12rem;
 
   background: var(--gra);
@@ -78,17 +78,18 @@ header {
 
   display: flex;
   flex-direction: row;
-
+  margin-top: 20rem;
   margin-bottom: 6.2rem;
 }
 
-header span {
+
+header#header span {
   width: 21.5rem;
   color: var(--textS);
   margin-block: auto;
   text-align: start;
 }
-header img {
+header#header img {
   position: relative;
   width: 20.1rem;
   height: 14.9rem;
@@ -97,13 +98,13 @@ header img {
   top: -2.9rem;
   opacity: 0.8;
 }
-header span h1 {
+header#header span h1 {
   font-style: normal;
   font-weight: 600;
   font-size: 1.8rem;
   line-height: 140%;
 }
-header span p {
+header#header span p {
   font-style: normal;
   font-weight: 400;
   font-size: 1.2rem;
@@ -197,17 +198,17 @@ section#produtos h4 {
     font-size: 3.2rem;
     line-height: 140%;
   }
-  /* header */
-  header {
+  /* header#header */
+  header#header {
     height: 26rem;
   }
-  header span {
+  header#header span {
     width: 40rem;
     color: var(--textS);
     margin-block: auto;
     text-align: start;
   }
-  header img {
+  header#header img {
     position: relative;
     width: 55rem;
     height: 35rem;
@@ -216,13 +217,13 @@ section#produtos h4 {
     top: -9rem;
     opacity: 0.8;
   }
-  header span h1 {
+  header#header span h1 {
     font-style: normal;
     font-weight: 500;
     font-size: 4rem;
     line-height: 140%;
   }
-  header span p {
+  header#header span p {
     font-style: normal;
     font-weight: 400;
     font-size: 1.6rem;
@@ -360,10 +361,10 @@ div.category div.cats button.cat h6 {
   nav{
     width: 30rem;
   }
-  header span p{
+  header#header span p{
     font-size: 1rem;
   }
-  header span h1{
+  header#header span h1{
     font-size: 1.5rem;
   }
 }

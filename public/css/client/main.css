@@ -160,10 +160,13 @@ button:hover {
     ================================================================================ */
 /* Nav */
 /* Nav */
-nav {
+nav#nav {
+  position: fixed;
   background-color: var(--blue3);
   margin-bottom: 4.4rem;
   width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.703) 0px .3rem 2.5rem;
+
   z-index: 100;
 }
 
@@ -341,6 +344,10 @@ footer span {
 
   text-align: right;
 }
+.modal-content{
+  background: var(--gra);
+  color: var(--textS);
+}
 /*=======================================================================================================================================================================  */
 /* Desktop */
 @media (min-width: 994px) {
@@ -364,7 +371,7 @@ footer span {
     margin-right: -2rem;
 } */
   /* NAV */
-  nav {
+  nav#nav {
     height: 10.4rem;
     margin-bottom: 3.4rem;
   }

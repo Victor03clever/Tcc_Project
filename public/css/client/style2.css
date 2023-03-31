@@ -4,6 +4,12 @@
 
 /* ======================================================================================================================================================== */
 /* Meu pedido */
+main.wrapper {
+  width: min(100rem, 100%);
+  margin-top: auto;
+  padding-top: 14rem;
+  padding-bottom: 5rem;
+}
 main div#all {
   display: flex;
   flex-direction: column;
@@ -48,7 +54,8 @@ main div#all span.pri span.seg {
   line-height: 160%;
 }
 main div#all span.pri span.seg h4.qtd {
-  display: none;
+  /* display: none; */
+  text-align: left;
 }
 main div#all span.pri button.ter {
   background: initial;
@@ -89,9 +96,7 @@ main button {
   body {
     overflow: auto;
   }
-  .wrapper {
-    width: min(100rem, 100%);
-  }
+  
   .nav-link {
     padding: 0;
   }
@@ -100,12 +105,12 @@ main button {
     height: 0.8rem;
   }
   /* NAV */
-  nav {
+  nav#nav {
     height: 10.4rem;
     margin-bottom: 3.4rem;
   }
 
-  nav div.container-fluid.wrapper {
+  nav#nav div.container-fluid.wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -117,44 +122,44 @@ main button {
     align-items: center;
     justify-content: space-between;
   }
-  nav form label {
+  nav#nav form label {
     height: 5rem;
     margin-left: 13rem;
     margin-right: 2rem;
   }
-  nav form button.btn {
+  nav#nav form button.btn {
     width: 0;
     border: initial;
     display: none;
   }
-  nav button.pedidos:hover {
+  nav#nav button.pedidos:hover {
     background: var(--blue2);
     filter: brightness(1.3);
   }
-  nav button.pedidos {
+  nav#nav button.pedidos {
     width: initial;
     height: 4.7rem;
     background: var(--blue2);
     margin-right: 16rem;
   }
 
-  nav button.pedidos h6 {
+  nav#nav button.pedidos h6 {
     text-align: initial;
     font-size: initial;
     margin: 0;
   }
 
-  nav button.logout {
+  nav#nav button.logout {
     width: initial;
   }
-  nav button.logout h6 {
+  nav#nav button.logout h6 {
     display: none;
   }
 
-  nav button.cfg {
+  nav#nav button.cfg {
     width: initial;
   }
-  nav button.cfg h6 {
+  nav#nav button.cfg h6 {
     display: none;
   }
   /* main */

@@ -9,7 +9,7 @@ use App\Helpers\Sessao;
 <?= Sessao::browser('browser'); ?>
   
 <link rel="stylesheet" href="<?= asset("css/client/style.css") ?>">
-<span class="dataActual"></span>
+<span class="dataActual" style="position:relative; top:18rem"></span>
 <header class="wrapper header" id="header">
   <img src="<?= asset("img/pngegg 1.png") ?>" alt="Sabores">
   <span>

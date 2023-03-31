@@ -5,7 +5,7 @@ use App\Helpers\Sessao;
 
 ?>
 <link rel="stylesheet" href="<?= asset("css/client/styleC.css") ?>">
-<section class="wrapper" id="nav-taps">
+<section  id="nav-taps" class="wrapper">
     <?= Sessao::izitoast('config') ?>
     <?= Sessao::sms('upload') ?>
     <h1>Configurações</h1>
