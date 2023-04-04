@@ -170,7 +170,7 @@
           </a>
         </li>
         <li>
-          <a href="<?= URL ?>/admin/login/sair">
+          <a aria-current="page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5.88762 12.7286H3.57993C3.27391 12.7286 2.98043 12.607 2.76404 12.3907C2.54765 12.1743 2.42609 11.8808 2.42609 11.5748V3.49784C2.42609 3.19182 2.54765 2.89834 2.76404 2.68195C2.98043 2.46556 3.27391 2.34399 3.57993 2.34399H5.88762" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -238,7 +238,7 @@
 
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <li><a class="dropdown-item" href="<?= URL ?>/admin/config">perfil</a></li>
-            <li><a class="dropdown-item" href="<?= URL ?>/admin/login/sair">log out</a></li>
+            <li><a class="dropdown-item" aria-current="page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">log out</a></li>
           </ul>
         </div>
       </div>
@@ -251,6 +251,33 @@
     ?>
 
   </main>
+
+   <!-- Modal -->
+   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog        ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Terminar Sessão?</h5>
+          <button type="button" class="btn-close bg-white " data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- <div class="modal-body">
+          ...
+        </div> -->
+        <div class="modal-footer">
+        <a class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancelar</a>
+          <a href="<?= URL ?>/admin/login/sair" class="btn btn-primary btn-lg" >Sair</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="preloader">
+    <img src="<?= asset("img/logo.png") ?>" alt="preloader">
+  </div>
+
+
+
+
   <a id="backToTopButton" class="" href="#">
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="20" cy="20" r="20" fill="#065E7C" />
@@ -259,6 +286,11 @@
     </svg>
 
   </a>
+
+
+
+
+
   <script src="<?= asset("js/admin/main1.js") ?>"></script>
   <script src="<?= asset(BOOTJS) ?>"></script>
   <script src="<?= asset(BOOTPOPPER) ?>"></script>

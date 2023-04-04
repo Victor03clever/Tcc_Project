@@ -201,6 +201,7 @@ function useColorModeDark(theme) {
 function setDefault() {
   const theme = localStorage.getItem("PanelTheme");
   let inCart = localStorage.getItem("inCart")??0;
+  
 
   if (theme == "light") {
     light.style.display = "none";

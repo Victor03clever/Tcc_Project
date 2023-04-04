@@ -159,7 +159,7 @@ class Sessao
         endif;
     }
     public static function nivel1(){
-        if(isset($_SESSION['usuarioV_id'])):
+        if(isset($_SESSION['usuarioS_id'])):
             return true;
         else:
             return false;    

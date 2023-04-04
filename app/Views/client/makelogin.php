@@ -19,7 +19,29 @@ use App\Helpers\Sessao;
   <script src="<?= asset(IZOJS) ?>"></script>
   <link rel="stylesheet" href="<?= asset("css/client/style1.css") ?>">
   <link rel="shortcut icon" href="<?= asset("img/favicon.png") ?>" type="image/x-icon">
+  <style>
+    .btn_back {
+      background: hsl(195, 91%, 25%);
+    }
 
+    .btn_back1 {
+      background: hsla(199, 100%, 5%, 1);
+    }
+
+    button.btn_back1:hover {
+      filter: brightness(1.3);
+    }
+
+    .btn_color {
+      color: hsla(199, 100%, 5%, 1);
+    }
+
+    .btn_color:hover {
+      color: gray;
+
+    }
+   
+  </style>
 </head>
 
 <body>
@@ -46,16 +68,71 @@ use App\Helpers\Sessao;
         <span class="invalid-feedback" style="text-align: left;">
           <?= $dados['erro_senha'] ?>
         </span>
+        <span class="dd" style="text-align: left; display:block">
+        
+          <a href="#" class="fs-5 ">Esqueceu a senha?</a>
+        </span>
+
       </p>
       <p>
         <button type="submit" name="login" value="submit">Entrar</button>
         <span>
           <a href="<?= URL ?>/client/signup">Criar uma conta</a><br>
-          <a href="<?= URL ?>/saler/login">Vendedor</a>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Funcionário</a>
         </span>
       </p>
     </form>
   </main>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+      <div class=" modal-content" style="width:40rem">
+        <!-- <div class="modal-header btn_back">
+          <h5 class="modal-title " id="exampleModalLabel">Autenticação do Funcionário</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> -->
+        <div class="modal-body p-5 btn_back ">
+          <form action="<?= URL ?>/saler/login" method="post">
+            <h1 class=" p-2">Funcionário</h1>
+            <p class=" pb-md-2 text-start">
+              <label for="nome" class=" p-2 ">nome</label><br>
+              <input class="p-lg-3 fs-5 form-control <?= $dados['erro_nome'] ? 'is-invalid' : '' ?>" type="text" name="nome" id="nome" placeholder="Exemplo: Victor Clever" value="<?= $dados['nome'] ?>">
+
+            </p>
+            <p class=" pb-md-2 text-start">
+              <label for="senha" class="  p-2 ">Senha</label><br>
+              <input class="p-lg-3 fs-5 form-control <?= $dados['erro_senha'] ? 'is-invalid' : '' ?>" type="password" name="senha" id="senha" placeholder="Digite a sua senha" value="<?= $dados['senha'] ?>">
+              <a href="#" class="text-decoration-none fs-5 btn_color">Esqueceu a senha?</a>
+
+            </p>
+
+            <button type="submit" name="login" value="submit" class="p-lg-3 w-25 text-white link-opacity-25-hover btn_back1 border-0 rounded-1 d-flex align-items-start justify-content-center">login</button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <script>
     const togglePass = document.querySelector(".togglePass")
     const visibleButton = document.querySelector("#visible")

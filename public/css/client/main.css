@@ -72,7 +72,7 @@
   position: fixed;
   width: 20rem;
   top: calc(50% - 7rem);
-  left: calc(50% - 7rem);
+  left: calc(50% - 10rem);
   -webkit-animation: animate-preloader 1s linear infinite;
   animation: animate-preloader 1s linear infinite;
 }

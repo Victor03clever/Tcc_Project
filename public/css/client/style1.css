@@ -17,7 +17,7 @@
 
 :root {
   --def: 190;
-  --primary-color: hsla(var(--def), 100%, 3%, 1);
+  --primary-color: hsla(190, 100%, 3%, 1);
   --gra: linear-gradient(180deg, #091e26 0%, #00131c 100%);
   --text: hsl(240, 9%, 89%);
   --dark300: hsl(198, 100%, 2%);
@@ -154,6 +154,10 @@ main span a:hover{
 @media (min-width: 994px) {
   .wrapper {
     margin-block: 10rem;
+  }
+ 
+  h1{
+    font-size: 3.2rem;
   }
   main {
     display: flex;

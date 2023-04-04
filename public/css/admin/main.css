@@ -25,6 +25,47 @@
   
     font-size: 62.5%; /*1rem igual 10px*/
   }
+  /* preloader */
+/*  */
+/* ================================== */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: var(--primary-color);
+}
+/*  */
+#preloader img {
+  position: fixed;
+  width: 20rem;
+  top: calc(50% - 7rem);
+  left: calc(50% - 10rem);
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: scale(0%);
+  }
+  100% {
+    transform: scale(50%);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: scale(0%);
+  }
+  100% {
+    transform: scale(50%);
+  }
+}
+/* end preloader */
   body {
     background: var(--hover);
     font-family: DM Sans;
@@ -34,6 +75,10 @@
     color: var(--text);
     font-size: 1.3rem;
     overflow-x: hidden;
+  }
+  .modal-content{
+    background: var(--primary-color);
+    color: var(--text);
   }
   .line {
     position: relative;
