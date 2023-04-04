@@ -4,16 +4,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
   transition: all 0.2s;
 }
 ::-webkit-scrollbar {
-  width: 0.5rem;
-  height: 0.5rem;
+  display: none;
 }
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
   background: linear-gradient(transparent, var(--red1), transparent);
   border-radius: 0.9rem;
-}
+} */
 
 :root {
   --def: 190;
@@ -37,7 +37,6 @@
 body {
   background: var(--primary-color);
   font-family: DM Sans;
-  
 
   color: var(--text);
   font-size: 1.6rem;

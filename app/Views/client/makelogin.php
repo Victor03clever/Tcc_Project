@@ -20,6 +20,9 @@ use App\Helpers\Sessao;
   <link rel="stylesheet" href="<?= asset("css/client/style1.css") ?>">
   <link rel="shortcut icon" href="<?= asset("img/favicon.png") ?>" type="image/x-icon">
   <style>
+    body{
+      overflow: hidden;
+    }
     .btn_back {
       background: hsl(195, 91%, 25%);
     }
@@ -52,7 +55,7 @@ use App\Helpers\Sessao;
     <form action="<?= URL ?>/client/login" method="post">
       <h1>Faça login</h1>
       <p>
-        <label for="nome">nome</label><br>
+        <label for="nome">Nome</label><br>
         <input class="form-control <?= $dados['erro_nome'] ? 'is-invalid' : '' ?>" type="text" name="nome" id="nome" placeholder="Exemplo: Victor Clever" value="<?= $dados['nome'] ?>" style="background: transparent; color: var(--text);">
         <span class="invalid-feedback" style="text-align: left;">
           <?= $dados['erro_nome'] ?>
@@ -98,18 +101,18 @@ use App\Helpers\Sessao;
           <form action="<?= URL ?>/saler/login" method="post">
             <h1 class=" p-2">Funcionário</h1>
             <p class=" pb-md-2 text-start">
-              <label for="nome" class=" p-2 ">nome</label><br>
-              <input class="p-lg-3 fs-5 form-control <?= $dados['erro_nome'] ? 'is-invalid' : '' ?>" type="text" name="nome" id="nome" placeholder="Exemplo: Victor Clever" value="<?= $dados['nome'] ?>">
+              <label for="nome" class=" p-2 ">Nome</label><br>
+              <input class="p-lg-3 fs-5 form-control <?= $dados['err_nome'] ? 'is-invalid' : '' ?>" type="text" name="nome" id="nome" placeholder="Exemplo: Victor Clever" value="<?= $dados['nome'] ?>">
 
             </p>
             <p class=" pb-md-2 text-start">
               <label for="senha" class="  p-2 ">Senha</label><br>
-              <input class="p-lg-3 fs-5 form-control <?= $dados['erro_senha'] ? 'is-invalid' : '' ?>" type="password" name="senha" id="senha" placeholder="Digite a sua senha" value="<?= $dados['senha'] ?>">
+              <input class="p-lg-3 fs-5 form-control <?= $dados['err_senha'] ? 'is-invalid' : '' ?>" type="password" name="senha" id="senha" placeholder="Digite a sua senha" value="<?= $dados['senha'] ?>">
               <a href="#" class="text-decoration-none fs-5 btn_color">Esqueceu a senha?</a>
 
             </p>
 
-            <button type="submit" name="login" value="submit" class="p-lg-3 w-25 text-white link-opacity-25-hover btn_back1 border-0 rounded-1 d-flex align-items-start justify-content-center">login</button>
+            <button type="submit" name="btn_log" value="submit" class="p-lg-3 w-25 text-white link-opacity-25-hover btn_back1 border-0 rounded-1 d-flex align-items-start justify-content-center">login</button>
 
           </form>
         </div>
