@@ -6,5 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'WilliamCosta\\DotEnv\\' => array($vendorDir . '/william-costa/dot-env/src'),
+    'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
+    'BalintHorvath\\DotEnv\\' => array($vendorDir . '/balint-horvath/dotenv-php/src'),
     'App\\' => array($baseDir . '/app'),
 );

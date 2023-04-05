@@ -11,6 +11,18 @@ class ComposerStaticInitf3d1b9f3fe48200d9dac0b5d43fa3ab6
     );
 
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'WilliamCosta\\DotEnv\\' => 20,
+        ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
+        'B' => 
+        array (
+            'BalintHorvath\\DotEnv\\' => 21,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -18,6 +30,18 @@ class ComposerStaticInitf3d1b9f3fe48200d9dac0b5d43fa3ab6
     );
 
     public static $prefixDirsPsr4 = array (
+        'WilliamCosta\\DotEnv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/william-costa/dot-env/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'BalintHorvath\\DotEnv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/balint-horvath/dotenv-php/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
