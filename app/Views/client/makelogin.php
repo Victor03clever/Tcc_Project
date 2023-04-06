@@ -73,7 +73,7 @@ use App\Helpers\Sessao;
         </span>
         <span class="dd" style="text-align: left; display:block">
         
-          <a href="#" class="fs-5 ">Esqueceu a senha?</a>
+          <a href="<?=URL?>/password" class="fs-5 ">Esqueceu a senha?</a>
         </span>
 
       </p>
@@ -108,7 +108,7 @@ use App\Helpers\Sessao;
             <p class=" pb-md-2 text-start">
               <label for="senha" class="  p-2 ">Senha</label><br>
               <input class="p-lg-3 fs-5 form-control <?= $dados['err_senha'] ? 'is-invalid' : '' ?>" type="password" name="senha" id="senha" placeholder="Digite a sua senha" value="<?= $dados['senha'] ?>">
-              <a href="#" class="text-decoration-none fs-5 btn_color">Esqueceu a senha?</a>
+              <a href="<?=URL?>/password" class="text-decoration-none fs-5 btn_color">Esqueceu a senha?</a>
 
             </p>
 

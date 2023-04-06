@@ -13,6 +13,6 @@ class  Error  extends Controller
     
     //    echo'pagina de erro' ;
     $this->view('404page');
-        
+      
     }
 }

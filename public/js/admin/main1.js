@@ -55,7 +55,20 @@ function setDefault() {
     useColorModeDark(theme);
   }
 }
+// =============================================================================
+// preloader
+// =============================================================================
+let preloader = document.querySelector("#preloader");;
+if (preloader) {
+  window.addEventListener("load", () => {
+    setTimeout(() => removePreloader(), 2000)
+  });
+}
+function removePreloader() {
+  preloader.remove();
+}
 
+// =============================================================================
 
 setDefault();
 
