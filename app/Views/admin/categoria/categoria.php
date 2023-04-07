@@ -111,7 +111,7 @@ use App\Helpers\Sessao;
                     <form action="<?= URL ?>/admin/categoria" method="POST">
                         <div class="row">
                             <div class="form-group col-12 col-md-6">
-                                <label for="nome" style="color:#000">Nome*</label>
+                                <label for="nome" >Nome*</label>
                                 <input type="text" class="form-control <?= $dados1['erro_nome'] ? 'is-invalid' : '' ?>" value="<?= $dados1['nome'] ?>" id="nome" name="nome" placeholder="Digite o nome da categoria...">
                                 <div class="invalid-feedback">
                                     <?= $dados1['erro_nome'] ?>
@@ -120,15 +120,15 @@ use App\Helpers\Sessao;
                         </div>
                         <div class="row">
                             <div class="form-group col-12 col-md-6">
-                                <label for="descricao" style="color:#000">Descrição*</label>
+                                <label for="descricao" >Descrição*</label>
                                 <input type="text" class="form-control <?= $dados1['erro_descricao'] ? 'is-invalid' : '' ?>" id="descricao" name="descricao" placeholder="Digite a descrição da categoria..." value="<?= $dados1['descricao'] ?>">
                                 <div class="invalid-feedback">
                                     <?= $dados1['erro_descricao'] ?>
                                 </div>
                             </div>
                             <div class="form-group col-12 col-md-6">
-                                <label for="status" style="color:#000">Status*</label>
-                                <select class="form-control" id="status" name="status">
+                                <label for="status">Status*</label>
+                                <select class="form-control p-1 fs-5" id="status" name="status">
                                     <option value="1">Ativo</option>
                                     <option value="0">Desativado</option>
                                 </select>

@@ -20,10 +20,19 @@ class Password extends Controller
   {
     $this->credential = $this->model("password\Password");
     $this->email = new PHPMailer(true);
+    if (Sessao::nivel0() || Sessao::nivel1() || Sessao::nivel2()) {
+      session_destroy();
+      Url::redireciona("client/login");
+    }
   }
   public function index()
   {
-    Url::redireciona("password/forget");
+    if (Sessao::nivel0() || Sessao::nivel1() || Sessao::nivel2()) {
+      session_destroy();
+      Url::redireciona("client/login");
+    } else {
+      Url::redireciona("password/forget");
+    }
   }
   public function forget()
   {
@@ -77,100 +86,173 @@ class Password extends Controller
     $file = "password/forget";
     $this->view($file, $data);
   }
-  public function verify($cred)
+  public function verify($cred = null)
   {
-    if (filter_var($cred, FILTER_VALIDATE_EMAIL)) {
-      $email = $cred;
-      $form = filter_input_array(INPUT_GET, FILTER_DEFAULT);
-      // var_dump($form);
-      if (isset($form['verify'])) {
-        $data = ['key' => trim($form['key']), 'email' => $email, 'error' => ''];
-        if (in_array("", $form)) {
-          if (empty($form['key'])) {
-            $data['error'] = "Campo obrigatorio*";
-            Sessao::sms("password", "Campo obrigatorio", "alert alert-danger");
+    if ($cred != null) {
+      if (filter_var($cred, FILTER_VALIDATE_EMAIL)) {
+        $email = $cred;
+        $form = filter_input_array(INPUT_GET, FILTER_DEFAULT);
+        // var_dump($form);
+        if (isset($form['verify'])) {
+          $data = ['key' => trim($form['key']), 'email' => $email, 'error' => ''];
+          if (in_array("", $form)) {
+            if (empty($form['key'])) {
+              $data['error'] = "Campo obrigatorio*";
+              Sessao::sms("password", "Campo obrigatorio", "alert alert-danger");
+            }
+          } else {
+            $check = $this->credential->checkEmailKey($data);
+            if ($check) {
+              // var_dump($check);
+              Url::redireciona("password/new/" . $data['email'] . "?key=" . $data['key']);
+              Sessao::sms("password", "Chave validada");
+              exit;
+            } else {
+              Sessao::sms("password", "Código Inválido", "alert alert-danger");
+            }
           }
         } else {
-          $check = $this->credential->checkEmailKey($data);
-          if ($check) {
-            // var_dump($check);
-            Url::redireciona("password/new/" . $data['email']);
-            Sessao::sms("password", "Chave validada");
-            exit;
+          $data = ['key' => '', 'email' => '', 'error' => ''];
+        }
+      } elseif (is_numeric($cred)) {
+        $number = $cred;
+        $form = filter_input_array(INPUT_GET, FILTER_DEFAULT);
+        // var_dump($form);
+        if (isset($form['verify'])) {
+          $data = ['key' => trim($form['key']), 'number' => $number, 'error' => ''];
+          if (in_array("", $form)) {
+            if (empty($form['key'])) {
+              $data['error'] = "Campo obrigatorio*";
+              Sessao::sms("password", "Campo obrigatorio", "alert alert-danger");
+            }
           } else {
-            Sessao::sms("password","Código Inválido","alert alert-danger");
+            $check = $this->credential->checkNumberKey($data);
+            if ($check) {
+              // var_dump($check);
+              Url::redireciona("password/new/" . $data['number'] . "?key=" . $data['key']);
+              Sessao::sms("password", "Chave validada");
+              exit;
+            } else {
+              Sessao::sms("password", "Código Inválido", "alert alert-danger");
+            }
           }
+        } else {
+          $data = ['key' => '', 'email' => '', 'error' => ''];
         }
       } else {
-        $data = ['key' => '', 'email' => '', 'error' => ''];
+        Sessao::sms("password", "Código inválido", "alert alert-danger");
       }
-    } elseif (is_numeric($cred)) {
-      echo "Aguarde o serviço retomar";
     } else {
-      Sessao::sms("password", "Código inválido", "alert alert-danger");
+      Url::redireciona("password");
+      Sessao::sms("password", "Acesso inválido", "alert alert-danger");
+      exit;
     }
 
     $file = "password/verification";
     $this->view($file, compact('cred', 'data'));
   }
-  public function new($cred)
+  public function new($cred = null)
   {
-    if (filter_var($cred, FILTER_VALIDATE_EMAIL)) {
-      $email=$cred;
-      $form=filter_input_array(INPUT_POST,FILTER_DEFAULT);
-      if(isset($form['btn'])){
-        $data=['newpass'=>trim($form['newpass']),'email'=>$email,'error'=>''];
-        if(in_array("",$form)){
-          if(empty($form['newpass'])){
-            $data['error']="Campo obrigatorio.";
-            Sessao::sms("password", "Campo obrigatorio", "alert alert-danger");
+    $form = filter_input_array(INPUT_GET, FILTER_DEFAULT);
+    $key = $form['key'];
+    if ($cred != null) {
+      if (filter_var($cred, FILTER_VALIDATE_EMAIL)) {
+        $array=['key'=>$key,'email'=>$cred];
+        $checkKey = $this->credential->checkEmailKey($array);
+        if ($checkKey) {
+          $email = $cred;
+          if (isset($form['btn'])) {
+            $data = ['newpass' => trim($form['newpass']), 'email' => $email, 'error' => ''];
+            if (in_array("", $form)) {
+              if (empty($form['newpass'])) {
+                $data['error'] = "Campo obrigatorio.";
+                Sessao::sms("password", "Campo obrigatorio", "alert alert-danger");
+              }
+            } else {
+              $data['newpass'] = Valida::pass_segura($data['newpass']);
+              $newpass = $this->credential->newEmailPass($data);
+              if ($newpass) {
+                Url::redireciona("client/login");
+                Sessao::izitoast("loginE", "Success", "Senha actualizada com sucesso");
+                exit;
+              } else {
+                Sessao::sms("password", "Senha não actualizada, tente novamente", "alert alert-danger");
+              }
+            }
+          } else {
+            $data = ['newpass' => '', 'email' => '', 'error' => ''];
           }
-        }else{
-          $data['newpass']= Valida::pass_segura($data['newpass']);
-          $newpass=$this->credential->newEmailPass($data);
-          if($newpass){
-            Url::redireciona("client/login");
-            Sessao::izitoast("loginE", "Success", "Senha actualizada com sucesso");
-            exit;
-          }else{
-            Sessao::sms("password", "Senha não actualizada, tente novamente", "alert alert-danger");
-          }
+        } else {
+          Url::redireciona("password");
+          Sessao::sms("password", "Acesso inválido", "alert alert-danger");
+          exit;
         }
-      }else{
-        $data=['newpass'=>'','email'=>'','error'=>''];
+      } elseif (is_numeric($cred)) {
+        $array=['key'=>$key,'number'=>$cred];
+        $checkKey = $this->credential->checkNumberKey($array);
+        if ($checkKey) {
+          
+          $number = $cred;
+          if (isset($form['btn'])) {
+            $data = ['newpass' => trim($form['newpass']), 'number' => $number, 'error' => ''];
+            if (in_array("", $form)) {
+              if (empty($form['newpass'])) {
+                $data['error'] = "Campo obrigatorio.";
+                Sessao::sms("password", "Campo obrigatorio", "alert alert-danger");
+              }
+            } else {
+              $data['newpass'] = Valida::pass_segura($data['newpass']);
+              $newpass = $this->credential->newNumberPass($data);
+              if ($newpass) {
 
+                Url::redireciona("client/login");
+                Sessao::izitoast("loginE", "Success", "Senha actualizada com sucesso");
+                exit;
+              } else {
+                Sessao::sms("password", "Senha não actualizada, tente novamente", "alert alert-danger");
+              }
+            }
+          } else {
+            $data = ['newpass' => '', 'number' => '', 'error' => ''];
+          }
+        } else {
+          Url::redireciona("password");
+          Sessao::sms("password", "Acesso inválido", "alert alert-danger");
+          exit;
+        }
+      } else {
+        Sessao::sms("password", "Código inválido", "alert alert-danger");
       }
-
-    }elseif(is_numeric($cred)){
-      echo "Aguarde o serviço retomar";
-    }else{
-      Sessao::sms("password", "Código inválido", "alert alert-danger");
+    } else {
+      Url::redireciona("password");
+      Sessao::sms("password", "Acesso inválido", "alert alert-danger");
+      exit;
     }
 
     $file = "password/newPass";
-    $this->view($file,compact('cred','data'));
+    $this->view($file, compact('cred', 'key', 'data'));
   }
 
 
   private function sendMessagePhone($key, $number)
   {
-    echo URL . "/password/verify?number=" . $number . "?key=" . $key;
-    // Url::redireciona("password/verify?number=" . $number . "?key=" . $key);
+    // echo URL . "/password/verify?number=" . $number . "?key=" . $key;
+    Url::redireciona("password/verify/" . $number . "?numero=" . $number);
   }
   private function sendEmail($key, $user)
   {
 
     try {
       //Server settings
-      // $this->email->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+      // $this->email->SMTPDebug = SMTP::DEBUG_SERVER;                      
       $this->email->CharSet = "UTF-8";
-      $this->email->isSMTP();                                            //Send using SMTP
-      $this->email->Host       = 'smtp.gmail.com';                   //Set the SMTP server to send through
-      $this->email->SMTPAuth   = true;                                   //Enable SMTP authentication
-      $this->email->Username   = 'vectorclever00@gmail.com';                     //SMTP username
-      $this->email->Password   = 'lyboetypjexhglqe';                               //SMTP password
-      $this->email->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-      $this->email->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+      $this->email->isSMTP();                                            
+      $this->email->Host       = getenv('MAIL_HOST');                   
+      $this->email->SMTPAuth   = true;                                   
+      $this->email->Username   = getenv('MAIL_USERNAME');                     
+      $this->email->Password   = getenv('MAIL_PASSWORD');                               
+      $this->email->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            
+      $this->email->Port       = getenv('MAIL_PORT');                                    
 
       //Recipients
       $this->email->setFrom('vectorclever00@gmail.com', "Refeitorio System");

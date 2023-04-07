@@ -61,7 +61,7 @@ function setDefault() {
 let preloader = document.querySelector("#preloader");;
 if (preloader) {
   window.addEventListener("load", () => {
-    setTimeout(() => removePreloader(), 2000)
+    setTimeout(() => removePreloader())
   });
 }
 function removePreloader() {

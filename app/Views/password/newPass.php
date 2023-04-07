@@ -21,7 +21,7 @@ use App\Helpers\Sessao;
 
   <h1>Actualize sua senha</h1>
   <main class="p-5 rounded-3 d-flex justify-content-center align-items-center">
-    <form action="<?=URL?>/password/new/<?=$cred?>" method="post">
+    <form action="<?=URL?>/password/new/<?=$cred?>" method="get">
     <?=Sessao::sms('password')?>
 
       <div class="mb-3">
@@ -29,6 +29,7 @@ use App\Helpers\Sessao;
         <input type="password" class="form-control bg-transparent text-white <?= $data['error']?'is-invalid':'' ?>" id="exampleInputText1" aria-describedby="textHelp" placeholder="nova senha" name="newpass">
         <div id="textHelp" class="form-text">Crie uma nova senha</div>
       </div>
+      <input type="text" name="key" value="<?=$key?>" class="d-none">
       <button type="submit" class="p-3 rounded-2" name="btn" value="submit">Submit</button>
     </form>
   </main>

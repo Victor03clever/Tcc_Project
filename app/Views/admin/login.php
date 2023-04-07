@@ -23,14 +23,15 @@ use App\Helpers\Sessao;
   <link rel="shortcut icon" href="<?= asset("img/favicon.png") ?>" type="image/x-icon">
 
   <!-- <script src="<=asset(NOTIFY)?>"></script> -->
+  
 </head>
 
 <body>
   <?= Sessao::izitoast('loginE'); ?>
   <main class="wrapper">
-    <img src="<?= asset("img/logo.png") ?>" alt="logotipo de um refeitorio">
+    <!-- <img src="<= asset("img/logo.png") ?>" alt="logotipo de um refeitorio"> -->
     <form action="<?= URL ?>/admin/login" method="post">
-      <h1>Faça login</h1>
+      <h1>Administrador</h1>
       <p>
 
         <label for="nome">Nome</label><br>
@@ -50,9 +51,13 @@ use App\Helpers\Sessao;
         <span class="invalid-feedback">
           <?= $dados['erro_senha'] ?>
         </span>
+        <span class="text-start d-block">
+        
+          <a href="<?=URL?>/password" class="fs-5  text-decoration-none hover-link">Esqueceu a senha?</a>
+        </span>
       </p>
       <p>
-        <button type="submit" name="btn_log" value="logar"><span id='efeito_botao'></span>Entrar</button>
+        <button type="submit" name="btn_log" value="logar">Entrar</button>
       </p>
 
     </form>

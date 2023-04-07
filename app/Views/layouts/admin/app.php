@@ -1,3 +1,9 @@
+<?php
+$url=filter_input(INPUT_GET,'url',FILTER_SANITIZE_URL);
+$url=explode("/",$url);
+$uri=$url[1];
+
+?>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -30,7 +36,7 @@
           </a>
           <span class="line"></span>
         </li>
-        <li>
+        <li class="<?= ucwords($uri)=="Home"?'actived':'' ?>">
           <a href="<?= URL ?>/admin/home">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +59,7 @@
             <span class="title">Compras</span>
           </a>
         </li>
-        <li>
+        <li class="<?= ucwords($uri)=="Categoria"?'actived':'' ?>">
           <a href="<?= URL ?>/admin/categoria">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,7 +77,7 @@
             <span class="title">Categoria</span>
           </a>
         </li>
-        <li>
+        <li class="<?= ucwords($uri)=="Produto" || ucwords($uri)=="Prato" || ucwords($uri)=="Estoque"?'actived':'' ?>">
           <a href="<?= URL ?>/admin/produto">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -158,7 +164,7 @@
           </a>
           <span class="line"></span>
         </li>
-        <li>
+        <li class="<?= ucwords($uri)=="Config"?'actived':'' ?>">
           <a href="<?= URL ?>/admin/config">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">

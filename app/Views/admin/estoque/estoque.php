@@ -48,7 +48,7 @@ use App\Helpers\Sessao;
 
                                             <td><?= $i++ ?></td>
                                             <td><?= $value['e_id'] ?></td>
-                                            <td><img src="<?= URL ?>/public/<?= $value['p_imagem'] ?>" alt="" width="35"></td>
+                                            <td><img src="<?= URL ?>/public/<?= $value['p_imagem'] ?>" alt="" width="35" height="35"></td>
                                             <td><?= $value['p_nome'] ?></td>
                                             <td><?= $value['qtd'] ?></td>
                                             <td><?= $value['l_lote'] ?></td>

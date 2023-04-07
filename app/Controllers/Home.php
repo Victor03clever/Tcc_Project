@@ -19,7 +19,7 @@ class  Home  extends Controller
             Url::redireciona('client');
         endif;
         $allFood= $this->Food->getFood();
-
+       
         $file = 'homepage';
         return $this->view('layouts/client/app', compact('file', 'allFood'));
         

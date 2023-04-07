@@ -103,7 +103,7 @@ use App\Helpers\Sessao;
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="<?= URL ?>/admin/prato" method="post" enctype="multipart/form-data" style="color:#000">
+                <form action="<?= URL ?>/admin/prato" method="post" enctype="multipart/form-data" >
                     <p>
                         escolha a sua imagem
                         <input type="file" class="form-control <?= $dados['err_img'] ? 'is-invalid' : '' ?>" name="img" id="">
@@ -115,14 +115,14 @@ use App\Helpers\Sessao;
                     <div class="row">
                         <p class="form-group col-12 col-md-6">
                             escolha o nome do prato <br>
-                            <input type="text" class="form-control <?= $dados['err_name'] ? 'is-invalid' : '' ?>" name="name" id="">
+                            <input type="text" class="form-control <?= $dados['err_name'] ? 'is-invalid' : '' ?>" name="name" id="" placeholder="nome do prato">
                             <span class="invalid-feedback">
                                 <?= $dados['err_name'] ?>
                             </span>
                         </p>
                         <p class="form-group col-12 col-md-6">
                             valor a ser vendido <br>
-                            <input type="number" class="form-control <?= $dados['err_value'] ? 'is-invalid' : '' ?>" name="value" id="">
+                            <input type="number" class="form-control <?= $dados['err_value'] ? 'is-invalid' : '' ?>" name="value" id="" placeholder="preço">
                             <span class="invalid-feedback">
                                 <?= $dados['err_value'] ?>
                             </span>
@@ -130,7 +130,7 @@ use App\Helpers\Sessao;
                     </div>
                     <p>
                         <label for="status">Status*</label>
-                        <select class="form-control" id="status" name="status">
+                        <select class="form-control fs-5" id="status" name="status">
                             <option value="1">Ativo</option>
                             <option value="0" selected>Desativado</option>
                         </select>

@@ -78,12 +78,37 @@ class Password
       return false;
     endif;
   }
+  public function checkNumberKey($dados)
+  {
+    $this->db->query("SELECT * FROM escola WHERE numero=:numero AND recover_pass=:recover");
+    $this->db->bind(':numero', $dados['number']);
+    $this->db->bind(':recover', $dados['key']);
+    $this->db->executa();
+    if ($this->db->executa() and $this->db->total()) :
+      $resultado = $this->db->resultado();
+      return $resultado;
+
+    else :
+      return false;
+    endif;
+  }
   
   public function newEmailPass($dados)
   {
     $this->db->query("UPDATE usuario SET recover_pass=Null, senha=:senha WHERE email=:email");
     $this->db->bind(':senha', $dados['newpass']);
     $this->db->bind(':email', $dados['email']);
+    if ($this->db->executa() and $this->db->total()) :
+      return true;
+    else :
+      return false;
+    endif;
+  }
+  public function newNumberPass($dados)
+  {
+    $this->db->query("UPDATE escola SET recover_pass=Null, senha=:senha WHERE numero=:number");
+    $this->db->bind(':senha', $dados['newpass']);
+    $this->db->bind(':number', $dados['number']);
     if ($this->db->executa() and $this->db->total()) :
       return true;
     else :
