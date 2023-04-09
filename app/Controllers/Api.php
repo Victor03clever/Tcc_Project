@@ -6,32 +6,33 @@ use App\Helpers\Sessao;
 use App\Helpers\Url;
 use App\Libraries\Controller;
 
-class  Api  extends Controller 
+class  Api  extends Controller
 {
 
-    private $Request;
-    public function __construct()
-    {
-        $this->Request = $this->model("client\Home");
-    }
+  private $Request;
+  public function __construct()
+  {
+    $this->Request = $this->model("client\Home");
+  }
 
   public function index()
   {
-    $data=$this->Request->getProducts();
-    
+    $data = $this->Request->getProducts();
+
     $products = [];
-   
-    foreach ($data as $key => $value) { 
-     
+
+    foreach ($data as $key => $value) {
+
       $product = [
-        "id"=> $value['p_id'],
+        "id" => $value['p_id'],
         "image" => $value['imagem'],
         "title" => $value['p_nome'],
         "price" => $value['preco'],
-        "category_id" => $value['c_id']
+        "category_id" => $value['c_id'],
+        "inCart" => 0
       ];
-      
-      array_push($products,$product);
+
+      array_push($products, $product);
     }
 
     echo json_encode($products);

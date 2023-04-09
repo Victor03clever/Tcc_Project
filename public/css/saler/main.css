@@ -1,31 +1,6 @@
 /* main */
 /* geral */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    transition: all 0.2s;
-  }
-  ::-webkit-scrollbar {
-    color: #ecedf1;
-    width: 0.5rem;
-    height: 0.5rem;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(transparent, var(--red1), transparent);
-    border-radius: 0.9rem;
-  }
-  
-  :root {
-    --def: 190;
-    --primary-color: #1c1d2b;
-    --text: #dce0ea;
-    --hover: #181926;
-  
-    font-size: 62.5%; /*1rem igual 10px*/
-  }
-  /* preloader */
+/* preloader */
 /*  */
 /* ================================== */
 #preloader {
@@ -47,7 +22,10 @@
   -webkit-animation: animate-preloader 1s linear infinite;
   animation: animate-preloader 1s linear infinite;
 }
-
+.modal-content{
+  background: var(--primary-color);
+  color: var(--text);
+}
 @-webkit-keyframes animate-preloader {
   0% {
     transform: scale(0%);
@@ -66,6 +44,32 @@
   }
 }
 /* end preloader */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.2s;
+  }
+  ::-webkit-scrollbar {
+    color: #ecedf1;
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(transparent, var(--red1), transparent);
+    border-radius: 0.9rem;
+  }
+  
+  :root {
+    --def: 190;
+    --primary-color: #1c1d2b;
+    --text: #dce0ea;
+    --hover: #181926;
+    --new:#dc2430;
+  
+    font-size: 62.5%; /*1rem igual 10px*/
+  }
   body {
     background: var(--hover);
     font-family: DM Sans;
@@ -75,10 +79,6 @@
     color: var(--text);
     font-size: 1.3rem;
     overflow-x: hidden;
-  }
-  .modal-content{
-    background: var(--primary-color);
-    color: var(--text);
   }
   .line {
     position: relative;
@@ -95,13 +95,13 @@
   .toggler .btn svg path{
     fill: var(--text);
   }
-  
-  
+  /*  */
   button.btn.btn-primary{
     width: 10rem;
     padding: .7rem;
     font-size: 1.5rem;
-    
+  color: white;
+
 }
 input.form-control{
   height: 3rem;
@@ -228,8 +228,7 @@ input.form-control{
     right: -40%;
     box-shadow: 3.7rem -3rem 0 1rem var(--hover);
   }
-  /* ================================================= */
-  /* Activando o link nav */
+  /* link actived */
   .navigation ul li.actived {
     background: var(--hover);
   }
@@ -269,7 +268,7 @@ input.form-control{
     right: -40%;
     box-shadow: 3.7rem -3rem 0 1rem var(--hover);
   }
-  /* ================================================= */
+  /* end lin actived */
   /* main */
   .main {
     position: absolute;
@@ -351,17 +350,17 @@ input.form-control{
   }
 /* +++++BackToTopButton+++++++++++++++++++++++++++++ */
 
-#backToTopButton {
+a#backToTopButton {
   position: fixed;
   bottom: 3rem;
   right: 1.5rem;
-  background: #065E7C;
+  /* background: #065E7C; */
 
   opacity: 0;
   visibility: hidden;
 }
 
-#backToTopButton.show {
+a#backToTopButton.show {
   opacity: 1;
   visibility: visible;
   transition: opacity 0.2s;
@@ -369,7 +368,7 @@ input.form-control{
 .btn-primary{
   background: #065E7C;
   border: none;
-  color: #dce0ea;
+  color: white;
 }
 .btn-primary:hover{
   background: #065E7C;

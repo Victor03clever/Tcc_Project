@@ -11,6 +11,7 @@ use App\Libraries\Controller;
 class  Saler  extends Controller
 {
   private $Data;
+  private $Food;
   public function __construct()
   {
     $this->Data = $this->model("Saler\Usuarios");
@@ -19,23 +20,27 @@ class  Saler  extends Controller
       session_destroy();
       Url::redireciona('client/login');
     endif;
+    $this->Food = $this->model("client\Home");
+
   }
 
   public function index()
   {
     if (!Sessao::nivel1()) :
-      Url::redireciona("client/login");
+      Url::redireciona("saler/login");
+    else :
+      Url::redireciona("saler/home");
     endif;
-    $file="home";
-    $this->view('layouts/saler/app', compact('file'));
 
+    exit;
   }
 
 
   public function login()
   {
     if (Sessao::nivel1()) :
-      Url::redireciona("saler");
+      Url::redireciona("saler"); 
+
     endif;
 
     $formulario = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -72,11 +77,11 @@ class  Saler  extends Controller
           Sessao::izitoast('loginS', 'Bemvindo', 'Login realizado com sucesso');
           Url::redireciona('saler');
           $this->criarsessao($checarlogin);
-        // var_dump($_SESSION);
-        exit;
+          // var_dump($_SESSION);
+          exit;
 
         else :
-          Sessao::izitoast('loginE', 'Erro', 'Nome ou senha estão errados', 'error');
+          Sessao::izitoast('loginE', 'Erro', 'Nome ou senha estão errados', 'error'); 
           $dados['err_nome'] = "Dados invalidos";
           $dados['err_senha'] = "Dados invalidos";
         endif;
@@ -98,7 +103,7 @@ class  Saler  extends Controller
   }
 
   private function  criarsessao($usuario)
-  {
+  { 
 
     $_SESSION['usuarioS_id'] = $usuario['usuario_id'];
     $_SESSION['usuarioS_nome'] = $usuario['u_nome'];
@@ -113,5 +118,18 @@ class  Saler  extends Controller
     unset($_SESSION['usuarioS_img']);
     session_destroy();
     Url::redireciona('saler/login');
+  }
+  public function home(){
+    if (!Sessao::nivel1()) :
+      Url::redireciona("saler/login");
+    endif;
+    $allFood = $this->Food->getFood();
+    $allcategory = $this->Food->getCategory();
+
+    
+
+
+    $file="home";
+    $this->view('layouts/saler/app', compact('file','allFood','allcategory'));
   }
 }

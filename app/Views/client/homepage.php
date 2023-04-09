@@ -7,7 +7,7 @@ use App\Helpers\Sessao;
 <?= Sessao::izitoast('pedido'); ?>
 
 <?= Sessao::browser('browser'); ?>
-  
+
 <link rel="stylesheet" href="<?= asset("css/client/style.css") ?>">
 <span class="dataActual" style="position:relative; top:18rem"></span>
 <header class="wrapper header" id="header">
@@ -96,9 +96,11 @@ use App\Helpers\Sessao;
       <?php endif; ?>
 
     </div>
-    
-      <div class="cards cards-products" data-authenticated="<?= $_SESSION['usuarioC_id'] ? "true" : "false" ?>" data-url="<?= URL ?>"></form></div>
-    
+
+    <div class="cards cards-products" data-authenticated="<?= $_SESSION['usuarioC_id'] ? "true" : "false" ?>" data-url="<?= URL ?>">
+      </form>
+    </div>
+
 
   </div>
 </section>

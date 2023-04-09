@@ -296,7 +296,7 @@ $uri=$url[1];
 
 
 
-
+  <script src="<?= asset("js/blockCode.js") ?>"></script>
   <script src="<?= asset("js/admin/main1.js") ?>"></script>
   <script src="<?= asset(BOOTJS) ?>"></script>
   <script src="<?= asset(BOOTPOPPER) ?>"></script>

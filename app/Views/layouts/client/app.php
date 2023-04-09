@@ -219,6 +219,13 @@
 
 
 
+  
+
+  <script src="<?= asset("js/client/main.js") ?>"></script>
+  <script src="<?= asset("js/blockCode.js") ?>"></script>
+  <!-- <script src="<= asset("js/axios.min.js") ?>"></script> -->
+  <script src="<?= asset(BOOTJS) ?>"></script>
+  <script src="<?= asset(BOOTPOPPER) ?>"></script>
   <script>
     // operacao com o burger
     var operation = document.querySelector('.operation');
@@ -267,11 +274,6 @@
 
     });
   </script>
-
-  <script src="<?= asset("js/client/main.js") ?>"></script>
-  <!-- <script src="<= asset("js/axios.min.js") ?>"></script> -->
-  <script src="<?= asset(BOOTJS) ?>"></script>
-  <script src="<?= asset(BOOTPOPPER) ?>"></script>
 
   <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"async defer></script> -->
 

@@ -274,6 +274,6 @@ function removePreloader() {
 // =============================================================================
 
 // handleProducts();
-includeButton();
+// includeButton();
 excluidButton();
 setDefault();

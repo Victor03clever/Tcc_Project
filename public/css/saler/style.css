@@ -1,0 +1,158 @@
+/* index.saler */
+*{
+  color: var(--text);
+}
+div.content{
+  padding-top: 10rem;
+  padding-inline: 2rem;
+  height: 100%;
+  width: 100%;
+}
+/* cats */
+/* Produtos */
+div.category {
+  margin-block: 2rem;
+}
+div.category div.cats {
+  display: flex;
+  gap: 1.2rem;
+  padding-block: 1rem;
+  overflow-x: auto;
+  
+}
+div.category div.cats #cat button.cat {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  padding-inline: 0.8rem;
+  width: initial;
+  min-width: 12.3rem;
+  height: 3.2rem;
+  border: 0.1rem solid #065E7C;
+  background: transparent;
+  filter: brightness(1.3);
+  border-radius: 0.5rem;
+  
+}
+div.category div.cats #cat button.cat:hover {
+  
+  background: var(--primary-color);
+  filter: brightness(1.3);
+  
+}
+
+div.category div.cats #cat button.active {
+  background: var(--primary-color);
+  border: 0.1rem solid var(--text);
+}
+div.category div.cats button.cat img {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+div.category div.cats button.cat h6 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2.3rem;
+  letter-spacing: -0.03em;
+  /* margin-block: auto; */
+  margin: 0;
+}
+/* end cats */
+div.content .cards{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2.7rem;
+}
+div.content .cards .card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1;
+  width: 15rem;
+  height: auto;
+  padding: 1rem;
+  background: var(--primary-color);
+  border: .1rem solid #ffffff18;
+}
+div.content .cards .card:hover{
+  filter: brightness(1.3);
+  cursor: pointer;
+}
+.price{
+  color: var(--new);
+  font-size: 1.5rem;
+}
+#vendaButton{
+  position: fixed;
+  /* float: right; */
+  right: 2rem;
+}
+
+table *{
+  color: var(--text);
+}
+.dataTable-sorter::after {
+  border-bottom: 4px solid var(--text);
+}
+.dataTable-sorter::before {
+  border-top: 4px solid var(--text);
+}
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+  --bs-table-accent-bg: var(--text);
+  color: var(--primary-color);
+}
+.table-striped>tbody>tr:nth-of-type(odd)>* .bi-x-circle{
+  color: var(--primary-color);
+}
+.table-striped>tbody>tr:nth-of-type(odd)>* .bi-dash{
+  color: var(--primary-color);
+}
+.table-striped>tbody>tr:nth-of-type(odd)>* .bi-plus{
+  color: var(--primary-color);
+}
+.table-striped>tbody>tr:nth-of-type(odd)>* .operations{
+  color: var(--primary-color);
+}
+.bi-x-circle{
+  font-size: 1.7rem;
+  color: var(--text);
+}
+.bi-dash{
+  font-size: 1.7rem;
+  color: var(--text);
+  cursor: pointer;
+}
+.bi-plus{
+  font-size: 1.7rem;
+  color: var(--text);
+  cursor: pointer;
+}
+.operations{
+  width: 2rem; color: var(--text); border: none; outline: none;
+  background: transparent;
+  float: left;
+}
+
+form#search{
+  display: flex;
+  gap :.5rem;
+}
+.payment{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.payment .totalprice{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
