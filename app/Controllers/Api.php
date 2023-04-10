@@ -57,4 +57,30 @@ class  Api  extends Controller
     echo json_encode($dishes);
 
   }
+  public function post(){
+    // URL da API
+$url = 'http://exemplo.com/api';
+
+// Dados que serão enviados na requisição
+$data = array('nome' => 'Clever', 'idade' => '30');
+
+// Inicializa a sessão cURL
+$ch = curl_init();
+
+// Define as opções da requisição
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Executa a requisição e armazena a resposta em uma variável
+$resposta = curl_exec($ch);
+
+// Fecha a sessão cURL
+curl_close($ch);
+
+// Exibe a resposta da API
+echo $resposta;
+
+  }
 }
