@@ -102,7 +102,7 @@ class  Saler  extends Controller
     $this->view('client/makelogin', compact('dados'));
   }
 
-  private function  criarsessao($usuario)
+  private function  criarsessao($usuario) 
   { 
 
     $_SESSION['usuarioS_id'] = $usuario['usuario_id'];

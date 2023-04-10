@@ -1,40 +1,12 @@
-// const url = document.querySelector(".cards-products").getAttribute("data-url");
+const url = document.querySelector(".cards-products").getAttribute("data-url");
 
-fetch(`${url}/api`)
+fetch(`${url}/api/getDishes`)
   .then((response) => response.json())
   .then((data) => {
     let products = data;
-
-    const buttonCats = document.querySelectorAll("button.cat");
-
     let currentProducts = products;
-    for (let index = 0; index < buttonCats.length; index++) {
-      buttonCats[index].addEventListener("click", () => {
-        toggle(buttonCats[index]);
-
-        productsFilters(buttonCats[index].getAttribute("data-category"));
-      });
-    }
-
-    function toggle(button) {
-      let isCurrentCategory = button.getAttribute("data-category");
-      if (
-        Number(isCurrentCategory) ===
-        Number(button.getAttribute("data-category"))
-      ) {
-        button.classList.add("active");
-      }
-
-      for (let index = 0; index < buttonCats.length; index++) {
-        if (
-          buttonCats[index].getAttribute("data-category") !==
-          button.getAttribute("data-category")
-        ) {
-          buttonCats[index].classList.remove("active");
-        }
-      }
-    }
-
+   
+  
     function createElement(element) {
       return document.createElement(element);
     }
@@ -44,7 +16,7 @@ fetch(`${url}/api`)
     }
 
     function handleProducts() {
-      const cards = document.querySelector(".cards-products");
+      const cards = document.querySelector(".cards-dishes");
       cards.innerHTML = "";
       for (let i = 0; i < currentProducts.length; i++) {
         const btnInclude = createElement("button");
@@ -53,8 +25,7 @@ fetch(`${url}/api`)
         const title = createElement("h3");
         const price = createElement("span");
 
-        image.src =
-          cards.getAttribute("data-url") +
+        image.src = url +
           "/public/" +
           currentProducts[i].image;
         image.setAttribute("width", "100");
@@ -71,7 +42,7 @@ fetch(`${url}/api`)
         price.classList.add("price");
         btnInclude.classList.add("btn");
         btnInclude.classList.add("btn-primary");
-        btnInclude.classList.add("include");
+        btnInclude.classList.add("includeR");
 
         appendChild(card, image);
         appendChild(card, title);
@@ -82,17 +53,7 @@ fetch(`${url}/api`)
       }
     }
 
-    function productsFilters(category_id) {
-      if (Number(category_id) !== 0) {
-        currentProducts = products.filter(
-          (product) => product.category_id === Number(category_id)
-        );
-        handleProducts();
-      } else {
-        currentProducts = products;
-        handleProducts();
-      }
-    }
+    
 
     setInterval(() => {
       // carrinho com localstorages
@@ -103,7 +64,6 @@ fetch(`${url}/api`)
         let cartItems = localStorage.getItem("productsInCart");
         cartItems = JSON.parse(cartItems);
         let cartItemsValues = Object.values(cartItems);
-        cartItems = Object(cartItems);
         let excluidAll = document.querySelectorAll(".removeall");
         for (let i = 0; i < excluidAll.length; i++) {
           excluidAll[i].addEventListener("click", () => {
@@ -155,6 +115,7 @@ fetch(`${url}/api`)
         cartItems = JSON.parse(cartItems);
         let cartItemsValues = Object.values(cartItems);
         cartItems = Object(cartItems);
+
         let excluids = document.querySelectorAll(".remove");
         for (let i = 0; i < excluids.length; i++) {
           excluids[i].addEventListener("click", () => {
@@ -221,7 +182,7 @@ fetch(`${url}/api`)
 
       // botao para incluir no carrinho
       function includeButton() {
-        let includes = document.querySelectorAll("button.include");
+        let includes = document.querySelectorAll("button.includeR");
         for (let i = 0; i < includes.length; i++) {
           includes[i].addEventListener("click", () => {
             cartNumbers(products[i]);

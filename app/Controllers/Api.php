@@ -37,4 +37,24 @@ class  Api  extends Controller
 
     echo json_encode($products);
   }
+  public function getDishes(){
+    $data = $this->Request->getFood();
+    $dishes = [];
+
+    foreach ($data as $key => $value) {
+
+      $dish = [
+        "id" => $value['id'],
+        "image" => $value['imagem'],
+        "title" => $value['nome'],
+        "price" => $value['preco'],
+        "inCart" => 0
+      ];
+
+      array_push($dishes, $dish);
+    }
+
+    echo json_encode($dishes);
+
+  }
 }

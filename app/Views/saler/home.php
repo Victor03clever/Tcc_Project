@@ -9,20 +9,10 @@ Sessao::izitoast("loginS");
   <!-- Botao vender para chamar o mmodal -->
   <button type="submit" class="btn btn-primary m-3 position-fixed" id="vendaButton" data-bs-toggle="modal" data-bs-target="#modalId"><i class="bi-cart text-white" style="font-size: 1.6rem;"></i><span class="badge badge-number position-absolute" style="width:1rem; left:2rem; color:var(--new);">0</span> Vender</button>
   <div class="menu">
-    <!-- <h1 class="mb-5">Refeições</h1>
-    <div class="cards mb-5">
-      <?php foreach ($allFood as $key => $value) : ?>
-        <div class="card">
-          <img src="<?= asset($value['imagem']) ?>" alt="" width="100" height="100">
-          <h3 class="title"><?= $value['nome'] ?></h3>
-          <span class="price"><?= $value['preco'] ?></span>
-            <button type="submit" value="submit" class="include btn btn-primary">Add+</button>
-        </div>
-
-      <?php endforeach; ?>
-      
-
-    </div> -->
+    <h1 class="mb-5">Refeições</h1>
+    <div class="cards mb-5 cards-dishes">
+  
+    </div>
     <h1>Produtos</h1>
     <div class="category">
       
@@ -50,7 +40,7 @@ Sessao::izitoast("loginS");
 
     </div>
     <div class="cards cards-products mb-5"  data-url="<?= URL ?>">
-      </form>
+
     </div>
   </div>
 
@@ -74,7 +64,7 @@ Sessao::izitoast("loginS");
             <option value="New York">
             <option value="Seattle">
           </datalist>
-          <button type="submit" class="btn btn-primary" style="height: 3rem;" title="adicionar">
+          <button type="submit" class="btn btn-primary p-0" style="height: 3rem;" title="adicionar">
             <i class="bi bi-plus text-white p-0"></i>
           </button>
         </form>
@@ -142,4 +132,5 @@ Sessao::izitoast("loginS");
 
 
 
+<script src="<?= asset("js/saler/getApiDishes.js")?>"></script>
 <script src="<?= asset("js/saler/getApiProducts.js")?>"></script>
