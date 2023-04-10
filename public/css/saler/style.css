@@ -82,10 +82,7 @@ div.content .cards .card{
   background: var(--primary-color);
   border: .1rem solid #ffffff18;
 }
-div.content .cards .card:hover{
-  filter: brightness(1.3);
-  cursor: pointer;
-}
+
 .price{
   color: var(--new);
   font-size: 1.5rem;
