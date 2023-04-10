@@ -22,47 +22,8 @@ use App\Helpers\Sessao;
 <section id="refeicoes" class="">
   <div class="wrapper">
     <h4>Refeições</h4>
-    <div class="cards">
-      <?php if ($allFood) : ?>
-        <?php foreach ($allFood as $key => $value) : ?>
-
-          <div class="card">
-
-            <img src="<?= asset($value['imagem']) ?>" alt="" width="100" height="100">
-            <h6 class="title"><?= $value['nome'] ?></h6>
-            <h6 class="price">KZ <?= $value['preco'] ?></h6>
-            <div class="add">
-              <form action="<?= URL ?>/client/makeRequest" method="post">
-                <svg class="btn-subtract" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M4 13C4 12.4477 4.33579 12 4.75 12H21.25C21.6642 12 22 12.4477 22 13C22 13.5523 21.6642 14 21.25 14H4.75C4.33579 14 4 13.5523 4 13Z" fill="white" />
-                </svg>
-
-                <input type="text" name="qtd" class="operations" value="01" readonly style="width: 2rem; background: transparent; color: var(--text); border: none; outline: none;">
-
-
-                <svg class="btn-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M4 13C4 12.5858 4.33579 12.25 4.75 12.25H21.25C21.6642 12.25 22 12.5858 22 13C22 13.4142 21.6642 13.75 21.25 13.75H4.75C4.33579 13.75 4 13.4142 4 13Z" fill="white" />
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M13 4C13.4142 4 13.75 4.33579 13.75 4.75V21.25C13.75 21.6642 13.4142 22 13 22C12.5858 22 12.25 21.6642 12.25 21.25V4.75C12.25 4.33579 12.5858 4 13 4Z" fill="white" />
-                </svg>
-            </div>
-
-            <?php if (isset($_SESSION['usuarioC_id'])) : ?>
-
-              <input type="text" value="<?= $value['id'] ?>" name="idgiven" hidden>
-              <button type="submit" name="statusR1" value="submit" class="include"> Adicionar </button>
-              </form>
-            <?php else : ?>
-              <a href="<?= URL ?>/client/login">
-                <button type="button"> Adicionar </button>
-              </a>
-            <?php endif; ?>
-
-          </div>
-
-        <?php endforeach; ?>
-      <?php else : ?>
-        <h3>Nenhuma Refeição por hoje, agradecemos a sua visita, retornaremos o mais rápido possível🤞.</h3>
-      <?php endif; ?>
+    <div class="cards cards-dishes" data-authenticated="<?= $_SESSION['usuarioC_id'] ? "true" : "false" ?>" data-url="<?= URL ?>">
+      
     </div>
   </div>
 </section>

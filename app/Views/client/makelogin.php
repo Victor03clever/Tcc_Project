@@ -77,11 +77,12 @@ use App\Helpers\Sessao;
         </span>
 
       </p>
-      <p>
+      <p class="m-0">
         <button type="submit" name="login" value="submit">Entrar</button>
         <span>
           <a href="<?= URL ?>/client/signup">Criar uma conta</a><br>
-          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class=" text-decoration-underline">Funcionário</a>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class=" text-decoration-underline">Funcionário</a><br>
+          <a href="<?= URL ?>">Retornar ao inicio</a>
         </span>
       </p>
     </form>

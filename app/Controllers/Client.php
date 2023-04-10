@@ -397,11 +397,11 @@ class  Client  extends Controller
           Sessao::izitoast("pedido", "Success", "Pedido feito com sucesso");
         } else {
           URL::redireciona("client");
-          Sessao::izitoast("pedido", "Alert", "Algo deu errado", "warning");
+          Sessao::izitoast("pedido", "Alert", "Algo deu errado ", "warning");
         }
       } else {
         URL::redireciona("client");
-        Sessao::izitoast("pedido", "Alert", "Algo deu errado", "warning");
+        Sessao::izitoast("pedido", "Alert", "Algo no model deu errado", "warning");
       }
     }
     if (isset($formulario['statusP1'])) {

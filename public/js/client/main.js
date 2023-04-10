@@ -6,6 +6,113 @@ let light = document.querySelector(".light");
 const url = document.querySelector(".cards-products").getAttribute("data-url");
 
 
+setInterval(() => {
+  
+  // pratos ou refeicoes
+fetch(`${url}/api/getDishes`)
+.then((response) => response.json())
+.then((data) => {
+  let products = data;
+
+  let currentProducts = products;
+ 
+
+  function createElement(element) {
+    return document.createElement(element);
+  }
+
+  function appendChild(element, children) {
+    element.appendChild(children);
+  }
+
+  function handleProducts() {
+    const cards = document.querySelector(".cards-dishes");
+    cards.innerHTML = "";
+    for (let i = 0; i < currentProducts.length; i++) {
+      const card = createElement("div");
+      const title = createElement("h6");
+      const price = createElement("h6");
+      const image = createElement("img");
+      const add = createElement("div");
+      const btnLess = createElement("svg");
+      const btnMore = createElement("svg");
+      const input = createElement("input");
+      const btnInclude = createElement("button");
+      const a = createElement("a");
+      const inputGo = createElement("input");
+      const form = createElement("form");
+
+      form.action=`${url}/client/makeRequest`; 
+      form.setAttribute("method", "post");
+
+      inputGo.type = "text";
+      inputGo.value = products[i].id;
+      inputGo.setAttribute("hidden", "");
+      inputGo.setAttribute("name", "idgiven");
+
+      input.style ="width: 2rem; background: transparent; color: var(--text); border: none; outline: none";
+      add.style=" width: initial; margin-bottom: 1rem;";
+      input.setAttribute("name", "qtd");
+      input.value = "01";
+      input.setAttribute("readonly", "");
+
+      image.src = url +"/public/" +currentProducts[i].image;
+      // image.style.width = "100px";
+      // image.style.height = "200px";
+      image.setAttribute("width", "100");
+      image.setAttribute("height", "100");
+
+      title.innerHTML = currentProducts[i].title;
+      price.innerHTML = currentProducts[i].price;
+      btnLess.innerHTML = "-";
+      btnMore.innerHTML = "+";
+      btnLess.style= "font-size:4rem";
+      btnMore.style= "font-size:4rem";
+      btnInclude.innerHTML = "Adicionar";
+      btnInclude.setAttribute("type", "submit");
+      btnInclude.setAttribute("name", "statusR1");
+      btnInclude.setAttribute("value", "submit");
+      a.setAttribute(
+        "href",
+        `${cards.getAttribute("data-url")}/client/login`
+      );
+
+      card.classList.add("card");
+      title.classList.add("title");
+      price.classList.add("price");
+      btnLess.classList.add("btn-subtract");
+      btnMore.classList.add("btn-plus");
+      add.classList.add("add");
+      btnInclude.classList.add("include");
+
+      appendChild(card, image);
+      appendChild(card, title);
+      appendChild(card, price);
+      appendChild(form, add);
+      appendChild(add, btnLess);
+      appendChild(add, input);
+      appendChild(add, btnMore);
+      appendChild(card, form);
+      if (cards.getAttribute("data-authenticated") === "false") {
+        appendChild(card, a);
+        appendChild(a, btnInclude);
+      } else {
+        appendChild(form, inputGo);
+        appendChild(form, btnInclude);
+      }
+
+      appendChild(cards, card);
+    }
+  }
+ 
+  handleProducts();
+}).catch(err=>console.log(err));
+
+}, 1111);
+
+
+
+  // Produtos
   fetch(`${url}/api`)
   .then((response) => response.json())
   .then((data) => {
@@ -88,8 +195,8 @@ const url = document.querySelector(".cards-products").getAttribute("data-url");
         price.innerHTML = currentProducts[i].price;
         btnLess.innerHTML = "-";
         btnMore.innerHTML = "+";
-        btnLess.style= "font-size:3rem";
-        btnMore.style= "font-size:3rem";
+        btnLess.style= "font-size:4rem";
+        btnMore.style= "font-size:4rem";
         btnInclude.innerHTML = "Adicionar";
         btnInclude.setAttribute("type", "submit");
         btnInclude.setAttribute("name", "statusP1");
@@ -140,12 +247,12 @@ const url = document.querySelector(".cards-products").getAttribute("data-url");
     }
     
     handleProducts();
-    includeButton();
   }).catch(err=>console.log(err));
+  
+  
 
 
-
-
+// funcao para modo light e dark do sistema
 function SetTheme(theme) {
   if (theme == "light") {
     light.style.display = "none";
@@ -274,6 +381,6 @@ function removePreloader() {
 // =============================================================================
 
 // handleProducts();
-// includeButton();
+includeButton();
 excluidButton();
 setDefault();
