@@ -100,16 +100,19 @@ fetch(`${url}/api`)
       //  botao para excluir do carrinho
       // remondo todos de uma linha de uma vez
       function excluidAll() {
-        let cartItems = localStorage.getItem("productsInCart");
-        cartItems = JSON.parse(cartItems);
-        let cartItemsValues = Object.values(cartItems);
-        cartItems = Object(cartItems);
-        let excluidAll = document.querySelectorAll(".removeall");
-        for (let i = 0; i < excluidAll.length; i++) {
-          excluidAll[i].addEventListener("click", () => {
-            removeAll(cartItemsValues[i]);
-            totalCost2(cartItemsValues[i]);
-          });
+        if(localStorage.getItem("productsInCart")){
+
+          let cartItems = localStorage.getItem("productsInCart");
+          cartItems = JSON.parse(cartItems);
+          let cartItemsValues = Object.values(cartItems);
+          cartItems = Object(cartItems);
+          let excluidAll = document.querySelectorAll(".removeall");
+          for (let i = 0; i < excluidAll.length; i++) {
+            excluidAll[i].addEventListener("click", () => {
+              removeAll(cartItemsValues[i]);
+              totalCost2(cartItemsValues[i]);
+            });
+          }
         }
       }
       function removeAll(product) {
@@ -151,16 +154,19 @@ fetch(`${url}/api`)
 
       // removendo apenas uma unidade de uma linha
       function excluidButton() {
-        let cartItems = localStorage.getItem("productsInCart");
-        cartItems = JSON.parse(cartItems);
-        let cartItemsValues = Object.values(cartItems);
-        cartItems = Object(cartItems);
-        let excluids = document.querySelectorAll(".remove");
-        for (let i = 0; i < excluids.length; i++) {
-          excluids[i].addEventListener("click", () => {
-            removeNumbers(cartItemsValues[i]);
-            totalCost1(cartItemsValues[i]);
-          });
+        if(localStorage.getItem("productsInCart")){
+
+          let cartItems = localStorage.getItem("productsInCart");
+          cartItems = JSON.parse(cartItems);
+          let cartItemsValues = Object.values(cartItems);
+          cartItems = Object(cartItems);
+          let excluids = document.querySelectorAll(".remove");
+          for (let i = 0; i < excluids.length; i++) {
+            excluids[i].addEventListener("click", () => {
+              removeNumbers(cartItemsValues[i]);
+              totalCost1(cartItemsValues[i]);
+            });
+          }
         }
       }
       function removeNumbers(product) {
