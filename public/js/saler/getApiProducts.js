@@ -219,7 +219,7 @@ fetch(`${url}/api`)
         let btnCancel = document.querySelector(".cancelCart");
         btnCancel.addEventListener("click", () => {
           localStorage.removeItem("inCart");
-          localStorage.removeItem("totalCost");
+          localStorage.setItem("totalCost",0);
           localStorage.removeItem("productsInCart");
           window.location.reload();
         });
