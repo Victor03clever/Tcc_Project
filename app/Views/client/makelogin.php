@@ -80,9 +80,9 @@ use App\Helpers\Sessao;
       <p class="m-0">
         <button type="submit" name="login" value="submit">Entrar</button>
         <span>
-          <a href="<?= URL ?>/client/signup">Criar uma conta</a><br>
-          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class=" text-decoration-underline">Funcionário</a><br>
-          <a href="<?= URL ?>">Retornar ao inicio</a>
+          <a href="<?= URL ?>/client/signup" class="p-0">Criar uma conta</a><br>
+          <a href="<?= URL ?>" class="p-0">Retornar ao inicio</a><br>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class=" text-decoration-underline">Funcionário</a>
         </span>
       </p>
     </form>

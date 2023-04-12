@@ -11,35 +11,35 @@ Sessao::izitoast("loginS");
   <div class="menu">
     <h1 class="mb-5">Refeições</h1>
     <div class="cards mb-5 cards-dishes">
-  
+
     </div>
     <h1>Produtos</h1>
     <div class="category">
-      
-        <h5> Find by category</h5>
-        <div class="cats">
+
+      <h5> Find by category</h5>
+      <div class="cats">
+
+        <div id="cat">
+          <button type="submit" class="cat active" name="" data-category="0">
+            <img src="<?= asset("img/client/cat1.svg") ?>" alt="">
+            <h6>Todos</h6>
+          </button>
+        </div>
+
+        <?php foreach ($allcategory as $key => $value) : ?>
 
           <div id="cat">
-            <button type="submit" class="cat active" name="" data-category="0">
-              <img src="<?= asset("img/client/cat1.svg") ?>" alt="">
-              <h6>Todos</h6>
+            <button type="button" class="cat" name="" data-category="<?= $value['id'] ?>">
+              <!-- <img src="<= asset("img/client/cat1.svg") ?>" alt=""> -->
+              <h6><?= $value['nome'] ?></h6>
             </button>
           </div>
+        <?php endforeach ?>
+      </div>
 
-          <?php foreach ($allcategory as $key => $value) : ?>
-
-            <div id="cat">
-              <button type="button" class="cat" name="" data-category="<?= $value['id'] ?>">
-                <!-- <img src="<= asset("img/client/cat1.svg") ?>" alt=""> -->
-                <h6><?= $value['nome'] ?></h6>
-              </button>
-            </div>
-          <?php endforeach ?>
-        </div>
-      
 
     </div>
-    <div class="cards cards-products mb-5"  data-url="<?= URL ?>">
+    <div class="cards cards-products mb-5" data-url="<?= URL ?>">
 
     </div>
   </div>
@@ -80,57 +80,56 @@ Sessao::izitoast("loginS");
               <th scope="col"></th>
             </tr>
           </thead>
-
+          
           <tbody>
-            <!-- <tr>
-              <th scope="row">
-                <i class="bi bi-dash btn-subtract"></i>
-                <input type="text" name="qtd" class="operations" value="01" readonly>
-                <i class="bi bi-plus btn-plus"></i>
-              </th>
-              <td>Brandon</td>
-              <td>Jacob</td>
-              <td>Designer</td>
-              <td><a href="#">
-                  <i class="bi bi-x-circle"></i>
-                </a></td>
-
-            </tr> -->
+            <!-- Sera acrescentado por intermédio do javascript -->
           </tbody>
+          
+          
         </table>
-        <div class="payment">
-          <div class="paymenttype">
-            <select class="form-select text-black" aria-label="Default select example">
-              <option selected>Selecione a forma de pagamento</option>
-              <option value="1">Mão</option>
-              <option value="2">Tpa</option>
-            </select>
-          </div>
-          <div class="clientname">
-            <input class="form-control mb-3" list="datalistname" id="exampleDataListname" placeholder="Nome do cliente">
-            <datalist id="datalistname">
-              <option value="Aldair">
-              <option value="Psicopata em pessoa">
-              <option value="Antonio">
-            </datalist>
-          </div>
-          <span class="totalprice">
-            <h1>Total:</h1>
-            <h1 id="totalCost">KZ 18.000.00</h1>
-          </span>
-
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary w-25 fs-4 p-2 cancelCart" data-bs-dismiss="modal"><i class="bi bi-x ttext white"></i> Abortar</button>
-        <button type="button" class="btn btn-primary w-25"><i class="bi bi-check text-white"></i>
-          Vender</button>
+        
+        <form action="<?= URL ?>/saler/sale" method="post">
+          <hr>
+                <span class="totalprice">
+                  <h1>Total:</h1>
+                  <h1 id="totalCost">0.00</h1>
+                </span>
+                <hr>
+                <div class="payment">
+                  <div class="paymenttype">
+                    <select class="form-select text-black fs-4" aria-label="Default select example" name="f_pagamento">
+                      <option selected>Selecione a forma de pagamento</option>
+                      <option value="1">Cache</option>
+                      <option value="2">Tpa</option>
+                    </select>
+                  </div>
+                  <div class="clientname row">
+                    <div class="name col-6">
+                      <input class="form-control mb-3" list="datalistname" id="exampleDataListname" placeholder="Nome do cliente" name="cliente">
+                      <datalist id="datalistname">
+                        <option value="Aldair">
+                        <option value="Psicopata em pessoa">
+                        <option value="Antonio">
+                      </datalist>
+                    </div>
+                    <div class="col-6">
+                      <input type="number" class="form-control" id="exampleInputText1" aria-describedby="textHelp" placeholder="VALOR A PAGAR" name="pagamento">
+                    </div>
+                    <span id="troco" class="fs-4">Troco: 0.00</span>
+                  </div>
+                </div>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary w-25 fs-4 p-2 cancelCart" data-bs-dismiss="modal"><i class="bi bi-x ttext white"></i> Abortar</button>
+              <button type="submit" class="btn btn-primary w-25" name="sale" value="submit"><i class="bi bi-check text-white"></i>
+                Vender</button>
+            </div>
+          </form>
       </div>
     </div>
   </div>
-</div>
 
 
 
-<script src="<?= asset("js/saler/getApiDishes.js")?>"></script>
-<script src="<?= asset("js/saler/getApiProducts.js")?>"></script>
+  <script src="<?= asset("js/saler/getApiDishes.js") ?>"></script>
+  <script src="<?= asset("js/saler/getApiProducts.js") ?>"></script>

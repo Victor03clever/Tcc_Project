@@ -132,4 +132,8 @@ class  Saler  extends Controller
     $file="home";
     $this->view('layouts/saler/app', compact('file','allFood','allcategory'));
   }
+  public function sale(){
+    $form=filter_input_array(INPUT_POST,FILTER_DEFAULT);
+    var_dump($form);
+  }
 }
