@@ -44,6 +44,6 @@ document.onkeydown = function (e) {
     return false;
   }
  
-  console.log(e.keyCode);
+  // console.log(e.keyCode);
 
 };

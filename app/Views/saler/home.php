@@ -7,7 +7,7 @@ Sessao::izitoast("loginS");
 <link rel="stylesheet" href="<?= asset("css/saler/style.css") ?>">
 <div class="content">
   <!-- Botao vender para chamar o mmodal -->
-  <button type="submit" class="btn btn-primary m-3 position-fixed" id="vendaButton" data-bs-toggle="modal" data-bs-target="#modalId"><i class="bi-cart text-white" style="font-size: 1.6rem;"></i><span class="badge badge-number position-absolute" style="width:1rem; left:2rem; color:var(--new);">0</span> Vender</button>
+  <button title="venda" class="btn btn-primary m-3 position-fixed" id="vendaButton" data-bs-toggle="modal" data-bs-target="#modalId"><i class="bi-cart text-white" style="font-size: 1.6rem;"></i><span class="badge badge-number position-absolute" style="width:1rem; left:2rem; color:var(--new);">0</span> Vender</button>
   <div class="menu">
     <h1 class="mb-5">Refeições</h1>
     <div class="cards mb-5 cards-dishes">
@@ -88,7 +88,7 @@ Sessao::izitoast("loginS");
           
         </table>
         
-        <form action="<?= URL ?>/saler/sale" method="post">
+        <form action="<?= URL ?>/saler/sale" method="post" id="venda">
           <hr>
                 <span class="totalprice">
                   <h1>Total:</h1>
