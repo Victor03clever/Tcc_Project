@@ -97,10 +97,10 @@ Sessao::izitoast("loginS");
                 <hr>
                 <div class="payment">
                   <div class="paymenttype">
-                    <select class="form-select text-black fs-4" aria-label="Default select example" name="f_pagamento">
-                      <option selected>Selecione a forma de pagamento</option>
-                      <option value="1">Cache</option>
-                      <option value="2">Tpa</option>
+                    <select class="form-select text-black fs-4" aria-label="Default select example" name="f_pagamento" id="modepayment">
+                      <option selected disabled value="">Selecione a forma de pagamento</option>
+                      <option value="0">Cache</option>
+                      <option value="1">Tpa</option>
                     </select>
                   </div>
                   <div class="clientname row">
@@ -113,9 +113,9 @@ Sessao::izitoast("loginS");
                       </datalist>
                     </div>
                     <div class="col-6">
-                      <input type="number" class="form-control" id="exampleInputText1" aria-describedby="textHelp" placeholder="VALOR A PAGAR" name="pagamento">
+                      <input type="number" class="form-control" id="pay" aria-describedby="textHelp" placeholder="VALOR A PAGAR" name="pagamento">
                     </div>
-                    <span id="troco" class="fs-4">Troco: 0.00</span>
+                    <span id="troco" class="fs-1">Troco: 0.00</span>
                   </div>
                 </div>
               </div>
@@ -131,5 +131,6 @@ Sessao::izitoast("loginS");
 
 
 
+  <script src="<?= asset("js/saler/validateSale.js") ?>"></script>
   <script src="<?= asset("js/saler/getApiDishes.js") ?>"></script>
   <script src="<?= asset("js/saler/getApiProducts.js") ?>"></script>

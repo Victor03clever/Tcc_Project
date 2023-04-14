@@ -22,6 +22,7 @@ class Router
 
             $this->controller = ucwords($url[0]);
             unset($url[0]);
+           
             $carregar = "\\App\\Controllers\\" . $this->controller;
             $this->controller = new $carregar;
         } elseif (file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . "Controllers" . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . ucwords($url[1]) . ".php")) {
