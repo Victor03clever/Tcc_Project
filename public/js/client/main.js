@@ -5,146 +5,15 @@ let dark = document.querySelector(".dark");
 let light = document.querySelector(".light");
 const url = document.querySelector(".cards-products").getAttribute("data-url");
 
+// setInterval(() => {
 
-setInterval(() => {
-  
-  // pratos ou refeicoes
+// pratos ou refeicoes
 fetch(`${url}/api/getDishes`)
-.then((response) => response.json())
-.then((data) => {
-  let products = data;
-
-  let currentProducts = products;
- 
-
-  function createElement(element) {
-    return document.createElement(element);
-  }
-
-  function appendChild(element, children) {
-    element.appendChild(children);
-  }
-
-  function handleProducts() {
-    const cards = document.querySelector(".cards-dishes");
-    cards.innerHTML = "";
-    for (let i = 0; i < currentProducts.length; i++) {
-      const card = createElement("div");
-      const title = createElement("h6");
-      const price = createElement("h6");
-      const image = createElement("img");
-      const add = createElement("div");
-      const btnLess = createElement("svg");
-      const btnMore = createElement("svg");
-      const input = createElement("input");
-      const btnInclude = createElement("button");
-      const a = createElement("a");
-      const inputGo = createElement("input");
-      const form = createElement("form");
-
-      form.action=`${url}/client/makeRequest`; 
-      form.setAttribute("method", "post");
-
-      inputGo.type = "text";
-      inputGo.value = products[i].id;
-      inputGo.setAttribute("hidden", "");
-      inputGo.setAttribute("name", "idgiven");
-
-      input.style ="width: 2rem; background: transparent; color: var(--text); border: none; outline: none";
-      add.style=" width: initial; margin-bottom: 1rem;";
-      input.setAttribute("name", "qtd");
-      input.value = "01";
-      input.setAttribute("readonly", "");
-
-      image.src = url +"/public/" +currentProducts[i].image;
-      // image.style.width = "100px";
-      // image.style.height = "200px";
-      image.setAttribute("width", "100");
-      image.setAttribute("height", "100");
-
-      title.innerHTML = currentProducts[i].title;
-      price.innerHTML = currentProducts[i].price;
-      btnLess.innerHTML = "-";
-      btnMore.innerHTML = "+";
-      btnLess.style= "font-size:4rem";
-      btnMore.style= "font-size:4rem";
-      btnInclude.innerHTML = "Adicionar";
-      btnInclude.setAttribute("type", "submit");
-      btnInclude.setAttribute("name", "statusR1");
-      btnInclude.setAttribute("value", "submit");
-      a.setAttribute(
-        "href",
-        `${cards.getAttribute("data-url")}/client/login`
-      );
-
-      card.classList.add("card");
-      title.classList.add("title");
-      price.classList.add("price");
-      btnLess.classList.add("btn-subtract");
-      btnMore.classList.add("btn-plus");
-      add.classList.add("add");
-      btnInclude.classList.add("include");
-
-      appendChild(card, image);
-      appendChild(card, title);
-      appendChild(card, price);
-      appendChild(form, add);
-      appendChild(add, btnLess);
-      appendChild(add, input);
-      appendChild(add, btnMore);
-      appendChild(card, form);
-      if (cards.getAttribute("data-authenticated") === "false") {
-        appendChild(card, a);
-        appendChild(a, btnInclude);
-      } else {
-        appendChild(form, inputGo);
-        appendChild(form, btnInclude);
-      }
-
-      appendChild(cards, card);
-    }
-  }
- 
-  handleProducts();
-}).catch(err=>console.log(err));
-
-}, 1111);
-
-
-
-  // Produtos
-  fetch(`${url}/api`)
   .then((response) => response.json())
   .then((data) => {
     let products = data;
-    const buttonCats = document.querySelectorAll("button.cat");
 
     let currentProducts = products;
-    for (let index = 0; index < buttonCats.length; index++) {
-      buttonCats[index].addEventListener("click", () => {
-        toggle(buttonCats[index]);
-        productsFilters(buttonCats[index].getAttribute("data-category"));
-      });
-    }
-
-    function toggle(button) {
-      let isCurrentCategory = button.getAttribute("data-category");
-      if (
-        Number(isCurrentCategory) ===
-        Number(button.getAttribute("data-category"))
-      ) {
-        button.classList.add("active");
-      }
-
-      for (let index = 0; index < buttonCats.length; index++) {
-        if (
-          buttonCats[index].getAttribute("data-category") !==
-          button.getAttribute("data-category")
-        ) {
-          buttonCats[index].classList.remove("active");
-        }
-      }
-    }
 
     function createElement(element) {
       return document.createElement(element);
@@ -152,6 +21,156 @@ fetch(`${url}/api/getDishes`)
 
     function appendChild(element, children) {
       element.appendChild(children);
+    }
+
+    function handleProducts() {
+      const cards = document.querySelector(".cards-dishes");
+      cards.innerHTML = "";
+      for (let i = 0; i < currentProducts.length; i++) {
+        const card = createElement("div");
+        const title = createElement("h6");
+        const price = createElement("h6");
+        const image = createElement("img");
+        const add = createElement("div");
+        const btnLess = createElement("svg");
+        const btnMore = createElement("svg");
+        const input = createElement("input");
+        const btnInclude = createElement("button");
+        const a = createElement("a");
+        const inputGo = createElement("input");
+        const form = createElement("form");
+
+        form.action = `${url}/client/makeRequest`;
+        form.setAttribute("method", "post");
+
+        inputGo.type = "text";
+        inputGo.value = products[i].id;
+        inputGo.setAttribute("hidden", "");
+        inputGo.setAttribute("name", "idgiven");
+
+        input.style =
+          "width: 2rem; background: transparent; color: var(--text); border: none; outline: none";
+        add.style = " width: initial; margin-bottom: 1rem;";
+        input.setAttribute("name", "qtd");
+        input.value = "01";
+        input.setAttribute("readonly", "");
+
+        image.src = url + "/public/" + currentProducts[i].image;
+        // image.style.width = "100px";
+        // image.style.height = "200px";
+        image.setAttribute("width", "100");
+        image.setAttribute("height", "100");
+
+        title.innerHTML = currentProducts[i].title;
+        price.innerHTML = currentProducts[i].price;
+        btnLess.innerHTML = "-";
+        btnMore.innerHTML = "+";
+        btnLess.style = "font-size:4rem";
+        btnMore.style = "font-size:4rem";
+        btnInclude.innerHTML = "Adicionar";
+        btnInclude.setAttribute("type", "submit");
+        btnInclude.setAttribute("name", "statusR1");
+        btnInclude.setAttribute("value", "submit");
+        a.setAttribute(
+          "href",
+          `${cards.getAttribute("data-url")}/client/login`
+        );
+
+        card.classList.add("card");
+        title.classList.add("title");
+        price.classList.add("price");
+        btnLess.classList.add("btn-subtract");
+        btnMore.classList.add("btn-plus");
+        add.classList.add("add");
+        btnInclude.classList.add("include");
+
+        appendChild(card, image);
+        appendChild(card, title);
+        appendChild(card, price);
+        appendChild(form, add);
+        appendChild(add, btnLess);
+        appendChild(add, input);
+        appendChild(add, btnMore);
+        appendChild(card, form);
+        if (cards.getAttribute("data-authenticated") === "false") {
+          appendChild(card, a);
+          appendChild(a, btnInclude);
+        } else {
+          appendChild(form, inputGo);
+          appendChild(form, btnInclude);
+        }
+
+        appendChild(cards, card);
+      }
+    }
+
+    handleProducts();
+  })
+  .catch((err) => console.log(err));
+
+// });
+
+// Produtos
+fetch(`${url}/api`)
+  .then((response) => response.json())
+  .then((data) => {
+    let products = data;
+    const buttonCats = document.querySelectorAll("button.cat");
+    let currentProducts = products;
+
+    function productsFilters(category_id) {
+      if (Number(category_id) !== 0) {
+        currentProducts = products.filter(
+          (product) => product.category_id === Number(category_id)
+        );
+        let cards = document.querySelector(".cards-products");
+        cards.innerHTML = "";
+        handleFilter();
+        addLess();
+      } else {
+        currentProducts = products;
+
+        handleFilter();
+        addLess();
+      }
+    }
+    function addLess() {
+      let plus = document.querySelectorAll(".plus");
+      let subt = document.querySelectorAll(".subtract");
+      let a = 1;
+      plus.forEach((plu) => {
+        plu.addEventListener("click", () => {
+          a = plu.previousElementSibling.value;
+          if (a < 10) {
+            a++;
+            a = a < 10 ? "0" + a : a;
+
+            let input = plu.previousElementSibling;
+            input.value = a;
+            a = input.value;
+          }
+        });
+      });
+      subt.forEach((sub) => {
+        sub.addEventListener("click", () => {
+          a = sub.nextElementSibling.value;
+          //   console.log(a);
+
+          if (a > 1) {
+            a--;
+            a = a < 10 ? "0" + a : a;
+            let input = sub.nextElementSibling;
+            input.value = a;
+          }
+        });
+      });
+    }
+
+    for (let index = 0; index < buttonCats.length; index++) {
+      buttonCats[index].addEventListener("click", () => {
+        toggle(buttonCats[index]);
+        productsFilters(buttonCats[index].getAttribute("data-category"));
+      });
     }
 
     function handleProducts() {
@@ -171,21 +190,25 @@ fetch(`${url}/api/getDishes`)
         const inputGo = createElement("input");
         const form = createElement("form");
 
-        form.action=`${url}/client/makeRequest`; 
+        form.action = `${url}/client/makeRequest`;
         form.setAttribute("method", "post");
 
         inputGo.type = "text";
-        inputGo.value = products[i].id;
+        inputGo.value = currentProducts[i].id;
         inputGo.setAttribute("hidden", "");
         inputGo.setAttribute("name", "idGo");
 
-        input.style ="width: 2rem; background: transparent; color: var(--text); border: none; outline: none";
-        add.style=" width: initial; margin-bottom: 1rem;";
+        input.style =
+          "width: 2rem; background: transparent; color: var(--text); border: none; outline: none";
+        add.style = " width: initial; margin-bottom: 1rem;";
         input.setAttribute("name", "qtdP");
         input.value = "01";
         input.setAttribute("readonly", "");
 
-        image.src = cards.getAttribute("data-url") +"/public/" +currentProducts[i].image;
+        image.src =
+          cards.getAttribute("data-url") +
+          "/public/" +
+          currentProducts[i].image;
         // image.style.width = "100px";
         // image.style.height = "200px";
         image.setAttribute("width", "100");
@@ -195,8 +218,8 @@ fetch(`${url}/api/getDishes`)
         price.innerHTML = currentProducts[i].price;
         btnLess.innerHTML = "-";
         btnMore.innerHTML = "+";
-        btnLess.style= "font-size:4rem";
-        btnMore.style= "font-size:4rem";
+        btnLess.style = "font-size:4rem";
+        btnMore.style = "font-size:4rem";
         btnInclude.innerHTML = "Adicionar";
         btnInclude.setAttribute("type", "submit");
         btnInclude.setAttribute("name", "statusP1");
@@ -233,24 +256,121 @@ fetch(`${url}/api/getDishes`)
         appendChild(cards, card);
       }
     }
+    function handleFilter() {
+      const cards = document.querySelector(".cards-products");
+      cards.innerHTML = "";
+      for (let i = 0; i < currentProducts.length; i++) {
+        const card = createElement("div");
+        const title = createElement("h6");
+        const price = createElement("h6");
+        const image = createElement("img");
+        const add = createElement("div");
+        const btnLess = createElement("svg");
+        const btnMore = createElement("svg");
+        const input = createElement("input");
+        const btnInclude = createElement("button");
+        const a = createElement("a");
+        const inputGo = createElement("input");
+        const form = createElement("form");
 
-    function productsFilters(category_id) {
-      if (Number(category_id) !== 0) {
-        currentProducts = products.filter(
-          (product) => product.category_id === Number(category_id)
+        form.action = `${url}/client/makeRequest`;
+        form.setAttribute("method", "post");
+
+        inputGo.type = "text";
+        inputGo.value = currentProducts[i].id;
+        inputGo.setAttribute("hidden", "");
+        inputGo.setAttribute("name", "idGo");
+
+        input.style =
+          "width: 2rem; background: transparent; color: var(--text); border: none; outline: none";
+        add.style = " width: initial; margin-bottom: 1rem;";
+        input.setAttribute("name", "qtdP");
+        input.value = "01";
+        input.setAttribute("readonly", "");
+
+        image.src =
+          cards.getAttribute("data-url") +
+          "/public/" +
+          currentProducts[i].image;
+        // image.style.width = "100px";
+        // image.style.height = "200px";
+        image.setAttribute("width", "100");
+        image.setAttribute("height", "100");
+
+        title.innerHTML = currentProducts[i].title;
+        price.innerHTML = currentProducts[i].price;
+        btnLess.innerHTML = "-";
+        btnMore.innerHTML = "+";
+        btnLess.style = "font-size:4rem";
+        btnMore.style = "font-size:4rem";
+        btnInclude.innerHTML = "Adicionar";
+        btnInclude.setAttribute("type", "submit");
+        btnInclude.setAttribute("name", "statusP1");
+        btnInclude.setAttribute("value", "submit");
+        a.setAttribute(
+          "href",
+          `${cards.getAttribute("data-url")}/client/login`
         );
-        handleProducts();
-      } else {
-        currentProducts = products;
-        handleProducts();
+
+        card.classList.add("card");
+        title.classList.add("title");
+        price.classList.add("price");
+        btnLess.classList.add("subtract");
+        btnMore.classList.add("plus");
+        add.classList.add("add");
+        btnInclude.classList.add("include");
+
+        appendChild(card, image);
+        appendChild(card, title);
+        appendChild(card, price);
+        appendChild(form, add);
+        appendChild(add, btnLess);
+        appendChild(add, input);
+        appendChild(add, btnMore);
+        appendChild(card, form);
+        if (cards.getAttribute("data-authenticated") === "false") {
+          appendChild(card, a);
+          appendChild(a, btnInclude);
+        } else {
+          appendChild(form, inputGo);
+          appendChild(form, btnInclude);
+        }
+
+        appendChild(cards, card);
       }
     }
-    
-    handleProducts();
-  }).catch(err=>console.log(err));
-  
-  
 
+    function toggle(button) {
+      let isCurrentCategory = button.getAttribute("data-category");
+      if (
+        Number(isCurrentCategory) ===
+        Number(button.getAttribute("data-category"))
+      ) {
+        button.classList.add("active");
+      }
+
+      for (let index = 0; index < buttonCats.length; index++) {
+        if (
+          buttonCats[index].getAttribute("data-category") !==
+          button.getAttribute("data-category")
+        ) {
+          buttonCats[index].classList.remove("active");
+        }
+      }
+    }
+
+    function createElement(element) {
+      return document.createElement(element);
+    }
+
+    function appendChild(element, children) {
+      element.appendChild(children);
+    }
+
+    handleProducts();
+    includeButton();
+  })
+  .catch((err) => console.log(err));
 
 // funcao para modo light e dark do sistema
 function SetTheme(theme) {
@@ -307,8 +427,7 @@ function useColorModeDark(theme) {
 
 function setDefault() {
   const theme = localStorage.getItem("PanelTheme");
-  let inCart = localStorage.getItem("inCart")??0;
-  
+  let inCart = localStorage.getItem("inCart") ?? 0;
 
   if (theme == "light") {
     light.style.display = "none";
@@ -368,10 +487,10 @@ function clearCart() {
 // =============================================================================
 // preloader
 // =============================================================================
-let preloader = document.querySelector("#preloader");;
+let preloader = document.querySelector("#preloader");
 if (preloader) {
   window.addEventListener("load", () => {
-    setTimeout(() => removePreloader(), 2000)
+    setTimeout(() => removePreloader(), 2000);
   });
 }
 function removePreloader() {
@@ -380,7 +499,39 @@ function removePreloader() {
 
 // =============================================================================
 
+// operacoes adicionar e subtrair
+window.addEventListener("load", () => {
+  let plus = document.querySelectorAll(".btn-plus");
+  let subt = document.querySelectorAll(".btn-subtract");
+
+  let a = 1;
+  plus.forEach((plu) => {
+    plu.addEventListener("click", () => {
+      a = plu.previousElementSibling.value;
+      if (a < 10) {
+        a++;
+        a = a < 10 ? "0" + a : a;
+
+        let input = plu.previousElementSibling;
+        input.value = a;
+        a = input.value;
+      }
+    });
+  });
+  subt.forEach((sub) => {
+    sub.addEventListener("click", () => {
+      a = sub.nextElementSibling.value;
+      //   console.log(a);
+
+      if (a > 1) {
+        a--;
+        a = a < 10 ? "0" + a : a;
+        let input = sub.nextElementSibling;
+        input.value = a;
+      }
+    });
+  });
+});
 // handleProducts();
-includeButton();
 excluidButton();
 setDefault();

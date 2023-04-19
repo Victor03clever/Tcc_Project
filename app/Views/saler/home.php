@@ -3,6 +3,7 @@
 use App\Helpers\Sessao;
 
 Sessao::izitoast("loginS");
+Sessao::izitoast("sale");
 ?>
 <link rel="stylesheet" href="<?= asset("css/saler/style.css") ?>">
 <div class="content">
@@ -80,57 +81,61 @@ Sessao::izitoast("loginS");
               <th scope="col"></th>
             </tr>
           </thead>
-          
+
           <tbody>
             <!-- Sera acrescentado por intermédio do javascript -->
           </tbody>
-          
-          
+
+
         </table>
-        
+
         <form action="<?= URL ?>/saler/sale" method="post" id="venda">
           <hr>
-                <span class="totalprice">
-                  <h1>Total:</h1>
-                  <h1 id="totalCost">0.00</h1>
-                </span>
-                <hr>
-                <div class="payment">
-                  <div class="paymenttype">
-                    <select class="form-select text-black fs-4" aria-label="Default select example" name="f_pagamento" id="modepayment">
-                      <option selected disabled value="">Selecione a forma de pagamento</option>
-                      <option value="0">Cache</option>
-                      <option value="1">Tpa</option>
-                    </select>
-                  </div>
-                  <div class="clientname row">
-                    <div class="name col-6">
-                      <input class="form-control mb-3" list="datalistname" id="exampleDataListname" placeholder="Nome do cliente" name="cliente">
-                      <datalist id="datalistname">
-                        <option value="Aldair">
-                        <option value="Psicopata em pessoa">
-                        <option value="Antonio">
-                      </datalist>
-                    </div>
-                    <div class="col-6">
-                      <input type="number" class="form-control" id="pay" aria-describedby="textHelp" placeholder="VALOR A PAGAR" name="pagamento">
-                    </div>
-                    <span id="troco" class="fs-1">Troco: 0.00</span>
-                  </div>
-                </div>
-              </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary w-25 fs-4 p-2 cancelCart" data-bs-dismiss="modal"><i class="bi bi-x ttext white"></i> Abortar</button>
-              <button type="submit" class="btn btn-primary w-25" name="sale" value="submit"><i class="bi bi-check text-white"></i>
-                Vender</button>
+          <div class="divInputs d-none"></div>
+          <span class="totalprice">
+            <h1>Total:</h1>
+            <h1 id="totalCost">0.00</h1>
+          </span>
+          <hr>
+          <div class="payment">
+            <div class="paymenttype">
+              <select class="form-select text-black fs-4" aria-label="Default select example" name="f_pagamento" id="modepayment">
+                <option selected disabled value="">Selecione a forma de pagamento</option>
+                <option value="0">Cash</option>
+                <option value="1">Tpa</option>
+              </select>
             </div>
-          </form>
+            <div class="clientname row">
+              <div class="name col-6">
+                <input class="form-control mb-3" list="datalistname" id="exampleDataListname" placeholder="Nome do cliente" name="cliente">
+                <datalist id="datalistname">
+                  <option value="Aldair">
+                  <option value="Psicopata em pessoa">
+                  <option value="Antonio">
+                </datalist>
+              </div>
+              <div class="col-6">
+                <input type="number" class="form-control" id="pay" aria-describedby="textHelp" placeholder="VALOR A PAGAR" name="pagamento">
+              </div>
+              <span id="troco" class="fs-1">Troco: 0.00</span>
+              <input type="text" name="troco" id="change"  hidden>
+            </div>
+          </div>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary w-25 fs-4 p-2 cancelCart" data-bs-dismiss="modal"><i class="bi bi-x ttext white"></i> Abortar</button>
+        <button type="submit" class="btn btn-primary w-25" name="sale" value="submit"><i class="bi bi-check text-white"></i>
+          Vender</button>
+      </div>
+      </form>
     </div>
   </div>
+</div>
 
 
+<script>
 
-  <script src="<?= asset("js/saler/validateSale.js") ?>"></script>
-  <script src="<?= asset("js/saler/getApiDishes.js") ?>"></script>
-  <script src="<?= asset("js/saler/getApiProducts.js") ?>"></script>
+</script>
+<script src="<?= asset("js/saler/validateSale.js") ?>"></script>
+<script src="<?= asset("js/saler/getApiDishes.js") ?>"></script>
+<script src="<?= asset("js/saler/getApiProducts.js") ?>"></script>

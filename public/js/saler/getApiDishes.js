@@ -5,8 +5,7 @@ fetch(`${url}/api/getDishes`)
   .then((data) => {
     let products = data;
     let currentProducts = products;
-   
-  
+
     function createElement(element) {
       return document.createElement(element);
     }
@@ -25,9 +24,7 @@ fetch(`${url}/api/getDishes`)
         const title = createElement("h3");
         const price = createElement("span");
 
-        image.src = url +
-          "/public/" +
-          currentProducts[i].image;
+        image.src = url + "/public/" + currentProducts[i].image;
         image.setAttribute("width", "100");
         image.setAttribute("height", "100");
 
@@ -53,16 +50,13 @@ fetch(`${url}/api/getDishes`)
       }
     }
 
-    
-
     setInterval(() => {
       // carrinho com localstorages
 
       //  botao para excluir do carrinho
       // remondo todos de uma linha de uma vez
       function excluidAll() {
-        if(localStorage.getItem("productsInCart")){
-
+        if (localStorage.getItem("productsInCart")) {
           let cartItems = localStorage.getItem("productsInCart");
           cartItems = JSON.parse(cartItems);
           let cartItemsValues = Object.values(cartItems);
@@ -114,13 +108,12 @@ fetch(`${url}/api/getDishes`)
 
       // removendo apenas uma unidade de uma linha
       function excluidButton() {
-        if(localStorage.getItem("productsInCart")){
-
+        if (localStorage.getItem("productsInCart")) {
           let cartItems = localStorage.getItem("productsInCart");
           cartItems = JSON.parse(cartItems);
           let cartItemsValues = Object.values(cartItems);
           cartItems = Object(cartItems);
-  
+
           let excluids = document.querySelectorAll(".remove");
           for (let i = 0; i < excluids.length; i++) {
             excluids[i].addEventListener("click", () => {
@@ -199,6 +192,8 @@ fetch(`${url}/api/getDishes`)
       function setItem(product) {
         let cartItems = localStorage.getItem("productsInCart");
         cartItems = JSON.parse(cartItems);
+        product.type='refei';
+
         if (cartItems != null) {
           if (cartItems[product.title] == undefined) {
             cartItems = {
@@ -342,6 +337,28 @@ fetch(`${url}/api/getDishes`)
           localStorage.setItem("totalCost", totalCost);
         }
       }
+      function addInput() {
+        
+
+        let cartItems = localStorage.getItem("productsInCart");
+        if(cartItems){
+
+          let div = document.querySelector('.divInputs');
+          cartItems = JSON.parse(cartItems);
+          div.innerHTML='';
+          Object.values(cartItems).map((item) => {
+           
+           div.innerHTML += `
+           <input name='qtd[]' value='${item.inCart}'/>
+           <input name='type[]' value='${item.type}'/>
+           <input name='id[]' value='${item.id}'/>
+           <input name='total[]' value='${item.inCart * item.price}'/>
+  
+           `;
+            
+          });
+        }
+      }
 
       handleProducts();
       showCartProducts();
@@ -350,6 +367,7 @@ fetch(`${url}/api/getDishes`)
       excluidAll();
       plusButton();
       cancelCart();
+      addInput();
     }, 1111);
   })
   .catch((err) => console.log(err));

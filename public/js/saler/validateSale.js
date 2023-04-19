@@ -3,7 +3,8 @@ const totalVenda = document.querySelector("#totalCost");
 const mode = document.querySelector("#modepayment");
 const payment = document.querySelector("#pay");
 const change = document.querySelector("#troco");
-//
+const change1 = document.querySelector("#change");
+
 
 formVenda.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -25,6 +26,7 @@ formVenda.addEventListener("submit", (event) => {
       if (payment.value >= total) {
         change.innerHTML = "";
         change.innerHTML += `Troco: ${payment.value - total}.00 kz`;
+        change1.setAttribute("value",`${payment.value - total}`);
         formVenda.submit();
       } else {
         alert("Valor insuficiente");

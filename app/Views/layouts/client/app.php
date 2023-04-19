@@ -237,42 +237,7 @@
     window.addEventListener("scroll", function() {
       backToTopButton.classList.toggle('show', scrollY > 500);
     })
-    // operacoes adicionar e subtrair
-    window.addEventListener("load", () => {
-      let plus = document.querySelectorAll(".btn-plus");
-      let subt = document.querySelectorAll(".btn-subtract");
-
-
-      let a = 1;
-      plus.forEach((plu) => {
-
-        plu.addEventListener("click", () => {
-          a = plu.previousElementSibling.value
-          if (a < 10) {
-            a++;
-            a = (a < 10) ? "0" + a : a;
-
-            let input = plu.previousElementSibling
-            input.value = a
-            a = input.value
-          }
-        });
-      });
-      subt.forEach((sub) => {
-        sub.addEventListener("click", () => {
-          a = sub.nextElementSibling.value
-          //   console.log(a);
-
-          if (a > 1) {
-            a--;
-            a = (a < 10) ? "0" + a : a;
-            let input = sub.nextElementSibling
-            input.value = a
-          }
-        });
-      });
-
-    });
+    
   </script>
 
   <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"async defer></script> -->

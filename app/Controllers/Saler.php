@@ -12,9 +12,11 @@ class  Saler  extends Controller
 {
   private $Data;
   private $Food;
+  private $Sale;
   public function __construct()
   {
     $this->Data = $this->model("Saler\Usuarios");
+    $this->Sale = $this->model("Saler\Venda");
 
     if (Sessao::nivel0()) :
       session_destroy();
@@ -133,7 +135,18 @@ class  Saler  extends Controller
     $this->view('layouts/saler/app', compact('file','allFood','allcategory'));
   }
   public function sale(){
-    $form=filter_input_array(INPUT_POST,FILTER_DEFAULT);
-    var_dump($form);
+    $form = filter_input_array(INPUT_POST,FILTER_DEFAULT);
+    $caixa = $this->Sale->saveCaixa($form);
+    $venda = $this->Sale->saveSale($form);
+    if($caixa AND $venda){
+      Sessao::izitoast('sale', 'Success', 'Venda efectuada');
+          Url::redireciona('saler/home');
+          exit;
+    }else{
+      Sessao::izitoast('sale', 'Error', 'Erro na venda','error');
+          Url::redireciona('saler/home');
+          exit;
+    }
+     
   }
 }

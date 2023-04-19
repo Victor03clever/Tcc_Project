@@ -91,6 +91,7 @@ div.content .cards .card{
   position: fixed;
   /* float: right; */
   right: 2rem;
+  z-index: 111;
 }
 
 table *{

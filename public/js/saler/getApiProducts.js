@@ -93,7 +93,8 @@ fetch(`${url}/api`)
         handleProducts();
       }
     }
-
+    
+    
     setInterval(() => {
       // carrinho com localstorages
 
@@ -230,14 +231,16 @@ fetch(`${url}/api`)
         let includes = document.querySelectorAll("button.include");
         for (let i = 0; i < includes.length; i++) {
           includes[i].addEventListener("click", () => {
-            cartNumbers(products[i]);
-            totalCost(products[i]);
+            cartNumbers(currentProducts[i]);
+            totalCost(currentProducts[i]);
           });
         }
       }
       function setItem(product) {
         let cartItems = localStorage.getItem("productsInCart");
         cartItems = JSON.parse(cartItems);
+        product.type='product';
+
         if (cartItems != null) {
           if (cartItems[product.title] == undefined) {
             cartItems = {
@@ -381,6 +384,32 @@ fetch(`${url}/api`)
           localStorage.setItem("totalCost", totalCost);
         }
       }
+      function addInput(){
+        
+
+        let cartItems = localStorage.getItem("productsInCart");
+        if(cartItems){
+
+          let div = document.querySelector('.divInputs');
+          cartItems = JSON.parse(cartItems);
+          div.innerHTML='';
+          Object.values(cartItems).map((item) => {
+           
+           div.innerHTML += `
+           <input name='qtd[]' value='${item.inCart}'/>
+           <input name='type[]' value='${item.type}'/>
+           <input name='id[]' value='${item.id}'/>
+           <input name='total[]' value='${item.inCart * item.price}'/>
+  
+           `;
+            
+          });
+        }
+  
+          
+          
+      }
+      
 
       handleProducts();
       showCartProducts();
@@ -389,7 +418,11 @@ fetch(`${url}/api`)
       excluidAll();
       plusButton();
       cancelCart();
+      addInput();
+
     }, 1111);
+    // adicionar os inputs com os dados do carrinhho
+    
   })
   .catch((err) => console.log(err));
 

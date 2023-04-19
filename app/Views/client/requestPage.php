@@ -7,7 +7,7 @@ use App\Helpers\Sessao;
 
 <link rel="stylesheet" href="<?= asset("css/client/style2.css") ?>">
 <main class="wrapper">
-  <div class="d-flex flex-wrap justify-content-around align-items-center">
+  <div class="d-flex flex-wrap justify-content-around align-items-start">
     <div id="all">
       <h1>/Refeições</h1>
       <div class="pedidos">

@@ -37,7 +37,7 @@ use App\Helpers\Sessao;
         <div class="cats">
 
           <div id="cat">
-            <button type="submit" class="cat active" name="" data-category="0">
+            <button type="submit" class="cat active" name="" data-category=0>
               <img src="<?= asset("img/client/cat1.svg") ?>" alt="">
               <h6>Todos</h6>
             </button>
@@ -59,7 +59,7 @@ use App\Helpers\Sessao;
     </div>
 
     <div class="cards cards-products" data-authenticated="<?= $_SESSION['usuarioC_id'] ? "true" : "false" ?>" data-url="<?= URL ?>">
-      </form>
+      <!-- </form> -->
     </div>
 
 
