@@ -113,10 +113,10 @@ table *{
 .table-striped>tbody>tr:nth-of-type(odd)>* .bi-dash{
   color: var(--primary-color);
 }
-.table-striped>tbody>tr:nth-of-type(odd)>* .bi-plus{
+.table-striped>tbody>tr:nth-of-type(odd)>* .operations{
   color: var(--primary-color);
 }
-.table-striped>tbody>tr:nth-of-type(odd)>* .operations{
+.table-striped>tbody>tr:nth-of-type(odd)>* .bi-plus{
   color: var(--primary-color);
 }
 .bi-x-circle{

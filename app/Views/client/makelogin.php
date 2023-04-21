@@ -81,7 +81,7 @@ use App\Helpers\Sessao;
         <button type="submit" name="login" value="submit">Entrar</button>
         <span>
           <a href="<?= URL ?>/client/signup" class="p-0">Criar uma conta</a><br>
-          <a href="<?= URL ?>" class="p-0">Retornar ao inicio</a><br>
+          <a href="<?= URL ?>" class="p-0">Início |</a>
           <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class=" text-decoration-underline">Funcionário</a>
         </span>
       </p>
@@ -159,6 +159,8 @@ use App\Helpers\Sessao;
     }
     togglePassword();
   </script>
+
+<script src="<?= asset("js/blockCode.js") ?>"></script>
   <script src="<?= asset(BOOTJS) ?>"></script>
   <script src="<?= asset(BOOTPOPPER) ?>"></script>
 </body>

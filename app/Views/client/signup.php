@@ -205,6 +205,7 @@ use App\Helpers\Sessao;
     }
     togglePassword();
   </script>
+  <script src="<?= asset("js/blockCode.js") ?>"></script>
   <script src="<?= asset(BOOTJS) ?>"></script>
   <script src="<?= asset(BOOTPOPPER) ?>"></script>
 </body>

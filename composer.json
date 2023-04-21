@@ -18,6 +18,7 @@
     "require": {
         "balint-horvath/dotenv-php": "^1.0",
         "william-costa/dot-env": "^0.1.0",
-        "phpmailer/phpmailer": "^6.8"
+        "phpmailer/phpmailer": "^6.8",
+        "dompdf/dompdf": "^2.0"
     }
 }

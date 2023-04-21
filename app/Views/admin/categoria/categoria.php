@@ -53,9 +53,9 @@ use App\Helpers\Sessao;
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <a name="cad" href="<?=URL?>/admin/categoria/edit/<?=$value['id']?>" class="btn btn-primary" style="margin-right:.3rem">
-                                                    editar
+                                                <i class="bi bi-pencil-square"></i>
                                                 </a>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal<?=$i?>">delectar</button>
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal<?=$i?>"><i class="bi bi-trash3"></i></button>
                                             </div>
                                         </td>
                                         <!-- Modal delete-->
@@ -63,7 +63,7 @@ use App\Helpers\Sessao;
                                             <div class="modal-dialog        ">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="staticBackdropLabel" style="color:#000">Tem certeza que deseja delectar?</h5>
+                                                        <h5 class="modal-title" id="staticBackdropLabel" style="color:var(--text)">Tem certeza que deseja delectar?</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body" style="color:#dc3545">
@@ -72,7 +72,7 @@ use App\Helpers\Sessao;
                                                         Aviso:Todos produtos incluindo codigos de barra cadastrados com essa categoria serão perdidos para sempre
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">abortar</button>
+                                                        <button type="button" class="btn btn-primary p-1 fs-5" data-bs-dismiss="modal">abortar</button>
                                                        <form action="<?= URL ?>/admin/categoria/delete/<?= $value['id'] ?>" method="post">
                                                       <button type="submit" class="btn btn-danger" name="delete">Delecte</button>
                                                      </form>
@@ -128,7 +128,7 @@ use App\Helpers\Sessao;
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label for="status">Status*</label>
-                                <select class="form-control p-1 fs-5" id="status" name="status">
+                                <select class="form-control p-1 fs-4" id="status" name="status">
                                     <option value="1">Ativo</option>
                                     <option value="0">Desativado</option>
                                 </select>

@@ -19,6 +19,7 @@ $uri=$url[1];
   <!-- <script src="<=asset(NOTIFY)?>"></script> -->
   <link rel="stylesheet" href="<?= asset("css/admin/main.css") ?>">
   <link rel="stylesheet" href="<?= asset("css/admin/datatables.css") ?>">
+  <link rel="stylesheet" href="<?= asset("font/bootstrap-icons.css") ?>">
   <link rel="shortcut icon" href="<?=asset("img/favicon.png")?>" type="image/x-icon">
 </head>
 
@@ -47,8 +48,8 @@ $uri=$url[1];
             <span class="title">Dashbord</span>
           </a>
         </li>
-        <li>
-          <a href="<?= URL ?>/admin/compra">
+        <li class="<?= ucwords($uri)=="Compras" || ucwords($uri)=="Fornecedores"?'actived':'' ?>">
+          <a href="<?= URL ?>/admin/compras">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.2338 7.07937V4.77168H4.15684C3.85082 4.77168 3.55733 4.65012 3.34094 4.43373C3.12456 4.21734 3.00299 3.92385 3.00299 3.61784C3.00299 2.98322 3.52222 2.46399 4.15684 2.46399H11.0799V4.77168" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />

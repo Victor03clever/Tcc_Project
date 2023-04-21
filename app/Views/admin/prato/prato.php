@@ -53,9 +53,9 @@ use App\Helpers\Sessao;
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <a name="cad" href="<?= URL ?>/admin/prato/edite/<?= $value['id'] ?>" class="btn btn-primary" style="margin-right:.3rem">
-                                                        editar
+                                                    <i class="bi bi-pencil-square"></i>
                                                     </a>
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal<?= $i ?>">delectar</button>
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal<?= $i ?>"><i class="bi bi-trash3"></i></button>
                                                 </div>
                                             </td>
                                             <!-- Modal delete-->

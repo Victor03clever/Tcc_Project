@@ -1,22 +1,15 @@
 <?php 
 use App\Helpers\Sessao;
-Sessao::sms('edit');
 ?>
 
-<?php
-
-use App\Helpers\Valida;
-
-
-?>
 <link rel="stylesheet" href="<?= asset("css/admin/style3.css") ?>">
 <section class="section">
     <?= Sessao::izitoast('categoriaA'); ?>
     <?= Sessao::izitoast('categoriaS'); ?>
     <?= Sessao::izitoast('categoriaE'); ?>
+    <?= Sessao::sms('edit'); ?>
     <?= Sessao::sms('metodo'); ?>
     <h1>Categorias / Actualizar</h1>
-    <?= Sessao::sms('metodo'); ?>
     
 <main>
         
@@ -41,7 +34,7 @@ use App\Helpers\Valida;
                     </div>
                     <div class="form-group col-12 col-md-6">
                         <label for="status">Status*</label>
-                        <select class="form-control" id="status" name="status">
+                        <select class="form-control fs-5" id="status" name="status">
                             <option value="1">Ativo</option>
                             <option value="0">Desativado</option>
                         </select>

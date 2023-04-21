@@ -33,3 +33,25 @@ table *{
     --bs-table-accent-bg: var(--text);
     color: var(--primary-color);
 }
+/* icones na tabela da page  */
+/* .table-striped>tbody>tr:nth-of-type(odd)>* .bi-trash3{
+  color: var(--primary-color);
+} */
+.bi-trash3{
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+/* .table-striped>tbody>tr:nth-of-type(odd)>* .bi-journal-bookmark-fill{
+  color: var(--primary-color);
+} */
+.bi-journal-bookmark-fill{
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+/* .table-striped>tbody>tr:nth-of-type(odd)>* .bi-pencil-square{
+  color: var(--primary-color);
+} */
+.bi-pencil-square{
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}

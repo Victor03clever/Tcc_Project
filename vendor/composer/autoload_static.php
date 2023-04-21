@@ -15,9 +15,26 @@ class ComposerStaticInitf3d1b9f3fe48200d9dac0b5d43fa3ab6
         array (
             'WilliamCosta\\DotEnv\\' => 20,
         ),
+        'S' => 
+        array (
+            'Svg\\' => 4,
+            'Sabberworm\\CSS\\' => 15,
+        ),
         'P' => 
         array (
             'PHPMailer\\PHPMailer\\' => 20,
+        ),
+        'M' => 
+        array (
+            'Masterminds\\' => 12,
+        ),
+        'F' => 
+        array (
+            'FontLib\\' => 8,
+        ),
+        'D' => 
+        array (
+            'Dompdf\\' => 7,
         ),
         'B' => 
         array (
@@ -34,9 +51,29 @@ class ComposerStaticInitf3d1b9f3fe48200d9dac0b5d43fa3ab6
         array (
             0 => __DIR__ . '/..' . '/william-costa/dot-env/src',
         ),
+        'Svg\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
+        ),
+        'Sabberworm\\CSS\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
+        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'Masterminds\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
+        'FontLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
+        ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
         'BalintHorvath\\DotEnv\\' => 
         array (
@@ -50,6 +87,7 @@ class ComposerStaticInitf3d1b9f3fe48200d9dac0b5d43fa3ab6
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
