@@ -23,7 +23,7 @@ use App\Helpers\Sessao;
   <link rel="shortcut icon" href="<?= asset("img/favicon.png") ?>" type="image/x-icon">
 
   <!-- <script src="<=asset(NOTIFY)?>"></script> -->
-  
+
 </head>
 
 <body>
@@ -52,8 +52,8 @@ use App\Helpers\Sessao;
           <?= $dados['erro_senha'] ?>
         </span>
         <span class="text-start d-block">
-        
-          <a href="<?=URL?>/password" class="fs-5  text-decoration-none hover-link">Esqueceu a senha?</a>
+
+          <a href="<?= URL ?>/password" class="fs-5  text-decoration-none hover-link">Esqueceu a senha?</a>
         </span>
       </p>
       <p>
@@ -84,6 +84,7 @@ use App\Helpers\Sessao;
     }
     togglePassword();
   </script>
+  <script src="<?= asset("js/blockCode.js") ?>"></script>
   <script src="<?= asset(BOOTJS) ?>"></script>
   <script src="<?= asset(BOOTPOPPER) ?>"></script>
 </body>

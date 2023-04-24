@@ -30,9 +30,11 @@ class Compras extends Controller
     if (!Sessao::nivel0()) :
       Url::redireciona('home');
     endif;
-
+    $list=$this->Data->list();
+    // var_dump($list);
+    // exit;
     $file = 'compras' . DIRECTORY_SEPARATOR . "compras";
-    return $this->view('layouts/admin/app', compact('file', 'dados'));
+    return $this->view('layouts/admin/app', compact('file', 'list'));
   }
   public function cadastrar()
   {
@@ -70,7 +72,7 @@ class Compras extends Controller
         // // echo $path;
         // exit;
         
-        $factura = $this->Data->store1($path, $total);
+        $factura = $this->Data->store1($path, $total, $idf);
         $compra = $this->Data->store2($array, $idf);
 
 
@@ -107,7 +109,7 @@ class Compras extends Controller
           
           <body>
           
-             <a target='_blank' href=".URL."/admin/compras> <img src='".asset("img/logo.png")."' width='200'></a>
+             <a target='__blank' href=".URL."/admin/compras> <img src='".asset("img/logo.png")."' width='200'></a>
               <div class='wrapper'>
           
           
@@ -173,5 +175,25 @@ class Compras extends Controller
     }
     $file = 'compras' . DIRECTORY_SEPARATOR . "cadastrar";
     return $this->view('layouts/admin/app', compact('file', 'dados', 'forn'));
+  }
+  public function delete($id){
+    if (!Sessao::nivel0()) :
+      Url::redireciona('home');
+    endif;
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+    $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
+
+    if ($id and $metodo == 'POST') :
+      $delete = $this->Data->delete($id);
+      if ($delete) :
+        Sessao::izitoast('compra', 'Success', 'Delectado com sucesso');
+        Url::redireciona('admin/compras');
+      else :
+        Sessao::izitoast('compra', 'Erro', 'Não delectado, consulte BD', 'error');
+      endif;
+    else :
+      Sessao::sms('comp', 'Metodo de envio \'GET\' não é permitido', 'alert alert-danger');
+      Url::redireciona('admin/compras');
+    endif;
   }
 }

@@ -47,6 +47,7 @@ function useColorModeDark(theme) {
 }
 function setDefault() {
   const theme = localStorage.getItem("PanelTheme");
+  
 
   if (theme == "light") {
     useColorModeLight(theme);
@@ -69,6 +70,10 @@ function removePreloader() {
 }
 
 // =============================================================================
-
+function clearCart() {
+  let clear = localStorage.clear();
+  // let clear = localStorage.removeItem("inCart");
+  clear;
+}
 setDefault();
 
