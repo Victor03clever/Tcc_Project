@@ -124,7 +124,7 @@ Sessao::izitoast("sale");
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary w-25 fs-4 p-2 cancelCart" data-bs-dismiss="modal"><i class="bi bi-x ttext white"></i> Abortar</button>
-        <button type="submit" class="btn btn-primary w-25" name="sale" value="submit"><i class="bi bi-check text-white"></i>
+        <button type="submit" class="btn btn-primary w-25" name="sale" value="submit" onclick="clear()"><i class="bi bi-check text-white"></i>
           Vender</button>
       </div>
       </form>

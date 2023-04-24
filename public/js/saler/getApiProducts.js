@@ -399,6 +399,7 @@ fetch(`${url}/api`)
            <input name='qtd[]' value='${item.inCart}'/>
            <input name='type[]' value='${item.type}'/>
            <input name='id[]' value='${item.id}'/>
+           <input name='nome[]' value='${item.title}'/>
            <input name='total[]' value='${item.inCart * item.price}'/>
   
            `;

@@ -7,6 +7,10 @@ use App\Helpers\Valida;
 use App\Helpers\Url;
 use App\Libraries\uploads;
 use App\Libraries\Controller;
+// prints file
+use Mike42\Escpos\Printer;
+use Mike42\Escpos\EscposImage;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
 class  Saler  extends Controller
 {
@@ -14,9 +18,10 @@ class  Saler  extends Controller
   private $Food;
   private $Sale;
   private $Perfil;
+  private $Printer;
   public function __construct()
   {
-    
+
     if (Sessao::nivel0()) :
       session_destroy();
       Url::redireciona('client/login');
@@ -25,6 +30,8 @@ class  Saler  extends Controller
     $this->Sale = $this->model("Saler\Venda");
     $this->Perfil = $this->model("Saler\Perfil");
     $this->Food = $this->model("client\Home");
+    $connector = new WindowsPrintConnector("EPSON");
+    $this->Printer = new Printer($connector);
   }
 
   public function index()
@@ -142,17 +149,95 @@ class  Saler  extends Controller
       Url::redireciona("saler/login");
     endif;
     $form = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+    // var_dump($form);
+
+
+    // exit;
     $caixa = $this->Sale->saveCaixa($form);
     $venda = $this->Sale->saveSale($form);
     if ($caixa and $venda) {
       Sessao::izitoast('sale', 'Success', 'Venda efectuada');
       Url::redireciona('saler/home');
+      try {
+        //code...
+        $this->printTickets($form);
+      } catch (\Exception $th) {
+        // simplesmente avança
+      }
       exit;
     } else {
       Sessao::izitoast('sale', 'Error', 'Erro na venda', 'error');
       Url::redireciona('saler/home');
       exit;
     }
+  }
+
+  private function printTickets($data)
+  {
+
+          $this->Printer->setJustification(Printer::JUSTIFY_CENTER);
+
+          /*
+        logo
+        */
+          // try{
+          // 	$img = EscposImage::load("logo.png");
+          // $this->Printer -> graphics($img);
+          // }catch(\Exception $e){/*No hacemos nada si hay error*/}
+
+          /*
+        */
+
+          $this->Printer->text("\n" . "Refeitório Anherc" . "\n");
+          $this->Printer->text("Direccion: Clever e Padjun #151" . "\n");
+          $this->Printer->text("Tel: 244938295867" . "\n");
+
+          $this->Printer->text(date("Y-m-d H:i:s") . "\n");
+          $this->Printer->text("---------------------------------------" . "\n");
+          $this->Printer->setJustification(Printer::JUSTIFY_LEFT);
+          $this->Printer->text("Qtd    Desc     Total    IMP.\n");
+          $this->Printer->text("----------------------------------------" . "\n");
+          /*
+
+        */
+          /**/
+          $this->Printer->setJustification(Printer::JUSTIFY_LEFT);
+          // $this->Printer->text("Productos\n");
+          foreach ($data['id'] as $key => $value) {
+
+            $this->Printer->text($data['qtd'][$key] . "  --  " . $data['nome'][$key] . "  --  " .   $data['total'][$key] . "   \n");
+          }
+          // $this->Printer->text("Sabrtitas \n");
+          // $this->Printer->text("3  pieza    10.00 30.00   \n");
+          // $this->Printer->text("Doritos \n");
+          // $this->Printer->text("5  pieza    10.00 50.00   \n");
+          /*
+
+        */
+
+          $total = 0;
+          foreach ($data['total'] as $key => $value) {
+            // echo $value.'<br>';
+            $total += $value;
+          }
+          $this->Printer->text("----------------------------------------" . "\n");
+          $this->Printer->setJustification(Printer::JUSTIFY_RIGHT);
+          $this->Printer->text("SUBTOTAL: " . $total . " kz\n");
+          $this->Printer->text("IVA: 0.00\n");
+          $this->Printer->text("TOTAL: " . $total . " kz\n");
+
+
+          /*
+        */
+          $this->Printer->setJustification(Printer::JUSTIFY_CENTER);
+          $this->Printer->text("Agredecemos pela sua compra\n");
+
+
+
+          $this->Printer->feed(3);
+          $this->Printer->cut();
+          $this->Printer->pulse();
+          $this->Printer->close();
   }
 
 

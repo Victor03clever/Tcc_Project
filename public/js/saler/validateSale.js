@@ -28,6 +28,7 @@ formVenda.addEventListener("submit", (event) => {
         change.innerHTML += `Troco: ${payment.value - total}.00 kz`;
         change1.setAttribute("value",`${payment.value - total}`);
         formVenda.submit();
+        clear();
       } else {
         alert("Valor insuficiente");
         payment.classList.remove("is-valid");
@@ -57,3 +58,8 @@ payment.addEventListener("keyup", () => {
     }
   }
 });
+function clear() {
+  let clear = localStorage.clear();
+  // let clear = localStorage.removeItem("inCart");
+  clear;
+}

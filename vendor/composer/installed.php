@@ -37,6 +37,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'mike42/escpos-php' => array(
+            'pretty_version' => 'v2.2',
+            'version' => '2.2.0.0',
+            'reference' => 'e5496cf819b048b11877117bd14a9cea4fb17c03',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mike42/escpos-php',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'phenx/php-font-lib' => array(
             'pretty_version' => '0.5.4',
             'version' => '0.5.4.0',
