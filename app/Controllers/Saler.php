@@ -2,11 +2,13 @@
 
 namespace App\Controllers;
 
+use App\Helpers\DataActual;
 use App\Helpers\Sessao;
 use App\Helpers\Valida;
 use App\Helpers\Url;
 use App\Libraries\uploads;
 use App\Libraries\Controller;
+use App\Models\saler\Request;
 // prints file
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\EscposImage;
@@ -18,6 +20,7 @@ class  Saler  extends Controller
   private $Food;
   private $Sale;
   private $Perfil;
+  private $Request;
   private $Printer;
   public function __construct()
   {
@@ -29,6 +32,7 @@ class  Saler  extends Controller
     $this->Data = $this->model("Saler\Usuarios");
     $this->Sale = $this->model("Saler\Venda");
     $this->Perfil = $this->model("Saler\Perfil");
+    $this->Request = $this->model("Saler\Request");
     $this->Food = $this->model("client\Home");
     $connector = new WindowsPrintConnector("EPSON");
     $this->Printer = new Printer($connector);
@@ -175,70 +179,88 @@ class  Saler  extends Controller
   private function printTickets($data)
   {
 
-          $this->Printer->setJustification(Printer::JUSTIFY_CENTER);
+    $this->Printer->setJustification(Printer::JUSTIFY_CENTER);
 
-          /*
+    /*
         logo
         */
-          // try{
-          // 	$img = EscposImage::load("logo.png");
-          // $this->Printer -> graphics($img);
-          // }catch(\Exception $e){/*No hacemos nada si hay error*/}
+    // try{
+    // 	$img = EscposImage::load("logo.png");
+    // $this->Printer -> graphics($img);
+    // }catch(\Exception $e){/*No hacemos nada si hay error*/}
 
-          /*
+    /*
         */
 
-          $this->Printer->text("\n" . "Refeitório Anherc" . "\n");
-          $this->Printer->text("Direccion: Clever e Padjun #151" . "\n");
-          $this->Printer->text("Tel: 244938295867" . "\n");
+    $this->Printer->text("\n" . "Refeitório Anherc" . "\n");
+    $this->Printer->text("Direccion: Clever e Padjun #151" . "\n");
+    $this->Printer->text("Tel: 244938295867" . "\n");
 
-          $this->Printer->text(date("Y-m-d H:i:s") . "\n");
-          $this->Printer->text("---------------------------------------" . "\n");
-          $this->Printer->setJustification(Printer::JUSTIFY_LEFT);
-          $this->Printer->text("Qtd    Desc     Total    IMP.\n");
-          $this->Printer->text("----------------------------------------" . "\n");
-          /*
-
-        */
-          /**/
-          $this->Printer->setJustification(Printer::JUSTIFY_LEFT);
-          // $this->Printer->text("Productos\n");
-          foreach ($data['id'] as $key => $value) {
-
-            $this->Printer->text($data['qtd'][$key] . "  --  " . $data['nome'][$key] . "  --  " .   $data['total'][$key] . "   \n");
-          }
-          // $this->Printer->text("Sabrtitas \n");
-          // $this->Printer->text("3  pieza    10.00 30.00   \n");
-          // $this->Printer->text("Doritos \n");
-          // $this->Printer->text("5  pieza    10.00 50.00   \n");
-          /*
+    $this->Printer->text(date("Y-m-d H:i:s") . "\n");
+    $this->Printer->text("-----------------------------------------" . "\n");
+    $this->Printer->setJustification(Printer::JUSTIFY_CENTER);
+    $this->Printer->text("produto          qtd          valor\n");
+    $this->Printer->text("-----------------------------------------" . "\n");
+    /*
 
         */
+    /**/
+    $this->Printer->setJustification(Printer::JUSTIFY_LEFT);
+    // $this->Printer->text("Productos\n");
+    foreach ($data['id'] as $key => $value) {
 
-          $total = 0;
-          foreach ($data['total'] as $key => $value) {
-            // echo $value.'<br>';
-            $total += $value;
-          }
-          $this->Printer->text("----------------------------------------" . "\n");
-          $this->Printer->setJustification(Printer::JUSTIFY_RIGHT);
-          $this->Printer->text("SUBTOTAL: " . $total . " kz\n");
-          $this->Printer->text("IVA: 0.00\n");
-          $this->Printer->text("TOTAL: " . $total . " kz\n");
+      $this->Printer->text($data['nome'][$key] . "  --  " . $data['qtd'][$key] . "  --  " .   $data['total'][$key] . "   \n");
+    }
+    // $this->Printer->text("Sabrtitas \n");
+    // $this->Printer->text("3  pieza    10.00 30.00   \n");
+    // $this->Printer->text("Doritos \n");
+    // $this->Printer->text("5  pieza    10.00 50.00   \n");
+    /*
 
-
-          /*
         */
-          $this->Printer->setJustification(Printer::JUSTIFY_CENTER);
-          $this->Printer->text("Agredecemos pela sua compra\n");
+
+    $total = 0;
+    foreach ($data['total'] as $key => $value) {
+      // echo $value.'<br>';
+      $total += $value;
+    }
+    $this->Printer->text("-----------------------------------------" . "\n");
+    $this->Printer->setJustification(Printer::JUSTIFY_RIGHT);
+    $this->Printer->text("SUBTOTAL: " . $total . " kz\n");
+    $this->Printer->text("IVA: 0.00\n");
+    $this->Printer->text("TOTAL: " . $total . " kz\n");
+    $this->Printer->text("TROCO: " . $data['troco'] . " kz\n");
+
+
+    /*
+        */
+    $this->Printer->setJustification(Printer::JUSTIFY_CENTER);
+    $this->Printer->text("Agredecemos pela sua compra\n");
 
 
 
-          $this->Printer->feed(3);
-          $this->Printer->cut();
-          $this->Printer->pulse();
-          $this->Printer->close();
+    $this->Printer->feed(3);
+    $this->Printer->cut();
+    $this->Printer->pulse();
+    $this->Printer->close();
   }
+  // end Home
+
+  // <!-- ========== Start pedidos ========== -->
+
+  public function pedidos()
+  {
+    // $total = $this->Request->getSumTotal();
+    
+    
+    $pedidosR = $this->Request->getRequestsR();
+    $all = $this->Request->getAllRequest();
+   
+    $file = "pedidos";
+    $this->view('layouts/saler/app', compact('file', 'pedidosR', 'all'));
+  }
+
+  // <!-- ========== End pedidos ========== -->
 
 
 
@@ -415,8 +437,6 @@ class  Saler  extends Controller
     return $this->view('layouts/saler/app', compact('file', 'dados', 'change'));
   }
 
-
-
   public function deletetofo()
   {
     if (!Sessao::nivel1()) :
@@ -434,4 +454,6 @@ class  Saler  extends Controller
     // Url::redireciona('admin/config');
     endif;
   }
+  // end Configuracion
+
 }

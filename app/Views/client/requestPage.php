@@ -7,9 +7,9 @@ use App\Helpers\Sessao;
 
 <link rel="stylesheet" href="<?= asset("css/client/style2.css") ?>">
 <main class="wrapper">
-  <div class="d-flex flex-wrap justify-content-around align-items-start">
+  <div class="d-flex flex-wrap justify-content-start align-items-start">
     <div id="all">
-      <h1>/Refeições</h1>
+      <h1>Refeições</h1>
       <div class="pedidos">
         <?php $totalR = 0;
         foreach ($allRequest as $key => $value) : ?>
@@ -32,8 +32,8 @@ use App\Helpers\Sessao;
       <h3>Total de Refeições: KZ <?= $totalR ?></h3>
     </div>
 
-    <div id="all">
-      <h1>/Produtos</h1>
+    <!-- <div id="all">
+      <h1>Produtos</h1>
 
       <div class="pedidos">
         <?php $totalP = 0;
@@ -56,7 +56,7 @@ use App\Helpers\Sessao;
       </div>
       <h3>Total de Produtos: KZ <?= $totalP ?></h3>
 
-    </div>
+    </div> -->
   </div>
   <h2 class=" mt-5">Total Geral: <?= $totalR + $totalP ?></h2>
   <form action="<?= URL ?>/request/confirmRequest" method="post">
@@ -67,4 +67,4 @@ use App\Helpers\Sessao;
 
   <a href="historico.html" class="btn btn-dark p-3">Historico</a>
 </main>
-<div class="cards-products d-none" data-url="<?= URL ?>"></div>
+<div class="cards d-none" data-url="<?= URL ?>"></div>

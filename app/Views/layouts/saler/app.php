@@ -4,6 +4,7 @@ $url=filter_input(INPUT_GET,'url',FILTER_SANITIZE_URL);
 $url=explode("/",$url);
 $uri=$url[1];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,8 +45,8 @@ $uri=$url[1];
             <span class="title">Menu</span>
           </a>
 
-        <li>
-          <a href="pedidos.html">
+        <li class="<?= ucwords($uri)=="Pedidos" || ucwords($uri)=="History" ?'actived':'' ?>">
+          <a href="<?=URL?>/saler/pedidos">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.8107 9.0366C12.8107 9.34262 12.6891 9.63611 12.4728 9.8525C12.2564 10.0689 11.9629 10.1905 11.6569 10.1905H4.73378L2.42609 12.4981V3.26737C2.42609 2.96135 2.54765 2.66787 2.76404 2.45148C2.98043 2.23509 3.27391 2.11353 3.57993 2.11353H11.6569C11.9629 2.11353 12.2564 2.23509 12.4728 2.45148C12.6891 2.66787 12.8107 2.96135 12.8107 3.26737V9.0366Z" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -152,7 +153,7 @@ $uri=$url[1];
           </span>
         </div>
         <div class="notify" title="pedidos">
-          <a href="#" class="text-decoration-none position-relative">
+          <a href="<?=URL?>/saler/pedidos" class="text-decoration-none position-relative">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M13.5 6C13.5 4.80653 13.0259 3.66193 12.182 2.81802C11.3381 1.97411 10.1935 1.5 9 1.5C7.80653 1.5 6.66193 1.97411 5.81802 2.81802C4.97411 3.66193 4.5 4.80653 4.5 6C4.5 11.25 2.25 12.75 2.25 12.75H15.75C15.75 12.75 13.5 11.25 13.5 6Z" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M10.2975 15.75C10.1657 15.9773 9.9764 16.166 9.74868 16.2971C9.52097 16.4283 9.2628 16.4973 9.00001 16.4973C8.73723 16.4973 8.47906 16.4283 8.25134 16.2971C8.02363 16.166 7.83437 15.9773 7.70251 15.75" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />

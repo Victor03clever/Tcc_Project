@@ -27,44 +27,44 @@ use App\Helpers\Sessao;
     </div>
   </div>
 </section>
-
-<section id="produtos" class="">
+<!-- produtos -->
+<!-- <section id="produtos" class="">
   <div class="wrapper">
     <h4>Produtos</h4>
     <div class="category">
-      <?php if (isset($_SESSION['usuarioC_id'])) : ?>
+      <php if (isset($_SESSION['usuarioC_id'])) : ?>
         <h5> Find by category</h5>
         <div class="cats">
 
           <div id="cat">
             <button type="submit" class="cat active" name="" data-category=0>
-              <img src="<?= asset("img/client/cat1.svg") ?>" alt="">
+              <img src="<= asset("img/client/cat1.svg") ?>" alt="">
               <h6>Todos</h6>
             </button>
           </div>
 
-          <?php foreach ($allcategory as $key => $value) : ?>
+          <php foreach ($allcategory as $key => $value) : ?>
 
             <div id="cat">
-              <button type="button" class="cat" name="" data-category="<?= $value['id'] ?>">
-                <!-- <img src="<= asset("img/client/cat1.svg") ?>" alt=""> -->
-                <h6><?= $value['nome'] ?></h6>
+              <button type="button" class="cat" name="" data-category="<= $value['id'] ?>">
+                 <img src="<= asset("img/client/cat1.svg") ?>" alt="">
+                <h6><= $value['nome'] ?></h6>
               </button>
             </div>
-          <?php endforeach ?>
+          <php endforeach ?>
         </div>
-      <?php else : ?>
-      <?php endif; ?>
+      <php else : ?>
+      <php endif; ?>
 
     </div>
 
-    <div class="cards cards-products" data-authenticated="<?= $_SESSION['usuarioC_id'] ? "true" : "false" ?>" data-url="<?= URL ?>">
-      <!-- </form> -->
+    <div class="cards cards-products" data-authenticated="<= $_SESSION['usuarioC_id'] ? "true" : "false" ?>" data-url="<= URL ?>">
+ </form> 
     </div>
 
 
   </div>
-</section>
+</section> -->
 
 <script>
   function dataActual() {

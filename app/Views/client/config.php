@@ -224,4 +224,4 @@ use App\Helpers\Sessao;
         </div>
     </div>
 </section>
-<div class="cards-products d-none" data-url="<?=URL?>" ></div>
+<div class="cards d-none" data-url="<?=URL?>" ></div>
