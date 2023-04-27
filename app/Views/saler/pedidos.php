@@ -1,6 +1,8 @@
 <?php
+
 use App\Models\saler\Request;
 use App\Helpers\DataActual;
+use App\Helpers\ResumirTexto;
 ?>
 <meta http-equiv="refresh" content="30;">
 <link rel="stylesheet" href="<?= asset("css/saler/style5.css") ?>">
@@ -11,14 +13,11 @@ use App\Helpers\DataActual;
             padding: .7rem;
             font-size: 1.5rem; margin-bottom:1rem">Histórico</a>
   <div class="row">
-    
 
-    <!-- <php
-    // if($pedidosP AND $pedidosR):
-    foreach (array_merge($pedidosR, $pedidosP) as $value){}
-    ?> -->
+
+
     <?php
-    if ($all) :
+    if ($all) : $i = 0;
       foreach ($all as $key => $value) :
     ?>
 
@@ -30,14 +29,14 @@ use App\Helpers\DataActual;
                 <div class="cabecalho">
                   <figure>
                     <span class="img">
-                      <img src="<?=asset($value['imagem'])?>" width="40" alt="">
+                      <img src="<?= asset($value['imagem']) ?>" width="40" alt="">
                     </span>
                     <h4 class="username fs-3">
-                      <?=$value['nome']?>
+                      <?= $value['nome'] ?>
                     </h4>
                   </figure>
                   <span class="time">
-                    <?=DataActual::during($value['pe_create'])?>
+                    <?= DataActual::during($value['pe_create']) ?>
                   </span>
                 </div>
 
@@ -62,40 +61,52 @@ use App\Helpers\DataActual;
               <span class="fs-4">
                 <strong>
                   Pedidos
+
                 </strong>
               </span>
               <p class="card-text pedidos">
-                <a href="#" data-bs-toggle="modal" data-bs-target="#pedido">mais</a><br>
-              
-                  Total: <?=Request::getSumTotal($value['escola'])['SUM(pedido.preco)'];?> kz<br>
-                
+                <?php if (Request::getRequestsR($value['escola'])) : $pedidos = "";
+                  $modal = ''; ?>
+
+                  <?php foreach (Request::getRequestsR($value['escola']) as $key => $value) :
+                    $pedidos .= $value['re_nome'] . " (" . $value['qtd'] . "x),<br>";
+                    $modal .= $value['re_nome'] . " (" . $value['qtd'] . "x) =>" . $value['re_preco'] . "kz<br>";
+                  endforeach; ?>
+                  <?= ResumirTexto::ResumirTexto($pedidos, 3, " <a href='#' data-bs-toggle='modal' data-bs-target='#pedido" . $i . "'>mais</a><br>") ?>
+                <?php endif; ?>
+
+                <strong>
+
+                  Total: <?= Request::getSumTotal($value['escola'])['total']; ?> kz<br>
+                </strong>
+
               </p>
             </div>
           </div>
 
-          <!-- Modal -->
-          <div class="modal fade" id="pedido" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable      ">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="staticBackdropLabel">Todos pedidos</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  ...
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
     <?php
       endforeach;
     endif;
     ?>
-
+    <!-- Modal -->
+    <div class="modal fade" id="pedido<?= $i ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fs-2" id="staticBackdropLabel">Todos pedidos</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body fs-3">
+            <?php echo $modal; ?>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 </section>

@@ -351,7 +351,48 @@ input.form-control{
     object-fit: cover;
   }
 /* +++++BackToTopButton+++++++++++++++++++++++++++++ */
-
+/* dateRealTime */
+.date{
+  position: fixed;
+  right: 1.5rem;
+  bottom: 8rem;
+  background-color: #065E7C;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 2.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: .8rem;
+  opacity: 0.5;
+}
+.bi-alarm-fill{
+  font-size: 2.5rem;
+}
+.date .dataActual{
+ display: none;
+  animation: .2s linear;
+}
+.date:hover
+{
+  opacity: 1;
+  /* display: flex; */
+  /* align-items: center; */
+  /* flex-direction: column; */
+  padding-block: 2rem;
+  height: 7rem;
+  width: initial;
+  padding-inline: 2rem;
+  border-radius: .5rem;
+  
+}
+.date:hover .bi-alarm-fill{
+  display: none;
+}
+.date:hover .dataActual{
+  display: block;
+  font-size: 2rem;
+}
 a#backToTopButton {
   position: fixed;
   bottom: 3rem;

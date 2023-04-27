@@ -1,8 +1,8 @@
 <!-- saler -->
 <?php
-$url=filter_input(INPUT_GET,'url',FILTER_SANITIZE_URL);
-$url=explode("/",$url);
-$uri=$url[1];
+$url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
+$url = explode("/", $url);
+$uri = $url[1];
 ?>
 
 <!DOCTYPE html>
@@ -34,8 +34,8 @@ $uri=$url[1];
           </a>
           <span class="line"></span>
         </li>
-        <li class="<?= ucwords($uri)=="Home"?'actived':'' ?>">
-          <a href="<?=URL?>/saler/home">
+        <li class="<?= ucwords($uri) == "Home" ? 'actived' : '' ?>">
+          <a href="<?= URL ?>/saler/home">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.9319 9.7884C12.5648 10.6564 11.9908 11.4212 11.2599 12.0161C10.529 12.6109 9.66346 13.0177 8.73904 13.2008C7.81461 13.3839 6.85941 13.3377 5.95695 13.0664C5.05448 12.795 4.23222 12.3067 3.56207 11.6442C2.89191 10.9816 2.39426 10.165 2.11261 9.26568C1.83097 8.36637 1.77392 7.41176 1.94644 6.4853C2.11896 5.55885 2.5158 4.68876 3.10227 3.95111C3.68874 3.21346 4.44699 2.6307 5.31071 2.25378" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -45,8 +45,8 @@ $uri=$url[1];
             <span class="title">Menu</span>
           </a>
 
-        <li class="<?= ucwords($uri)=="Pedidos" || ucwords($uri)=="History" ?'actived':'' ?>">
-          <a href="<?=URL?>/saler/pedidos">
+        <li class="<?= ucwords($uri) == "Pedidos" || ucwords($uri) == "History" ? 'actived' : '' ?>">
+          <a href="<?= URL ?>/saler/pedidos">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.8107 9.0366C12.8107 9.34262 12.6891 9.63611 12.4728 9.8525C12.2564 10.0689 11.9629 10.1905 11.6569 10.1905H4.73378L2.42609 12.4981V3.26737C2.42609 2.96135 2.54765 2.66787 2.76404 2.45148C2.98043 2.23509 3.27391 2.11353 3.57993 2.11353H11.6569C11.9629 2.11353 12.2564 2.23509 12.4728 2.45148C12.6891 2.66787 12.8107 2.96135 12.8107 3.26737V9.0366Z" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -91,8 +91,8 @@ $uri=$url[1];
           </a>
           <span class="line"></span>
         </li>
-        <li class="<?= ucwords($uri)=="Config"?'actived':'' ?>">
-          <a href="<?=URL?>/saler/config">
+        <li class="<?= ucwords($uri) == "Config" ? 'actived' : '' ?>">
+          <a href="<?= URL ?>/saler/config">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.74533 1.93115H7.49148C7.18546 1.93115 6.89198 2.05272 6.67559 2.26911C6.4592 2.48549 6.33764 2.77898 6.33764 3.085V3.18884C6.33743 3.39119 6.28401 3.58992 6.18275 3.7651C6.08149 3.94028 5.93595 4.08575 5.76071 4.18692L5.51264 4.33115C5.33723 4.43242 5.13825 4.48574 4.93571 4.48574C4.73317 4.48574 4.5342 4.43242 4.35879 4.33115L4.27225 4.285C4.00748 4.13226 3.69293 4.09083 3.39764 4.16979C3.10235 4.24875 2.85045 4.44165 2.69725 4.70615L2.57033 4.92538C2.41759 5.19015 2.37616 5.50471 2.45512 5.8C2.53408 6.09529 2.72698 6.34718 2.99148 6.50038L3.07802 6.55807C3.25241 6.65875 3.39742 6.80332 3.49863 6.9774C3.59984 7.15148 3.65373 7.34902 3.65494 7.55038V7.84461C3.65575 8.04793 3.60282 8.24785 3.50151 8.42414C3.4002 8.60042 3.2541 8.7468 3.07802 8.84846L2.99148 8.90038C2.72698 9.05358 2.53408 9.30548 2.45512 9.60077C2.37616 9.89606 2.41759 10.2106 2.57033 10.4754L2.69725 10.6946C2.85045 10.9591 3.10235 11.152 3.39764 11.231C3.69293 11.3099 4.00748 11.2685 4.27225 11.1158L4.35879 11.0696C4.5342 10.9683 4.73317 10.915 4.93571 10.915C5.13825 10.915 5.33723 10.9683 5.51264 11.0696L5.76071 11.2138C5.93595 11.315 6.08149 11.4605 6.18275 11.6357C6.28401 11.8108 6.33743 12.0096 6.33764 12.2119V12.3158C6.33764 12.6218 6.4592 12.9153 6.67559 13.1317C6.89198 13.348 7.18546 13.4696 7.49148 13.4696H7.74533C8.05135 13.4696 8.34483 13.348 8.56122 13.1317C8.77761 12.9153 8.89917 12.6218 8.89917 12.3158V12.2119C8.89938 12.0096 8.9528 11.8108 9.05406 11.6357C9.15532 11.4605 9.30086 11.315 9.4761 11.2138L9.72417 11.0696C9.89958 10.9683 10.0986 10.915 10.3011 10.915C10.5036 10.915 10.7026 10.9683 10.878 11.0696L10.9646 11.1158C11.2293 11.2685 11.5439 11.3099 11.8392 11.231C12.1345 11.152 12.3864 10.9591 12.5396 10.6946L12.6665 10.4696C12.8192 10.2048 12.8606 9.89029 12.7817 9.595C12.7027 9.29971 12.5098 9.04781 12.2453 8.89461L12.1588 8.84846C11.9827 8.7468 11.8366 8.60042 11.7353 8.42414C11.634 8.24785 11.5811 8.04793 11.5819 7.84461V7.55615C11.5811 7.35283 11.634 7.15291 11.7353 6.97663C11.8366 6.80034 11.9827 6.65396 12.1588 6.5523L12.2453 6.50038C12.5098 6.34718 12.7027 6.09529 12.7817 5.8C12.8606 5.50471 12.8192 5.19015 12.6665 4.92538L12.5396 4.70615C12.3864 4.44165 12.1345 4.24875 11.8392 4.16979C11.5439 4.09083 11.2293 4.13226 10.9646 4.285L10.878 4.33115C10.7026 4.43242 10.5036 4.48574 10.3011 4.48574C10.0986 4.48574 9.89958 4.43242 9.72417 4.33115L9.4761 4.18692C9.30086 4.08575 9.15532 3.94028 9.05406 3.7651C8.9528 3.58992 8.89938 3.39119 8.89917 3.18884V3.085C8.89917 2.77898 8.77761 2.48549 8.56122 2.26911C8.34483 2.05272 8.05135 1.93115 7.74533 1.93115V1.93115Z" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -153,12 +153,12 @@ $uri=$url[1];
           </span>
         </div>
         <div class="notify" title="pedidos">
-          <a href="<?=URL?>/saler/pedidos" class="text-decoration-none position-relative">
+          <a href="<?= URL ?>/saler/pedidos" class="text-decoration-none position-relative">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M13.5 6C13.5 4.80653 13.0259 3.66193 12.182 2.81802C11.3381 1.97411 10.1935 1.5 9 1.5C7.80653 1.5 6.66193 1.97411 5.81802 2.81802C4.97411 3.66193 4.5 4.80653 4.5 6C4.5 11.25 2.25 12.75 2.25 12.75H15.75C15.75 12.75 13.5 11.25 13.5 6Z" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M10.2975 15.75C10.1657 15.9773 9.9764 16.166 9.74868 16.2971C9.52097 16.4283 9.2628 16.4973 9.00001 16.4973C8.73723 16.4973 8.47906 16.4283 8.25134 16.2971C8.02363 16.166 7.83437 15.9773 7.70251 15.75" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-            <span id="total" url="<?=URL?>" class="position-absolute  rounded-5" style="background: #065E7C; left:.9rem; top: -1.5rem; color:var(--new); width:1.7rem; height:1.7rem; text-align:center">0</span>
+            <span id="total" url="<?= URL ?>" class="position-absolute  rounded-5" style="background: #065E7C; left:.9rem; top: -1.5rem; color:var(--new); width:1.7rem; height:1.7rem; text-align:center">0</span>
           </a>
         </div>
         <span class="img">
@@ -191,8 +191,13 @@ $uri=$url[1];
       <img src="<?= asset("img/logo.png") ?>" alt="preloader">
     </div>
 
-    
+
   </main>
+  <div class="date">
+    <i class="bi bi-alarm-fill"></i>
+    <span class="dataActual">
+    </span>
+  </div>
   <a id="backToTopButton" class="" href="#">
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="20" cy="20" r="20" fill="#065E7C" />
@@ -214,13 +219,14 @@ $uri=$url[1];
           ...
         </div> -->
         <div class="modal-footer">
-        <a class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancelar</a>
+          <a class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancelar</a>
           <a href="<?= URL ?>/saler/sair" class="btn btn-primary btn-lg" onclick="clearCart()">Sair</a>
         </div>
       </div>
     </div>
   </div>
 
+  <script src="<?= asset("js/dateRealTime.js") ?>"></script>
   <script src="<?= asset("js/saler/getTotalRequestApi.js") ?>"></script>
   <script src="<?= asset("js/blockCode.js") ?>"></script>
   <script src="<?= asset("js/saler/main.js") ?>"></script>
@@ -245,7 +251,6 @@ $uri=$url[1];
     window.addEventListener("scroll", function() {
       backToTopButton.classList.toggle('show', scrollY > 600);
     })
-  
   </script>
 </body>
 

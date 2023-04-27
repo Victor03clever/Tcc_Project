@@ -252,12 +252,14 @@ class  Saler  extends Controller
   {
     // $total = $this->Request->getSumTotal();
     
-    
-    $pedidosR = $this->Request->getRequestsR();
+    // var_dump(Request::getRequestsR(16)[0]['re_nome']);
+
+    // exit;
+    // $pedidosR = $this->Request->getRequestsR();
     $all = $this->Request->getAllRequest();
    
     $file = "pedidos";
-    $this->view('layouts/saler/app', compact('file', 'pedidosR', 'all'));
+    $this->view('layouts/saler/app', compact('file', 'all'));
   }
 
   // <!-- ========== End pedidos ========== -->
