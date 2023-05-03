@@ -44,6 +44,21 @@ class Request
     }
    
   }
+  public static function getRequestsP($id)
+  {
+    $db = new Conexao();
+
+    $db->query("SELECT *, pedido.id as pe_id, produto.id as pr_id, produto.nome as pr_nome, pedido.preco as pe_preco, produto.preco as pr_preco, produto.imagem as pr_img, pedido.status as pe_status, pedido.create_at as pe_create, pedido.update_at as pe_update FROM pedido INNER JOIN produto on pedido.produto = produto.id  WHERE pedido.status = :status AND pedido.escola = :idClient ");
+    $db->bind(":status", "1");
+    $db->bind(":idClient", $id);
+    $db->executa();
+    if ($db->executa() and $db->total()) {
+      $result = $db->resultados();
+      return $result;
+    } else {
+      return false;
+    }
+  }
  
   public static function getSumTotal($id)
   {
@@ -77,6 +92,30 @@ class Request
   }
 
 
-
+  public function notifyUser($id){
+    $this->db->query("UPDATE pedido SET pedido.notify = :value WHERE pedido.escola = :idClient AND pedido.status=:status");
+    $this->db->bind(":value", "ON");
+    $this->db->bind(":status", "1");
+    $this->db->bind(":idClient", $id);
+    if($this->db->executa() AND $this->db->total()){
+      return true;
+    }else{
+      return false;
+    }
+  
+}
+  
+  public function confirmRequest($id){
+    $this->db->query("UPDATE pedido SET pedido.status = :status, pedido.notify=:value WHERE pedido.escola = :idClient");
+    $this->db->bind(":status", "2");
+    $this->db->bind(":value", "OFF");
+    $this->db->bind(":idClient", $id);
+    if($this->db->executa() AND $this->db->total()){
+      return true;
+    }else{
+      return false;
+    }
+  
+}
  
 }

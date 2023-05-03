@@ -40,7 +40,8 @@ class Request
     }
   }
 
-  public function getAllRequest(){
+  public function getAllRequest()
+  {
     $this->db->query("SELECT * FROM pedido WHERE pedido.status = :status AND pedido.escola = :iduser ");
     $this->db->bind(":status", "0");
     $this->db->bind(":iduser", $_SESSION['usuarioC_id']);
@@ -53,16 +54,16 @@ class Request
     }
   }
 
-  public function confirmRequest(){
-      $this->db->query("UPDATE pedido SET pedido.status = :status WHERE pedido.escola = :iduser");
-      $this->db->bind(":status", "1");
-      $this->db->bind(":iduser", $_SESSION['usuarioC_id']);
-      if($this->db->executa() AND $this->db->total()){
-        return true;
-      }else{
-        return false;
-      }
-    
+  public function confirmRequest()
+  {
+    $this->db->query("UPDATE pedido SET pedido.status = :status WHERE pedido.escola = :iduser");
+    $this->db->bind(":status", "1");
+    $this->db->bind(":iduser", $_SESSION['usuarioC_id']);
+    if ($this->db->executa() and $this->db->total()) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public function totalRequest()
@@ -87,6 +88,16 @@ class Request
     $this->db->bind(":id", $id);
     if ($this->db->executa() and $this->db->total()) {
       return true;
+    } else {
+      return false;
+    }
+  }
+  public function getNotify($id)
+  {
+    $this->db->query("SELECT notify FROM pedido WHERE pedido.escola=:idClient LIMIT 1");
+    $this->db->bind(":idClient", $id);
+    if ($this->db->executa() and $this->db->total()) {
+      return $this->db->resultado();
     } else {
       return false;
     }

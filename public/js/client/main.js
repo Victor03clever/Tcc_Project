@@ -4,6 +4,22 @@ var gcs = getComputedStyle(root);
 let dark = document.querySelector(".dark");
 let light = document.querySelector(".light");
 const url = document.querySelector(".cards").getAttribute("data-url");
+const idClient = document.querySelector("span#notificar").getAttribute("user");
+
+// notify me
+setInterval(() => {
+  fetch(`${url}/api/notify/${idClient}`)
+  .then((response) => response.json())
+  .then((data) => {
+  let not = data.notify;
+  // console.log(not);    
+   if(not=='ON'){
+    alert("O seu pedido já está feito, se dirija ao refeitório por favor")
+   }
+  }).catch((err) => console.log(err));
+}, 30000);
+
+
 
 // setInterval(() => {
 
@@ -62,7 +78,7 @@ fetch(`${url}/api/getDishes`)
         image.setAttribute("height", "100");
 
         title.innerHTML = currentProducts[i].title;
-        price.innerHTML = currentProducts[i].price;
+        price.innerHTML = `Kz ${currentProducts[i].price}`;
         btnLess.innerHTML = "-";
         btnMore.innerHTML = "+";
         btnLess.style = "font-size:4rem";
@@ -103,10 +119,44 @@ fetch(`${url}/api/getDishes`)
         appendChild(cards, card);
       }
     }
+    function addLess() {
+      let plus = document.querySelectorAll(".btn-plus");
+      let subt = document.querySelectorAll(".btn-subtract");
+
+      let a = 1;
+      plus.forEach((plu) => {
+        plu.addEventListener("click", () => {
+          a = plu.previousElementSibling.value;
+          if (a < 10) {
+            a++;
+            a = a < 10 ? "0" + a : a;
+
+            let input = plu.previousElementSibling;
+            input.value = a;
+            a = input.value;
+          }
+        });
+      });
+      subt.forEach((sub) => {
+        sub.addEventListener("click", () => {
+          a = sub.nextElementSibling.value;
+          //   console.log(a);
+
+          if (a > 1) {
+            a--;
+            a = a < 10 ? "0" + a : a;
+            let input = sub.nextElementSibling;
+            input.value = a;
+          }
+        });
+      });
+    };
 
     handleProducts();
+    addLess();
   })
   .catch((err) => console.log(err));
+// operacoes adicionar e subtrair
 
 // });
 
@@ -501,39 +551,39 @@ function removePreloader() {
 
 // =============================================================================
 
-// operacoes adicionar e subtrair
-window.addEventListener("load", () => {
-  let plus = document.querySelectorAll(".btn-plus");
-  let subt = document.querySelectorAll(".btn-subtract");
+// // operacoes adicionar e subtrair
+// window.addEventListener("load", () => {
+//   let plus = document.querySelectorAll(".btn-plus");
+//   let subt = document.querySelectorAll(".btn-subtract");
 
-  let a = 1;
-  plus.forEach((plu) => {
-    plu.addEventListener("click", () => {
-      a = plu.previousElementSibling.value;
-      if (a < 10) {
-        a++;
-        a = a < 10 ? "0" + a : a;
+//   let a = 1;
+//   plus.forEach((plu) => {
+//     plu.addEventListener("click", () => {
+//       a = plu.previousElementSibling.value;
+//       if (a < 10) {
+//         a++;
+//         a = a < 10 ? "0" + a : a;
 
-        let input = plu.previousElementSibling;
-        input.value = a;
-        a = input.value;
-      }
-    });
-  });
-  subt.forEach((sub) => {
-    sub.addEventListener("click", () => {
-      a = sub.nextElementSibling.value;
-      //   console.log(a);
+//         let input = plu.previousElementSibling;
+//         input.value = a;
+//         a = input.value;
+//       }
+//     });
+//   });
+//   subt.forEach((sub) => {
+//     sub.addEventListener("click", () => {
+//       a = sub.nextElementSibling.value;
+//       //   console.log(a);
 
-      if (a > 1) {
-        a--;
-        a = a < 10 ? "0" + a : a;
-        let input = sub.nextElementSibling;
-        input.value = a;
-      }
-    });
-  });
-});
+//       if (a > 1) {
+//         a--;
+//         a = a < 10 ? "0" + a : a;
+//         let input = sub.nextElementSibling;
+//         input.value = a;
+//       }
+//     });
+//   });
+// });
 // handleProducts();
 excluidButton();
 setDefault();

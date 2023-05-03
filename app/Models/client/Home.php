@@ -35,6 +35,18 @@ class Home
             return false;
         }
     }
+    public function getRefrigerante()
+    {
+        $this->db->query("SELECT *, produto.nome as p_nome, produto.id as p_id, produto.create_at as p_create, produto.update_at as p_update, categoria.id as c_id, categoria.nome as c_nome, categoria.create_at as c_create, categoria.update_at as c_update  FROM produto INNER JOIN categoria on produto.categoria=categoria.id WHERE categoria.nome=:refrigerante ");
+        $this->db->bind(":refrigerante","Refrigerante");
+        $this->db->executa();
+        if ($this->db->executa() and $this->db->total()) {
+            $result = $this->db->resultados();
+            return $result;
+        } else {
+            return false;
+        }
+    }
     public function getCategory()
     {
         $this->db->query("SELECT * FROM categoria");

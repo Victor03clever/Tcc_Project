@@ -32,6 +32,7 @@ class  Client  extends Controller
       Url::redireciona('client/login');
     endif;
     $allFood = $this->Food->getFood();
+    $refresh = $this->Food->getRefrigerante();
     $allcategory = $this->Food->getCategory();
     $totalRequest = $this->Request->totalRequest();
 
@@ -39,7 +40,7 @@ class  Client  extends Controller
     
     
     $file = 'homepage';
-    return $this->view('layouts/client/app', compact('file', 'allFood', 'allcategory','totalRequest'));
+    return $this->view('layouts/client/app', compact('file', 'allFood', 'allcategory','totalRequest','refresh'));
   }
 
 
@@ -415,7 +416,7 @@ class  Client  extends Controller
 
         if ($this->Products->makeRequestP($dados, $qtd)) {
           URL::redireciona("client");
-          Sessao::izitoast("pedido", "Success", "Pedido feito com sucesso");
+          Sessao::izitoast("pedido", "Success", "Pedido adicionado com sucesso, confirma!");
         } else {
           URL::redireciona("client");
           Sessao::izitoast("pedido", "Alert", "Algo deu errado", "warning");

@@ -10,10 +10,12 @@ class  Api  extends Controller
 {
 
   private $Request;
+  private $Notify;
   private $Count;
   public function __construct()
   {
     $this->Request = $this->model("client\Home");
+    $this->Notify = $this->model("client\Request");
     $this->Count = $this->model("saler\Request");
   }
 
@@ -91,5 +93,14 @@ class  Api  extends Controller
     $total=$this->Count->totalRequest();
     // var_dump($total);
     echo json_encode($total);
+  }
+  public function notify($id)
+  {
+    
+    $id=filter_var($id,FILTER_VALIDATE_INT);
+    $notify=$this->Notify->getNotify($id);
+    // var_dump($notify);
+
+    echo json_encode($notify);
   }
 }

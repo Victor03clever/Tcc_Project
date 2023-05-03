@@ -142,7 +142,7 @@
               </a>
             </li>
 
-            <li class="nav-item" >
+            <li class="nav-item">
               <a class="nav-link last" aria-current="page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <button class="logout">
                   <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -188,7 +188,7 @@
           ...
         </div> -->
         <div class="modal-footer">
-        <a class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancelar</a>
+          <a class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancelar</a>
           <a href="<?= URL ?>/client/sair" class="btn btn-primary btn-lg" onclick="clearCart()">Sair</a>
         </div>
       </div>
@@ -216,10 +216,10 @@
     </svg>
 
   </a>
+  <span id="notificar" user="<?= $_SESSION['usuarioC_id'] ?>"></span>
 
 
 
-  
 
   <script src="<?= asset("js/client/main.js") ?>"></script>
   <script src="<?= asset("js/blockCode.js") ?>"></script>
@@ -237,7 +237,39 @@
     window.addEventListener("scroll", function() {
       backToTopButton.classList.toggle('show', scrollY > 500);
     })
-    
+
+    window.addEventListener("load", () => {
+      let plus = document.querySelectorAll(".plus");
+      let subt = document.querySelectorAll(".subtract");
+
+      let a = 1;
+      plus.forEach((plu) => {
+        plu.addEventListener("click", () => {
+          a = plu.previousElementSibling.value;
+          if (a < 10) {
+            a++;
+            a = a < 10 ? "0" + a : a;
+
+            let input = plu.previousElementSibling;
+            input.value = a;
+            a = input.value;
+          }
+        });
+      });
+      subt.forEach((sub) => {
+        sub.addEventListener("click", () => {
+          a = sub.nextElementSibling.value;
+          //   console.log(a);
+
+          if (a > 1) {
+            a--;
+            a = a < 10 ? "0" + a : a;
+            let input = sub.nextElementSibling;
+            input.value = a;
+          }
+        });
+      });
+    });
   </script>
 
   <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"async defer></script> -->

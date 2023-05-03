@@ -173,7 +173,7 @@ class Sessao
         endif;
     }
     public static function restrito1($id){
-        if($id!=$_SESSION['usuario_id']):
+        if($id!=$_SESSION['usuarios_id']):
             return true;
         else:
             return false;    

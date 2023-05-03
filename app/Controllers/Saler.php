@@ -14,6 +14,8 @@ use Mike42\Escpos\Printer;
 use Mike42\Escpos\EscposImage;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
+date_default_timezone_set('Africa/Luanda');
+
 class  Saler  extends Controller
 {
   private $Data;
@@ -197,6 +199,7 @@ class  Saler  extends Controller
     $this->Printer->text("Tel: 244938295867" . "\n");
 
     $this->Printer->text(date("Y-m-d H:i:s") . "\n");
+    $this->Printer->text('Cliente: ' . $data['cliente'] . "\n");
     $this->Printer->text("-----------------------------------------" . "\n");
     $this->Printer->setJustification(Printer::JUSTIFY_CENTER);
     $this->Printer->text("produto          qtd          valor\n");
@@ -251,17 +254,84 @@ class  Saler  extends Controller
   public function pedidos()
   {
     // $total = $this->Request->getSumTotal();
-    
-    // var_dump(Request::getRequestsR(16)[0]['re_nome']);
+    // var_dump();
+    // var_dump();
 
+    // $pri = ['1', '2', '3'];
+    // $seg = ['4', '5', '6'];
+    // var_dump($pri);
+    // var_dump($seg);
+    // print_r($uni).'<br>';
+    // foreach ($uni as $key => $value) {
+    //   echo $value['re_nome'] . '<br>'.$value['pr_nome'];
+    //   // echo $value['pr_nome'] . '<br>';
+    // }
     // exit;
-    // $pedidosR = $this->Request->getRequestsR();
+
     $all = $this->Request->getAllRequest();
-   
+
     $file = "pedidos";
     $this->view('layouts/saler/app', compact('file', 'all'));
   }
+  public function notify($id)
+  {
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+    $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
 
+    if ($id and $metodo == 'POST') {
+      if (isset($_POST['btnN'])) {
+        $notify = $this->Request->notifyUser($id);
+        if ($notify) :
+          Sessao::izitoast('notify', 'Success', 'Notificado com sucesso');
+          Url::redireciona('saler/pedidos');
+          exit;
+        else :
+          Sessao::izitoast('notify', 'Error', 'Algo deu errado, consulte BD', 'error');
+          Url::redireciona('saler/pedidos');
+          exit;
+        endif;
+      } else {
+        Sessao::sms('erro', 'Não clicou no botão, intruso', 'alert alert-danger');
+        Url::redireciona('saler/pedidos');
+        exit;
+      }
+    } else {
+
+      Sessao::sms('erro', 'Metodo de envio \'GET\' não é permitido', 'alert alert-danger');
+      Url::redireciona('saler/pedidos');
+      exit;
+    }
+  }
+public function confirm($id){
+  $id = filter_var($id, FILTER_VALIDATE_INT);
+    $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
+
+    if ($id and $metodo == 'POST') {
+      if (isset($_POST['btnT'])) {
+        $confirm = $this->Request->confirmRequest($id);
+        
+        if ($confirm) :
+          Sessao::izitoast('notify', 'Success', 'pedido terminado com sucesso');
+          Url::redireciona('saler/pedidos');
+          exit;
+        else :
+          Sessao::izitoast('notify', 'Error', 'Algo deu errado, consulte BD', 'error');
+          Url::redireciona('saler/pedidos');
+          exit;
+        endif;
+      } else {
+        Sessao::sms('erro', 'Não clicou no botão, intruso', 'alert alert-danger');
+        Url::redireciona('saler/pedidos');
+        exit;
+      }
+    } else {
+
+      Sessao::sms('erro', 'Metodo de envio \'GET\' não é permitido', 'alert alert-danger');
+      Url::redireciona('saler/pedidos');
+      exit;
+    }
+
+}
   // <!-- ========== End pedidos ========== -->
 
 
