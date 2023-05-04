@@ -5,6 +5,7 @@ use App\Libraries\Router;
 include '../app/config/phperror.php';
 include '../vendor/autoload.php';
 include '../app/config/config.php';
+date_default_timezone_set('Africa/Luanda');
 
 
 
