@@ -82,11 +82,11 @@ use App\Helpers\Sessao;
 
     </div>
   </div>
-  <!-- estoque -->
-  <div class="cards" title="estoque">
+  <!-- estoque, pedido -->
+  <div class="cards" title="mensalmente">
     <div>
-      <div class="cardName">Artigos em estoque</div>
-      <div class="number"><?=$estoque?> ✓</div>
+      <div class="cardName">Pedidos</div>
+      <div class="number"><?=$pedidos?> ✓</div>
     </div>
     <div class="iconBox">
       <svg width="196" height="92" viewBox="0 0 196 92" fill="none" xmlns="http://www.w3.org/2000/svg">

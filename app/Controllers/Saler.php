@@ -247,6 +247,69 @@ class  Saler  extends Controller
     $this->Printer->pulse();
     $this->Printer->close();
   }
+  private function printTicketsP($data)
+  {
+
+    $this->Printer->setJustification(Printer::JUSTIFY_CENTER);
+
+    /*
+        logo
+        */
+    // try{
+    // 	$img = EscposImage::load("logo.png");
+    // $this->Printer -> graphics($img);
+    // }catch(\Exception $e){/*No hacemos nada si hay error*/}
+
+    /*
+        */
+
+    $this->Printer->text("\n" . "Refeitório Anherc" . "\n");
+    $this->Printer->text("Direccion: Clever e Padjun #151" . "\n");
+    $this->Printer->text("Tel: 244938295867" . "\n");
+
+    $this->Printer->text(date("Y-m-d H:i:s") . "\n");
+    $this->Printer->text('Cliente: ' . $data['cliente'] . "\n");
+    $this->Printer->text("-----------------------------------------" . "\n");
+    $this->Printer->setJustification(Printer::JUSTIFY_CENTER);
+    $this->Printer->text("prato                     valor\n");
+    $this->Printer->text("-----------------------------------------" . "\n");
+    /*
+
+        */
+    /**/
+    $data['pedidos'] = str_replace("<br>", "\n", $data['pedidos']);
+    $this->Printer->setJustification(Printer::JUSTIFY_LEFT);
+    // $this->Printer->text("Productos\n");
+    $this->Printer->text($data['pedidos']. "   \n");
+    
+    // $this->Printer->text("Sabrtitas \n");
+    // $this->Printer->text("3  pieza    10.00 30.00   \n");
+    // $this->Printer->text("Doritos \n");
+    // $this->Printer->text("5  pieza    10.00 50.00   \n");
+    /*
+
+        */
+
+   
+    $this->Printer->text("-----------------------------------------" . "\n");
+    $this->Printer->setJustification(Printer::JUSTIFY_RIGHT);
+    $this->Printer->text("SUBTOTAL: " . $data['total'] . " kz\n");
+    $this->Printer->text("IVA: 0.00\n");
+    $this->Printer->text("TOTAL: " . $data['total'] . " kz\n");
+
+
+    /*
+        */
+    $this->Printer->setJustification(Printer::JUSTIFY_CENTER);
+    $this->Printer->text("Agredecemos pela sua compra\n");
+
+
+
+    $this->Printer->feed(3);
+    $this->Printer->cut();
+    $this->Printer->pulse();
+    $this->Printer->close();
+  }
   // end Home
 
   // <!-- ========== Start pedidos ========== -->
@@ -302,17 +365,25 @@ class  Saler  extends Controller
       exit;
     }
   }
-public function confirm($id){
-  $id = filter_var($id, FILTER_VALIDATE_INT);
+  public function confirm($id)
+  {
+    $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+    $id = filter_var($id, FILTER_VALIDATE_INT);
     $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
 
     if ($id and $metodo == 'POST') {
       if (isset($_POST['btnT'])) {
         $confirm = $this->Request->confirmRequest($id);
-        
+
         if ($confirm) :
           Sessao::izitoast('notify', 'Success', 'pedido terminado com sucesso');
           Url::redireciona('saler/pedidos');
+          try {
+            //code...
+            $this->printTicketsP($data);
+          } catch (\Exception $th) {
+            // simplesmente avança
+          }
           exit;
         else :
           Sessao::izitoast('notify', 'Error', 'Algo deu errado, consulte BD', 'error');
@@ -330,8 +401,7 @@ public function confirm($id){
       Url::redireciona('saler/pedidos');
       exit;
     }
-
-}
+  }
   // <!-- ========== End pedidos ========== -->
 
 

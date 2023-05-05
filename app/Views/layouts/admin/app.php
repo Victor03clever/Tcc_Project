@@ -1,7 +1,7 @@
 <?php
-$url=filter_input(INPUT_GET,'url',FILTER_SANITIZE_URL);
-$url=explode("/",$url);
-$uri=$url[1];
+$url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
+$url = explode("/", $url);
+$uri = $url[1];
 
 ?>
 <!DOCTYPE html>
@@ -20,12 +20,14 @@ $uri=$url[1];
   <link rel="stylesheet" href="<?= asset("css/admin/main.css") ?>">
   <link rel="stylesheet" href="<?= asset("css/admin/datatables.css") ?>">
   <link rel="stylesheet" href="<?= asset("font/bootstrap-icons.css") ?>">
-  <link rel="shortcut icon" href="<?=asset("img/favicon.png")?>" type="image/x-icon">
+  <link rel="shortcut icon" href="<?= asset("img/favicon.png") ?>" type="image/x-icon">
 </head>
 
 <body>
 
-
+  <div id="preloader">
+    <img src="<?= asset("img/logo.png") ?>" alt="preloader">
+  </div>
 
   <!-- sideBar -->
   <div class="container">
@@ -37,7 +39,7 @@ $uri=$url[1];
           </a>
           <span class="line"></span>
         </li>
-        <li class="<?= ucwords($uri)=="Home"?'actived':'' ?>">
+        <li class="<?= ucwords($uri) == "Home" ? 'actived' : '' ?>">
           <a href="<?= URL ?>/admin/home">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +50,7 @@ $uri=$url[1];
             <span class="title">Dashbord</span>
           </a>
         </li>
-        <li class="<?= ucwords($uri)=="Compras" || ucwords($uri)=="Fornecedores"?'actived':'' ?>">
+        <li class="<?= ucwords($uri) == "Compras" || ucwords($uri) == "Fornecedores" ? 'actived' : '' ?>">
           <a href="<?= URL ?>/admin/compras">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +62,7 @@ $uri=$url[1];
             <span class="title">Compras</span>
           </a>
         </li>
-        <li class="<?= ucwords($uri)=="Categoria"?'actived':'' ?>">
+        <li class="<?= ucwords($uri) == "Categoria" ? 'actived' : '' ?>">
           <a href="<?= URL ?>/admin/categoria">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +80,7 @@ $uri=$url[1];
             <span class="title">Categoria</span>
           </a>
         </li>
-        <li class="<?= ucwords($uri)=="Produto" || ucwords($uri)=="Prato" || ucwords($uri)=="Estoque"?'actived':'' ?>">
+        <li class="<?= ucwords($uri) == "Produto" || ucwords($uri) == "Prato" || ucwords($uri) == "Estoque" ? 'actived' : '' ?>">
           <a href="<?= URL ?>/admin/produto">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -165,7 +167,7 @@ $uri=$url[1];
           </a>
           <span class="line"></span>
         </li>
-        <li class="<?= ucwords($uri)=="Config"?'actived':'' ?>">
+        <li class="<?= ucwords($uri) == "Config" ? 'actived' : '' ?>">
           <a href="<?= URL ?>/admin/config">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -235,7 +237,7 @@ $uri=$url[1];
           </a>
         </div> -->
         <span class="img">
-          <img src="<?= $_SESSION['usuarios_img']?>" alt="imagem do usuario">
+          <img src="<?= $_SESSION['usuarios_img'] ?>" alt="imagem do usuario">
         </span>
         <!-- dropdown -->
         <div class="dropdown">
@@ -259,8 +261,8 @@ $uri=$url[1];
 
   </main>
 
-   <!-- Modal -->
-   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog        ">
       <div class="modal-content">
         <div class="modal-header">
@@ -271,16 +273,14 @@ $uri=$url[1];
           ...
         </div> -->
         <div class="modal-footer">
-        <a class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancelar</a>
-          <a href="<?= URL ?>/admin/login/sair" class="btn btn-primary btn-lg" >Sair</a>
+          <a class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancelar</a>
+          <a href="<?= URL ?>/admin/login/sair" class="btn btn-primary btn-lg">Sair</a>
         </div>
       </div>
     </div>
   </div>
 
-  <div id="preloader">
-    <img src="<?= asset("img/logo.png") ?>" alt="preloader">
-  </div>
+
 
 
 

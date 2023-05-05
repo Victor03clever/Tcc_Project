@@ -50,7 +50,10 @@
 </head>
 
 <body>
-
+  <div id="preloader">
+    <img src="<?= asset("img/logo.png") ?>" alt="preloader">
+  </div>
+  
   <nav id="nav" class="navbar navbar-expand-lg navbar-light ">
 
     <div style="padding: 0;" class="container-fluid wrapper">
@@ -195,9 +198,7 @@
     </div>
   </div>
 
-  <div id="preloader">
-    <img src="<?= asset("img/logo.png") ?>" alt="preloader">
-  </div>
+
 
   <footer>
     <div class="wrapper">

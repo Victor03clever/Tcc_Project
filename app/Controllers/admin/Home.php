@@ -32,6 +32,7 @@ class Home extends Controller
         $sales=$this->Data->totalSales()['sales'];
         $compras=$this->Data->totalCompras()['compras'];
         $estoque=$this->Data->totalEstoque()['estoque'];
+        $pedidos=$this->Data->totalRequest()['totalpedidos'];
         $money=$this->Data->totalMoney()['money'];
         $moneyP=$this->Data->totalMoneyP()['pedido'];
         // 3
@@ -43,10 +44,10 @@ class Home extends Controller
         $sales6=$this->Data->Sales6()['sales'];
         $sales7=$this->Data->Sales7()['sales'];
 
-        // var_dump($sales6);
+        // var_dump($pedidos);
         // exit;
         $file='home'; 
-        return $this->view('layouts/admin/app',compact('file','recent','funcionarios','clients','fornecedor','category','sales','compras','estoque','money','moneyP','sales1','sales2','sales3','sales4','sales5','sales6','sales7'));
+        return $this->view('layouts/admin/app',compact('file','recent','funcionarios','clients','fornecedor','category','sales','compras','estoque', 'pedidos','money','moneyP','sales1','sales2','sales3','sales4','sales5','sales6','sales7'));
     }
 }
 

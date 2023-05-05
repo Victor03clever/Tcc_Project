@@ -106,7 +106,7 @@ class Request
 }
   
   public function confirmRequest($id){
-    $this->db->query("UPDATE pedido SET pedido.status = :status, pedido.notify=:value WHERE pedido.escola = :idClient");
+    $this->db->query("UPDATE pedido SET pedido.status = :status, pedido.notify=:value,  pedido.update_at = CURRENT_TIMESTAMP() WHERE pedido.escola = :idClient");
     $this->db->bind(":status", "2");
     $this->db->bind(":value", "OFF");
     $this->db->bind(":idClient", $id);

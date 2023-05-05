@@ -132,9 +132,21 @@ class Home
       return false;
     }
   }
+  public function totalRequest()
+  {
+    $this->db->query("SELECT count(DISTINCT pedido.create_at) as totalpedidos FROM pedido WHERE pedido.status = :status LIMIT 1");
+    $this->db->bind(":status", "2");
+    $this->db->executa();
+    if ($this->db->executa() and $this->db->total()) {
+      $result = $this->db->resultado();
+      return $result;
+    } else {
+      return false;
+    }
+  }
   public function totalMoneyP(){
     $this->db->query("SELECT SUM(pedido.preco * pedido.qtd) AS pedido FROM pedido WHERE YEAR(pedido.create_at) = YEAR(CURDATE()) AND MONTH(pedido.create_at) = MONTH(CURDATE()) AND pedido.status = :status");
-    $this->db->bind(":status","1");
+    $this->db->bind(":status","2");
     $this->db->executa();
     if ($this->db->executa() and $this->db->total()) {
       $result = $this->db->resultado();
