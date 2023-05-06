@@ -113,7 +113,7 @@ class Prato extends Controller
         $dados = [
           'name' => trim($formulario['name']),
           'value' => trim($formulario['value']),
-          'img' => trim($formulario['img']),
+          'img' => '',
           'status' => trim($formulario['status']),
           'err_name' => '',
           'err_value' => '',
@@ -138,16 +138,16 @@ class Prato extends Controller
         else :
 
 
-          if (isset($_FILES['imag'])) :
-            $upload = new Uploads();
-            $upload->imagem($_FILES['imag'], 7, 'Pratos');
-            $dados['img'] = !empty($_SESSION['path']) ? $_SESSION['path'] : 'uploads\Pratos\exemplo.svg';
+          // if (isset($_FILES['imag'])) :
+          //   $upload = new Uploads();
+          //   $upload->imagem($_FILES['imag'], 7, 'Pratos');
+          //   $dados['img'] = !empty($_SESSION['path']) ? $_SESSION['path'] : 'uploads\Pratos\exemplo.svg';
 
-          endif;
-          if ($upload->geterro() or $upload->getexito()) :
-            Sessao::sms('img', $upload->geterro(), 'alert alert-danger');
-            Sessao::sms('img', $upload->getexito() . ' movida com sucesso');
-          endif;
+          // endif;
+          // if ($upload->geterro() or $upload->getexito()) :
+          //   Sessao::sms('img', $upload->geterro(), 'alert alert-danger');
+          //   Sessao::sms('img', $upload->getexito() . ' movida com sucesso');
+          // endif;
 
           $actualiza = $this->Data->update_prato($dados, $id);
 
@@ -158,7 +158,7 @@ class Prato extends Controller
 
 
           else :
-            Sessao::sms('upload', 'Erro com banco de dados', 'alert alert-danger');
+            Sessao::sms('upload', 'Não tem nada de novo', 'alert alert-info');
 
 
           endif;
@@ -191,25 +191,24 @@ class Prato extends Controller
     return $this->view('layouts/admin/app', compact('file', 'dados', 'refeicoes'));
   }
   public function delete($id)
-  { {
-      if (!Sessao::nivel0()) :
-        Url::redireciona('home');
-      endif;
-      $id = filter_var($id, FILTER_VALIDATE_INT);
-      $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
+  {
+    if (!Sessao::nivel0()) :
+      Url::redireciona('home');
+    endif;
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+    $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
 
-      if ($id and $metodo == 'POST') :
-        $delete = $this->Data->delete_prato($id);
-        if ($delete) :
-          Sessao::izitoast('prato', 'Success', 'Delectado com sucesso');
-          Url::redireciona('admin/prato');
-        else :
-          Sessao::izitoast('prato', 'Erro', 'Não delectado, consulte BD', 'error');
-        endif;
-      else :
-        Sessao::sms('upload', 'Metodo de envio \'GET\' não é permitido', 'alert alert-danger');
+    if ($id and $metodo == 'POST') :
+      $delete = $this->Data->delete_prato($id);
+      if ($delete) :
+        Sessao::izitoast('prato', 'Success', 'Delectado com sucesso');
         Url::redireciona('admin/prato');
+      else :
+        Sessao::izitoast('prato', 'Erro', 'Não delectado, consulte BD', 'error');
       endif;
-    }
+    else :
+      Sessao::sms('upload', 'Metodo de envio \'GET\' não é permitido', 'alert alert-danger');
+      Url::redireciona('admin/prato');
+    endif;
   }
 }

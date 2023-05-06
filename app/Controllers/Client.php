@@ -81,7 +81,7 @@ class  Client  extends Controller
           Url::redireciona('client/');
           $this->criarsessao($checarlogin);
           Sessao::izitoast('loginS', "{$_SESSION['usuarioC_nome']}", 'Login realizado com sucesso');
-          Sessao::browser("browser","login","login feito com sucesso");
+            // Sessao::browser("browser","login","login feito com sucesso");
         // var_dump($_SESSION);
 
         else :

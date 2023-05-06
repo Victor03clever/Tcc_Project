@@ -74,7 +74,7 @@ use App\Helpers\Sessao;
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-primary p-1 fs-5" data-bs-dismiss="modal">abortar</button>
                                                        <form action="<?= URL ?>/admin/categoria/delete/<?= $value['id'] ?>" method="post">
-                                                      <button type="submit" class="btn btn-danger" name="delete">Delecte</button>
+                                                      <button type="submit" class="btn btn-danger" name="delete">Delete</button>
                                                      </form>
                                                     </div>
                                                 </div>
@@ -103,7 +103,7 @@ use App\Helpers\Sessao;
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTitleId">Cadastrar Categoria</h5>
+                <h5 class="modal-title" id="modalTitleId" style="color:var(--text)">Cadastrar Categoria</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

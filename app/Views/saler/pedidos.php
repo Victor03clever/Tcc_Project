@@ -32,9 +32,9 @@ use App\Helpers\Sessao;
               <div class="card-title d-flex justify-content-between align-content-center mb-0 pb-1">
                 <div class="cabecalho">
                   <figure>
-                    <span class="img">
+                    <spanoo class="img">
                       <img src="<?= asset($value['imagem']) ?>" width="40" alt="">
-                    </span>
+                    </spanoo>
                     <h4 class="username fs-3">
                       <?php $username = $value['nome'];
                       echo $username; ?>
@@ -45,7 +45,7 @@ use App\Helpers\Sessao;
                   </span>
                 </div>
                 <!-- Organizando todos os pedidos -->
-                <?php if (Request::getRequestsR($value['escola'])) : $pedidos = "";
+                <?php if (Request::getRequestsR($value['escola']) || Request::getRequestsP($value['escola'])) : $pedidos = "";
                   $modal = "";  ?>
                   <?php $refresh = Request::getRequestsP($value['escola']); ?>
                   <?php foreach (Request::getRequestsR($value['escola']) as $key => $value) :
@@ -58,7 +58,17 @@ use App\Helpers\Sessao;
                   <?php 
                   $modal=str_replace('(x) =>0kz<br>','',$modal);
                   $pedidos=str_replace('(x) =>0kz,<br>','',$pedidos);
-                  
+                  $modal=str_replace('(x)<br>','',$modal);
+                  $pedidos=str_replace('(x),<br>','',$pedidos);
+                  if ( $pedidos == '') {
+                    
+                    $ref=Request::getRequestsR($value['escola']);
+                    foreach (Request::getRequestsP($value['escola']) as $key => $value) :
+                      $pedidos .= $value['pr_nome'] . " (" . $value['qtd'] . "x),<br>";
+                      $modal .=  $value['pr_nome'] . " (" . $value['qtd'] . "x) =>" . $value['pr_preco'] * $value['qtd'] . "kz<br>";
+
+                    endforeach;
+                  }
                   ?>
                 <?php endif; ?>
                 <div class="dropdown">
@@ -100,7 +110,7 @@ use App\Helpers\Sessao;
               </span>
               <p class="card-text pedidos">
 
-                <?php if (Request::getRequestsR($value['escola'])) : ?>
+                <?php if (Request::getRequestsR($value['escola']) || Request::getRequestsP($value['escola'])) : ?>
                   <?= ResumirTexto::ResumirTexto($pedidos, 3, " <a href='#' data-bs-toggle='modal' data-bs-target='#pedido" . $i . "'>mais</a><br>") ?>
                 <?php endif; ?>
                 <strong>

@@ -56,8 +56,9 @@ class Request
 
   public function confirmRequest()
   {
-    $this->db->query("UPDATE pedido SET pedido.status = :status WHERE pedido.escola = :iduser");
+    $this->db->query("UPDATE pedido SET pedido.status = :status WHERE pedido.escola = :iduser AND pedido.status=:zero");
     $this->db->bind(":status", "1");
+    $this->db->bind(":zero", "0");
     $this->db->bind(":iduser", $_SESSION['usuarioC_id']);
     if ($this->db->executa() and $this->db->total()) {
       return true;
@@ -94,7 +95,8 @@ class Request
   }
   public function getNotify($id)
   {
-    $this->db->query("SELECT notify FROM pedido WHERE pedido.escola=:idClient LIMIT 1");
+    $this->db->query("SELECT notify FROM pedido WHERE pedido.escola=:idClient AND pedido.notify=:notify LIMIT 1");
+    $this->db->bind(":notify", "ON");
     $this->db->bind(":idClient", $id);
     if ($this->db->executa() and $this->db->total()) {
       return $this->db->resultado();

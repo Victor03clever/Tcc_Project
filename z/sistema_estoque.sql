@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Maio-2023 às 17:28
+-- Tempo de geração: 06-Maio-2023 às 17:25
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 8.1.10
 
@@ -524,7 +524,7 @@ ALTER TABLE `saida_estoque`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `venda`
@@ -608,7 +608,7 @@ ALTER TABLE `usuario`
 -- Limitadores para a tabela `venda`
 --
 ALTER TABLE `venda`
-  ADD CONSTRAINT `fk_item_venda_conta1` FOREIGN KEY (`entrada_caixa`) REFERENCES `entrada_caixa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_item_venda_conta1` FOREIGN KEY (`entrada_caixa`) REFERENCES `entrada_caixa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_item_venda_produto1` FOREIGN KEY (`produto`) REFERENCES `produto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_item_venda_refeicoes1` FOREIGN KEY (`refeicoes`) REFERENCES `refeicoes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_venda_escola1` FOREIGN KEY (`escola`) REFERENCES `escola` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;

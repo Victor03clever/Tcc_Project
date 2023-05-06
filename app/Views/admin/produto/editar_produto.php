@@ -13,14 +13,14 @@ use App\Helpers\Sessao;
         Voltar
     </a>
     <form action="<?=URL?>/admin/produto/edit/<?=$edit['p_id']?>" method="post" enctype="multipart/form-data">
-        <p>
+        <!-- <p>
             escolha a sua imagem
-            <input type="file" class="form-control <?= $dados['err_img'] ? 'is-invalid' : '' ?>" name="upload" id="" value="<?=URL.'/'.$edit['p_nome']?>">
+            <input type="file" class="form-control <= $dados['err_img'] ? 'is-invalid' : '' ?>" name="upload" id="" value="<=URL.'/'.$edit['p_nome']?>">
             <span class="invalid-feedback">
-                    <?= $dados['err_img'] ?>
+                    <= $dados['err_img'] ?>
                 </span>
             
-        </p>
+        </p> -->
         <div class="row">
         <p class="form-group col-12 col-md-6">
             escolha o nome do produto <br>
@@ -46,7 +46,7 @@ use App\Helpers\Sessao;
         </p>
         <p>
             categoria <br>
-            <select class="form-select  <?= $dados['err_cat'] ? 'is-invalid' : '' ?>" aria-label="Default select example" name="cat" >
+            <select class="form-select fs-4  <?= $dados['err_cat'] ? 'is-invalid' : '' ?>" aria-label="Default select example" name="cat" >
                 <option selected value="<?=$edit['c_id']?>"><?=$edit['c_nome']?></option>
                 <?php foreach ($dados['read_c'] as $value) : ?>
                     <option value='<?= $value['id'] ?>'><?= $value['nome'] ?></option>

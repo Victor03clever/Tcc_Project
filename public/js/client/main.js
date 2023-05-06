@@ -9,17 +9,42 @@ const idClient = document.querySelector("span#notificar").getAttribute("user");
 // notify me
 setInterval(() => {
   fetch(`${url}/api/notify/${idClient}`)
-  .then((response) => response.json())
-  .then((data) => {
-  let not = data.notify;
-  // console.log(not);    
-   if(not=='ON'){
-    alert("O seu pedido já está feito, se dirija ao refeitório por favor")
-   }
-  }).catch((err) => console.log(err));
+    .then((response) => response.json())
+    .then((data) => {
+      let not = data.notify;
+      // console.log(not);
+      if (not == "ON") {
+        alert("O seu pedido já está feito, se dirija ao refeitório por favor");
+        async function init() {
+          const permission = await Notification.requestPermission();
+          if (permission !== "granted") {
+            throw new Error("Notificação negada pelo navegador!");
+          }
+        }
+
+        function browserNotify({ title, body, icon }) {
+          new Notification(title, {
+            body,
+            icon,
+          });
+        }
+        async function start() {
+          try {
+            await init()
+            browserNotify({
+              title: "Refeitório Anherc",
+              body: "Seu pedido está pronto...",
+              icon: "http://localhost:8080/refeitorio/public/img/favicon.png"
+            })
+          } catch (error) {
+            console.log(error.message)
+          }
+        }
+        start()
+      }
+    })
+    .catch((err) => console.log(err));
 }, 30000);
-
-
 
 // setInterval(() => {
 
@@ -150,7 +175,7 @@ fetch(`${url}/api/getDishes`)
           }
         });
       });
-    };
+    }
 
     handleProducts();
     addLess();

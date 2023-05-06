@@ -77,7 +77,7 @@ $uri = $url[1];
                 </defs>
               </svg>
             </span>
-            <span class="title">Categoria</span>
+            <span class="title">Categorias</span>
           </a>
         </li>
         <li class="<?= ucwords($uri) == "Produto" || ucwords($uri) == "Prato" || ucwords($uri) == "Estoque" ? 'actived' : '' ?>">
@@ -98,8 +98,8 @@ $uri = $url[1];
             <span class="title">Produtos</span>
           </a>
         </li>
-        <li>
-          <a href="<?= URL ?>/admin/venda">
+        <li class="<?= ucwords($uri) == "Vendas" ? 'actived' : '' ?>">
+          <a href="<?= URL ?>/admin/vendas">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11.0799 12.4565V6.68726" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -111,7 +111,7 @@ $uri = $url[1];
             <span class="title">Vendas</span>
           </a>
         </li>
-        <li>
+        <!-- <li class="<?= ucwords($uri) == "Caixa" ? 'actived' : '' ?>">
           <a href="<?= URL ?>/admin/caixa">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,8 +129,8 @@ $uri = $url[1];
             </span>
             <span class="title">Caixa</span>
           </a>
-        </li>
-        <li>
+        </li> -->
+        <li class="<?= ucwords($uri) == "Usuarios" ? 'actived' : '' ?>">
           <a href="<?= URL ?>/admin/usuarios">
             <span class="icon">
               <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -151,7 +151,7 @@ $uri = $url[1];
           </a>
 
         </li>
-        <li>
+        <li class="<?= ucwords($uri) == "Relatorio" ? 'actived' : '' ?>">
           <a href="<?= URL ?>/admin/relatorio">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">

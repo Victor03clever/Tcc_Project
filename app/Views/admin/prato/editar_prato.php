@@ -15,15 +15,15 @@ use App\Helpers\Sessao;
 
     <form action="<?= URL ?>/admin/prato/edite/<?=$refeicoes['id']?>" method="post" enctype="multipart/form-data" >
    
-                    <p>
+                    <!-- <p>
                         escolha a sua imagem
-                        <input type="file" class="form-control <?= $dados['err_img'] ? 'is-invalid' : '' ?>"  id="" name="imag">
-                        <input type="text" name="img" value="<?=$refeicoes['imagem']?>" hidden readonly>
+                        <input type="file" class="form-control <= $dados['err_img'] ? 'is-invalid' : '' ?>"  id="" name="imag">
+                        <input type="text" name="img" value="<=$refeicoes['imagem']?>" hidden readonly>
                         <span class="invalid-feedback">
-                            <?= $dados['err_img']?>
+                            <= $dados['err_img']?>
                         </span>
 
-                    </p>
+                    </p> -->
                     <div class="row">
                         <p class="form-group col-12 col-md-6">
                             escolha o nome do produto <br>
@@ -42,7 +42,7 @@ use App\Helpers\Sessao;
                     </div>
                     <p>
                         <label for="status">Status*</label>
-                        <select class="form-control" id="status" name="status">
+                        <select class="form-control fs-4" id="status" name="status">
                             <option value="<?=$refeicoes['status']?>" selected><?php
                             if($refeicoes['status']==0){
                                 echo "Desactivado";
@@ -55,7 +55,7 @@ use App\Helpers\Sessao;
                         </select>
                     </p>
 
-                    <button type="submit" class="btn btn-primary" name="edit" value="submit">Cadastrar</button>
+                    <button type="submit" class="btn btn-primary" name="edit" value="submit">Actualizar</button>
 
                 </form>
 </section>

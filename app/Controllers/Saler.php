@@ -313,7 +313,7 @@ class  Saler  extends Controller
   // end Home
 
   // <!-- ========== Start pedidos ========== -->
-
+  
   public function pedidos()
   {
     // $total = $this->Request->getSumTotal();

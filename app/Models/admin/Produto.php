@@ -90,11 +90,11 @@ class Produto
     public function update_p(array $data, int $id)
     {
         // Actualizando primeiro o codigo de barra
-        $this->db->query("UPDATE produto INNER JOIN codigo_barra ON produto.codigo_barra=codigo_barra.id SET cod=:code,codigo_barra.categoria=:categoria, nome=:name, preco=:preco, imagem=:imagem, produto.categoria=:categoria WHERE produto.id=:id");
+        $this->db->query("UPDATE produto INNER JOIN codigo_barra ON produto.codigo_barra=codigo_barra.id SET cod=:code,codigo_barra.categoria=:categoria, nome=:name, preco=:preco, produto.categoria=:categoria WHERE produto.id=:id");
         $this->db->bind(':code',$data['code']);
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':preco', $data['value']);
-        $this->db->bind(':imagem', $data['path']);
+        // $this->db->bind(':imagem', $data['path']);
         $this->db->bind(':categoria', $data['cat']);
         $this->db->bind(':id',$id);
         if($this->db->executa() AND $this->db->total()):

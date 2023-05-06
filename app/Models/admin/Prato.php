@@ -58,9 +58,9 @@ class Prato
         }
     }
     public function update_prato($dados,$id){
-        $this->db->query("UPDATE refeicoes SET nome=:nome,imagem=:img,preco=:preco,status=:status WHERE id=:id");
+        $this->db->query("UPDATE refeicoes SET nome=:nome, preco=:preco, status=:status WHERE id=:id");
         $this->db->bind(":nome",$dados['name']);
-        $this->db->bind(":img",$dados['img']);
+        // $this->db->bind(":img",$dados['img']);
         $this->db->bind(":preco",$dados['value']);
         $this->db->bind(":status",$dados['status']);
         $this->db->bind(":id",$id);

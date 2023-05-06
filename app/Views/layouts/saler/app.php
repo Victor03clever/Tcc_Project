@@ -74,7 +74,7 @@ $uri = $url[1];
             <span class="title">Saída</span>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a href="caixa.html">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +93,7 @@ $uri = $url[1];
             <span class="title">Caixa</span>
           </a>
           <span class="line"></span>
-        </li>
+        </li> -->
         <li class="<?= ucwords($uri) == "Config" ? 'actived' : '' ?>">
           <a href="<?= URL ?>/saler/config">
             <span class="icon">

@@ -55,3 +55,7 @@ table *{
   font-size: 1.5rem;
   color: var(--primary-color);
 }
+.bi-eye{
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}

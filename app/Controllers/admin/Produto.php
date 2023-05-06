@@ -188,17 +188,17 @@ class Produto extends Controller
           if (Valida::length_nome($formulario['name'])) :
             $dados['err_name'] = "máximo 100 dígitos";
           else :
-            if (isset($_FILES['upload'])) :
-              $upload = new Uploads();
-              $categoria = $this->Cat->read1_c($dados['cat']);
-              $upload->imagem($_FILES['upload'], 7, 'Produtos' . DIRECTORY_SEPARATOR . $categoria['nome']);
-              $dados['path'] = !empty($_SESSION['path']) ? $_SESSION['path'] : 'uploads\Produtos\exemplo.jpg';
-              unset($_SESSION['path']);
-              if ($upload->geterro() or $upload->getexito()) :
-                Sessao::sms('upload', $upload->geterro(), 'alert alert-danger');
-                Sessao::sms('upload', $upload->getexito() . ' movida com sucesso');
-              endif;
-            endif;
+            // if (isset($_FILES['upload'])) :
+            //   $upload = new Uploads();
+            //   $categoria = $this->Cat->read1_c($dados['cat']);
+            //   $upload->imagem($_FILES['upload'], 7, 'Produtos' . DIRECTORY_SEPARATOR . $categoria['nome']);
+            //   $dados['path'] = !empty($_SESSION['path']) ? $_SESSION['path'] : 'uploads\Produtos\exemplo.jpg';
+            //   unset($_SESSION['path']);
+            //   if ($upload->geterro() or $upload->getexito()) :
+            //     Sessao::sms('upload', $upload->geterro(), 'alert alert-danger');
+            //     Sessao::sms('upload', $upload->getexito() . ' movida com sucesso');
+            //   endif;
+            // endif;
 
 
             $actualiza = $this->Data->update_p($dados, $id);
