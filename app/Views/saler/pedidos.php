@@ -12,7 +12,7 @@ use App\Helpers\Sessao;
   <?= Sessao::izitoast("notify") ?>
   <?= Sessao::sms("erro") ?>
 
-  <a href="historico.html" class="btn btn-primary" style="
+  <a href="<?=URL?>/saler/historico" class="btn btn-primary" style="
             padding: .7rem;
             font-size: 1.5rem; margin-bottom:1rem">Histórico</a>
   <div class="row">

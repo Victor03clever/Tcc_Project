@@ -19,6 +19,7 @@ $uri = $url[1];
   <script src="<?= asset(IZOJS) ?>"></script>
   <!-- <script src="<=asset(NOTIFY)?>"></script> -->
   <link rel="stylesheet" href="<?= asset("css/saler/main.css") ?>">
+   <link rel="stylesheet" href="<?= asset("css/admin/datatables.css") ?>">
   <link rel="stylesheet" href="<?= asset("font/bootstrap-icons.css") ?>">
   <link rel="shortcut icon" href="<?= asset("img/favicon.png") ?>" type="image/x-icon">
 </head>
@@ -48,7 +49,7 @@ $uri = $url[1];
             <span class="title">Menu</span>
           </a>
 
-        <li class="<?= ucwords($uri) == "Pedidos" || ucwords($uri) == "History" ? 'actived' : '' ?>">
+        <li class="<?= ucwords($uri) == "Pedidos" || ucwords($uri) == "Historico" ? 'actived' : '' ?>">
           <a href="<?= URL ?>/saler/pedidos">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,8 +61,8 @@ $uri = $url[1];
             <span class="title">Pedidos</span>
           </a>
         </li>
-        <li>
-          <a href="saida.html">
+        <li class="<?= ucwords($uri) == "Saidas" ? 'actived' : '' ?>">
+          <a href="<?=URL?>/saler/saidas">
             <span class="icon">
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9.06068 1.4585H4.15684C3.85082 1.4585 3.55733 1.58006 3.34094 1.79645C3.12456 2.01284 3.00299 2.30632 3.00299 2.61234V11.8431C3.00299 12.1491 3.12456 12.4426 3.34094 12.659C3.55733 12.8754 3.85082 12.997 4.15684 12.997H11.0799C11.3859 12.997 11.6794 12.8754 11.8958 12.659C12.1122 12.4426 12.2338 12.1491 12.2338 11.8431V4.63157L9.06068 1.4585Z" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -71,7 +72,7 @@ $uri = $url[1];
                 <path d="M6.46454 5.49695H5.3107" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </span>
-            <span class="title">Saída</span>
+            <span class="title">Saídas</span>
           </a>
         </li>
         <!-- <li>

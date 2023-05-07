@@ -280,8 +280,8 @@ class  Saler  extends Controller
     $data['pedidos'] = str_replace("<br>", "\n", $data['pedidos']);
     $this->Printer->setJustification(Printer::JUSTIFY_LEFT);
     // $this->Printer->text("Productos\n");
-    $this->Printer->text($data['pedidos']. "   \n");
-    
+    $this->Printer->text($data['pedidos'] . "   \n");
+
     // $this->Printer->text("Sabrtitas \n");
     // $this->Printer->text("3  pieza    10.00 30.00   \n");
     // $this->Printer->text("Doritos \n");
@@ -290,7 +290,7 @@ class  Saler  extends Controller
 
         */
 
-   
+
     $this->Printer->text("-----------------------------------------" . "\n");
     $this->Printer->setJustification(Printer::JUSTIFY_RIGHT);
     $this->Printer->text("SUBTOTAL: " . $data['total'] . " kz\n");
@@ -313,9 +313,12 @@ class  Saler  extends Controller
   // end Home
 
   // <!-- ========== Start pedidos ========== -->
-  
+
   public function pedidos()
   {
+    if (!Sessao::nivel1()) :
+      Url::redireciona("saler/login");
+    endif;
     // $total = $this->Request->getSumTotal();
     // var_dump();
     // var_dump();
@@ -338,6 +341,9 @@ class  Saler  extends Controller
   }
   public function notify($id)
   {
+    if (!Sessao::nivel1()) :
+      Url::redireciona("saler/login");
+    endif;
     $id = filter_var($id, FILTER_VALIDATE_INT);
     $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
 
@@ -367,6 +373,9 @@ class  Saler  extends Controller
   }
   public function confirm($id)
   {
+    if (!Sessao::nivel1()) :
+      Url::redireciona("saler/login");
+    endif;
     $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     $id = filter_var($id, FILTER_VALIDATE_INT);
     $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
@@ -402,9 +411,31 @@ class  Saler  extends Controller
       exit;
     }
   }
+  public function historico()
+  {
+    if (!Sessao::nivel1()) :
+      Url::redireciona("saler/login");
+    endif;
+    $history = $this->Request->historico();
+    // var_dump($history);
+    // exit;
+
+    $file = "historico";
+    $this->view('layouts/saler/app', compact('file', 'history'));
+  }
   // <!-- ========== End pedidos ========== -->
 
+// <!-- ========== Start saida ========== -->
+  public function saidas(){
+    if (!Sessao::nivel1()) :
+      Url::redireciona("saler/login");
+    endif;
+  
 
+    $file = "saidas";
+    $this->view('layouts/saler/app', compact('file'));
+  }
+// <!-- ========== End saida ========== -->
 
   // Controllers para perfil
   public function config()
