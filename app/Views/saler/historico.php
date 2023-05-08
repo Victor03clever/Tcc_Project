@@ -18,6 +18,10 @@ use App\Models\saler\Request;
   </button> -->
   <!-- <a href="<= URL ?>/admin/vendas/pedidos" class="btn btn-primary fs-3 mb-3 p-2"> Pedidos</a> -->
 
+  <a href="<?=URL?>/saler/pedidos" class="btn btn-primary" style="
+            padding: .7rem;
+            font-size: 1.5rem; margin-bottom:1rem">Voltar</a>
+  <div class="row">
 
   <div class="row">
     <div class="col-lg-12">

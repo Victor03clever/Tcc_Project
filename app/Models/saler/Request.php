@@ -122,7 +122,7 @@ class Request
   public function historico()
   {
 
-    $this->db->query("SELECT DISTINCT *, pedido.create_at as pe_create, pedido.update_at as pe_update FROM pedido INNER JOIN escola ON pedido.escola = escola.id WHERE pedido.status = :status GROUP BY pedido.update_at ORDER BY pedido.update_at DESC");
+    $this->db->query("SELECT DISTINCT *, pedido.create_at as pe_create, pedido.update_at as pe_update FROM pedido INNER JOIN escola ON pedido.escola = escola.id WHERE pedido.status = :status AND DATE(pedido.update_at)=CURDATE() GROUP BY pedido.update_at ORDER BY pedido.update_at DESC");
     $this->db->bind(":status", "2");
     $this->db->executa();
     if ($this->db->executa() and $this->db->total()) {
