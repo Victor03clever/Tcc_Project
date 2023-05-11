@@ -392,6 +392,7 @@ input.form-control{
 .date:hover .dataActual{
   display: block;
   font-size: 2rem;
+  color: white;
 }
 a#backToTopButton {
   position: fixed;

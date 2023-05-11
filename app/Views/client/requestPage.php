@@ -7,8 +7,9 @@ use App\Helpers\Sessao;
 
 <link rel="stylesheet" href="<?= asset("css/client/style2.css") ?>">
 <main class="wrapper">
+  <h1 style="font-size: 3rem;">Pedidos</h1>
   <div class="d-flex flex-wrap justify-content-between align-items-start">
-    <div id="all">
+    <div id="all" class="">
       <h1>Refeições</h1>
       <div class="pedidos">
         <?php $totalR = 0;
@@ -32,7 +33,7 @@ use App\Helpers\Sessao;
       <h3>Total de Refeições: KZ <?= $totalR ?></h3>
     </div>
 
-     <div id="all">
+     <div id="all" class="">
       <h1>Refrigerantes</h1>
 
       <div class="pedidos">
@@ -54,7 +55,7 @@ use App\Helpers\Sessao;
           </div>
         <?php endforeach; ?>
       </div>
-      <h3>Total de Produtos: KZ <?= $totalP ?></h3>
+      <h3>Total de Refrigerantes: KZ <?= $totalP ?></h3>
 
    </div> 
 

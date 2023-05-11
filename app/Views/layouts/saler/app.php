@@ -72,7 +72,7 @@ $uri = $url[1];
                 <path d="M6.46454 5.49695H5.3107" stroke="#DBDFEA" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </span>
-            <span class="title">Saídas</span>
+            <span class="title">Pratos</span>
           </a>
         </li>
         <!-- <li>
@@ -175,7 +175,7 @@ $uri = $url[1];
           </svg>
 
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <li><a class="dropdown-item" href="#">perfil</a></li>
+            <li><a class="dropdown-item" href="<?=URL?>/saler/config">perfil</a></li>
             <li><a class="dropdown-item" href="#" aria-current="page" data-bs-toggle="modal" data-bs-target="#staticBackdrop">log out</a></li>
           </ul>
         </div>

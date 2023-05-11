@@ -71,6 +71,17 @@ class Prato
             return false;
         }
     }
+    public function update_prato1($dados,$id){
+        $this->db->query("UPDATE refeicoes SET status=:status WHERE id=:id");
+        $this->db->bind(":status",$dados);
+        $this->db->bind(":id",$id);
+        // $this->db->executa();
+        if($this->db->executa() and $this->db->total()){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public function delete_prato($id){
         $this->db->query("DELETE FROM  refeicoes WHERE id = :id");
         $this->db->bind(':id',$id);

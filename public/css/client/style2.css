@@ -22,12 +22,14 @@ main div#all h1 {
   font-weight: 500;
   font-size: 3.2rem;
   line-height: 140%;
+  display: none;
+  justify-content: flex-start;
 }
 main div#all div.pedidos {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 0rem;
+  align-items: center;
+  padding-left: 4rem;
   width: 30.3rem;
 }
 main div#all div.pedidos div.pedido {

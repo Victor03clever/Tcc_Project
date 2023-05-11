@@ -24,6 +24,7 @@ class  Saler  extends Controller
   private $Perfil;
   private $Request;
   private $Printer;
+  private $Prato;
   public function __construct()
   {
 
@@ -36,6 +37,7 @@ class  Saler  extends Controller
     $this->Perfil = $this->model("Saler\Perfil");
     $this->Request = $this->model("Saler\Request");
     $this->Food = $this->model("client\Home");
+    $this->Prato = $this->model("admin\Prato");
     $connector = new WindowsPrintConnector("EPSON");
     $this->Printer = new Printer($connector);
   }
@@ -413,7 +415,7 @@ class  Saler  extends Controller
   }
   public function historico()
   {
-    if (!Sessao::nivel1()) :
+    if (!Sessao::nivel1()) : 
       Url::redireciona("saler/login");
     endif;
     $history = $this->Request->historico();
@@ -430,10 +432,24 @@ class  Saler  extends Controller
     if (!Sessao::nivel1()) :
       Url::redireciona("saler/login");
     endif;
-  
-
+  $pratos=$this->Prato->prato_read();
+    if(isset($_POST['update'])){
+      $dado=trim($_POST['status']);
+      $id=trim($_POST['id']);
+      $update=$this->Prato->update_prato1($dado,$id);
+      if($update){
+        Sessao::izitoast('prato','Success','Prato actualizado');
+        Url::redireciona("saler/saidas");
+        exit;
+      }else{
+        Sessao::izitoast('prato','Error','Prato não actualizado');
+        Url::redireciona("saler/saidas");
+        exit;
+        
+      }
+    }
     $file = "saidas";
-    $this->view('layouts/saler/app', compact('file'));
+    $this->view('layouts/saler/app', compact('file','pratos'));
   }
 // <!-- ========== End saida ========== -->
 
