@@ -1,1 +1,178 @@
-<h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt est porro, architecto rem vero recusandae id error consequatur tempora reprehenderit, quam saepe dignissimos autem vitae odit repellendus nam enim! Molestiae veritatis, qui consequatur autem saepe architecto delectus id fugit, ut perspiciatis quisquam! Quae sapiente suscipit alias nesciunt reiciendis deleniti magni veritatis excepturi qui quam praesentium quod, ullam id tempore eius aperiam? Quia fugiat corrupti atque eaque et fugit aut, blanditiis reprehenderit consectetur, debitis doloribus. Accusamus, nobis nulla! Eaque repudiandae aperiam quae quisquam ullam? Illo ad facere ab placeat similique, quidem assumenda! Velit iusto tenetur magnam provident eaque beatae, vero laboriosam debitis corporis quasi, unde voluptatem itaque. Iure repellendus distinctio ipsa officiis explicabo! Ad, ullam facere? Nobis laborum fugiat quas dicta veritatis exercitationem corporis, magni perspiciatis excepturi iusto dignissimos doloribus voluptatibus nulla atque ad ratione blanditiis doloremque! Cupiditate odit aut ratione fuga dicta alias repellendus veniam voluptate possimus libero, eum quisquam, nemo eveniet voluptatum ipsam! Iste, sapiente. Repellendus minima vitae sit suscipit ea, labore libero tenetur eaque consectetur mollitia dolores delectus tempora, nam illo, omnis quas eum. Veniam laborum placeat in natus dolor sapiente eligendi molestias asperiores, error, ullam ea dolorem nihil omnis, dolore ipsum rerum nisi eius. Odio eaque aliquam culpa mollitia nemo alias. Error aperiam quas asperiores cupiditate reiciendis pariatur, nihil vero numquam qui voluptates recusandae placeat ducimus obcaecati minima, earum sapiente molestiae non ad odit beatae iste exercitationem perferendis. Aut eveniet impedit magni blanditiis dolorum nesciunt delectus optio vitae placeat commodi quidem eos vero distinctio provident deleniti mollitia repellat, cupiditate ratione soluta corporis corrupti! Sed possimus repellendus architecto maxime? Hic voluptatem odio dolorem, ab pariatur et, dicta culpa atque, tempore placeat voluptas tempora enim unde numquam quaerat quam necessitatibus corporis saepe ex facere! Laudantium et fugiat vel itaque. Optio vel necessitatibus, soluta velit doloremque provident distinctio omnis cumque vitae beatae, nemo, ea accusantium. Nobis velit aliquam atque odit nostrum deserunt repudiandae ad neque beatae porro culpa, quia, illo aspernatur accusantium quaerat ut illum ea. Voluptatibus iusto esse, inventore asperiores vitae eaque, aperiam harum magnam omnis dolorum, dolor architecto reiciendis illum corrupti quibusdam maxime. Harum, non quibusdam? Debitis consectetur adipisci saepe ipsum et deleniti ipsa! Quo, natus rerum eveniet voluptatum sit, recusandae reiciendis quibusdam, alias cum velit unde earum laudantium. Est excepturi eos ullam expedita iusto nesciunt rem et aperiam quo itaque temporibus eius perspiciatis maxime, dicta maiores cum ipsum. Maiores sequi ad laboriosam quod provident dolores at ipsa placeat saepe ipsum! Quam vero nam fuga ut impedit earum laboriosam expedita odio unde reprehenderit modi ab aliquam fugit tempore voluptas tempora blanditiis ipsam, maiores illum. Sit, ullam? Dolore, ipsa. Laboriosam, maiores? Commodi dolore, nihil debitis ex animi possimus nobis dolorem molestiae illo quae libero soluta officia rerum impedit quisquam doloremque aspernatur eaque delectus deserunt quas adipisci? Aspernatur distinctio omnis, tenetur sed, quaerat accusamus illum neque voluptate, quae praesentium fugit magni! Eligendi repellendus ea totam tenetur voluptas, error repudiandae accusantium sed quos numquam corrupti rem ratione perspiciatis nisi culpa reprehenderit officia laborum asperiores repellat illo dolorum quis inventore. Dolores obcaecati sequi accusantium beatae veniam laborum nostrum maxime illo tempore vero nobis saepe provident ex, fugit repellendus facere laudantium officiis reprehenderit quisquam, sunt quia ducimus corporis? Explicabo eligendi sed exercitationem odit, ab quisquam vitae totam dignissimos quod aliquam fugiat quidem, minima ea minus nulla accusantium repudiandae deserunt iusto. Quasi assumenda nulla tempore omnis dolorem rem iste et, fugit culpa veniam necessitatibus provident velit amet labore officiis cupiditate blanditiis! Aspernatur nobis exercitationem ad quaerat nisi tenetur reprehenderit voluptates eaque nesciunt id dicta doloribus porro dolore modi officia iusto, voluptas voluptate! Quaerat provident porro praesentium! Et reiciendis doloremque, qui facilis corporis quaerat fugiat vero temporibus ut. Ipsam laborum, velit debitis in perferendis eveniet repudiandae temporibus at, culpa asperiores tempore autem nostrum excepturi deleniti quibusdam harum aut quos cupiditate numquam dolorum praesentium. Sit in molestias, expedita ex repellat magnam esse asperiores quae quaerat natus ipsum inventore, aperiam aut sapiente temporibus nesciunt totam consequuntur earum facere fuga nulla! Vitae commodi nemo debitis. Possimus enim placeat, ipsam qui earum repellendus nisi ipsa voluptates amet voluptatum in minus blanditiis consequatur illo vel dolor debitis accusamus culpa vero corrupti harum veritatis. Quam obcaecati, magni est sapiente quisquam eaque veritatis adipisci nesciunt unde accusamus officiis similique veniam libero ab impedit, nihil iure repellendus laborum maiores beatae nemo itaque vero. Doloremque accusamus eveniet vero inventore ipsam unde, reiciendis, ipsum eaque tempora dignissimos, ab cupiditate facere beatae! Magni tempore quaerat nesciunt optio exercitationem perspiciatis pariatur dicta modi, id nobis explicabo nam porro eos inventore necessitatibus commodi, aliquid est expedita? Repellendus perspiciatis, cum nisi iusto nemo nam doloribus pariatur alias impedit ea recusandae voluptas quaerat quibusdam nostrum soluta ad magni fugit saepe illo harum! Officiis ad possimus odit eveniet autem, facere error aperiam repellat modi tempore magni dolore magnam dolores consequatur voluptatibus iusto neque corporis aut qui molestias perspiciatis. Reiciendis dolorum natus esse, corporis reprehenderit accusamus perspiciatis ut non hic doloribus expedita et ad, quia mollitia dicta officiis, eaque dolor harum ullam maxime? Ipsum natus alias nisi officiis asperiores molestias repellat laboriosam illum inventore ut corporis quo, hic nulla rerum totam illo sunt modi. Accusantium quisquam, dolorem nobis repellendus quis inventore placeat, eveniet libero quidem optio officiis, voluptatem commodi! Hic nihil alias doloremque, aspernatur doloribus laborum dignissimos quod ipsum provident. Reprehenderit illum est odit ad saepe in officia doloribus corrupti beatae voluptas id officiis at eligendi, aspernatur tempore asperiores ipsam ipsum error vero numquam! Sequi saepe eaque, rem fugit aliquid quia doloribus vel consequatur odio maiores necessitatibus itaque optio ab tempore debitis eos sed laborum nulla, excepturi facere aspernatur numquam quibusdam eveniet commodi. Autem necessitatibus reprehenderit ratione blanditiis consectetur libero qui accusantium ex voluptates vitae, fugit officia id dolores, ducimus fuga debitis atque beatae sed alias! Nam corporis dignissimos, vitae sequi reiciendis itaque, harum iure error aliquid ut assumenda velit, eum ea. Fuga ducimus molestias, reiciendis laborum necessitatibus debitis iure facere alias dolorum sequi, mollitia similique dicta iusto molestiae. Vel nemo ipsa asperiores itaque voluptatibus consequatur illo, soluta corrupti eius eaque in dolorem quasi, repellendus esse exercitationem totam iure laudantium ex ducimus.</h1>
+<?php
+
+use App\Models\admin\Report;
+use App\Helpers\Valida;
+use App\Helpers\Sessao;
+
+?>
+<link rel="stylesheet" href="<?= asset("css/admin/style3.css") ?>">
+<section class="section">
+ 
+  <h1>Relatórios / Vendas</h1>
+  <!-- Modal trigger button -->
+
+  <a href="<?=URL?>/admin/relatorio/compras" class="btn btn-primary " style="padding: .7rem;font-size: 1.5rem; margin-bottom:1rem">
+    Compras
+  </a>
+  <a href="<?=URL?>/admin/relatorio/pedidos" class="btn btn-primary " style="padding: .7rem;font-size: 1.5rem; margin-bottom:1rem">
+    Pedidos
+  </a>
+
+
+
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+
+            <div class="mb-3 col-5">
+              <input type="date" class="form-control" id="fromDate" aria-describedby="textHelp" style="padding:1.8rem" placeholder="Apartir da data">
+              <div id="textHelp" class="form-text">Apartir da data</div>
+            </div>
+            <div class="mb-3 col-5">
+
+              <input type="date" class="form-control" id="toDate" aria-describedby="textHelp" placeholder="Para data" style="padding:1.8rem">
+              <div id="textHelp" class="form-text">Para a data</div>
+
+            </div>
+            <div class="mb-3 col-2 p-0">
+
+              <button type="button" class="btn btn-primary" id="filter">Filtrar</button>
+            </div>
+          </div>
+
+          <!-- Table with stripped rows -->
+          <table class="table datatable table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Vendedor</th>
+                <th scope="col">Total</th>
+                <th scope="col">F_pagamento</th>
+                <th scope="col">Data</th>
+                <th scope="col" class="w-25">Ver</th>
+              </tr>
+            </thead>
+
+
+            <tbody id="corpo">
+
+              <?php if ($sales) : $i = 0 ?>
+                <?php foreach ($sales as $key => $value) : ?>
+                  <tr>
+                    <td><?= $i += 1 ?></td>
+                    <td><?= $value['nome'] ?></td>
+                    <td><?= $value['total'] ?></td>
+                    <td><?= $value['forma_pagamento'] == '0' ? '(cash)' : '(tpa)' ?></td>
+                    <td><?= $value['v_create_at'] ?></td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <a class="btn btn-primary" style="margin-right:.3rem" title='ver' data-bs-toggle="modal" data-bs-target="#modalV<?= $i ?>">
+                          <i class="bi bi-eye"></i>
+                        </a>
+
+                      </div>
+                    </td>
+                    <!-- Modal vsualizar-->
+                    <div class="modal fade" id="modalV<?= $i ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog        ">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel" style="color:var(--text)">Produtos vendidos</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body" style="color:var(--text)">
+                            <!-- Organizando todos os pedidos -->
+                            <?php if (Report::getP($value['v_id']) || Report::getR($value['v_id'])) :
+                              $modal = "";  ?>
+                              <?php $refresh = Report::getP($value['v_id']); ?>
+                              <?php foreach (Report::getR($value['v_id']) as $key => $value) :
+
+
+
+                                $modal .= $value['re_nome'] . " (" . $value['qtd'] . "x) =>" . $value['re_preco'] * $value['qtd'] . "kz<br>" . $refresh[$key]['pr_nome'] . " (" . $refresh[$key]['qtd'] . "x) =>" . $refresh[$key]['pr_preco'] * $refresh[$key]['qtd'] . "kz<br>";
+
+                              endforeach; ?>
+                              <?php
+                              $modal = str_replace('(x) =>0kz<br>', '', $modal);
+                              $modal = str_replace('(x)<br>', '', $modal);
+                              if ($modal == '') {
+                                $ref = Report::getR($value['v_id']);
+                                foreach (Report::getP($value['v_id']) as $key => $value) :
+
+                                  $modal .=  $value['pr_nome'] . " (" . $value['qtd'] . "x) =>" . $value['pr_preco'] * $value['qtd'] . "kz<br>";
+
+                                endforeach;
+                              }
+
+                              // var_dump($refresh);
+                              echo $modal;
+
+                              ?>
+                            <?php endif; ?>
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">fechar</button>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </tr>
+                <?php endforeach; ?>
+              <?php endif; ?>
+            </tbody>
+          </table>
+          <!-- End Table with stripped rows -->
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<script>
+  // filtrar entre datas com ajax
+
+  $(document).ready(function() {
+
+
+    // $.datepicker.setDefaults({
+    //   dateFormat: 'yy-mm-dd'
+    // })
+
+    // $(function() {
+    //   $("#fromDate").datepicker();
+    //   $("#toDate").datepicker();
+    // });
+
+    $('#filter').click(function() {
+      
+      var from_date = $('#fromDate').val();
+      var to_date = $('#toDate').val();
+
+      if (from_date != '' && to_date != '') {
+        $.ajax({
+          url: "<?= URL ?>/admin/relatorio/filtrosV",
+          method: "POST",
+          data: {
+            fromDate: from_date,
+            toDate: to_date
+          },
+          success: function(data) {
+            // console.log(data);
+            $('#corpo').html(data);
+          }
+        });
+      } else {
+        alert("Porfavor informe as datas");
+      }
+    });
+
+  });
+      
+</script>

@@ -155,7 +155,7 @@ class Prato extends Controller
 
             Sessao::izitoast('prato', 'Success', 'Produto actualizado com sucessso');
             Url::redireciona('admin/prato');
-
+            exit;
 
           else :
             Sessao::sms('upload', 'Não tem nada de novo', 'alert alert-info');

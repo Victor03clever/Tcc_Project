@@ -56,7 +56,7 @@ class Request
 
   public function confirmRequest()
   {
-    $this->db->query("UPDATE pedido SET pedido.status = :status WHERE pedido.escola = :iduser AND pedido.status=:zero");
+    $this->db->query("UPDATE pedido SET pedido.status = :status, pedido.update_at = CURRENT_TIMESTAMP() WHERE pedido.escola = :iduser AND pedido.status=:zero");
     $this->db->bind(":status", "1");
     $this->db->bind(":zero", "0");
     $this->db->bind(":iduser", $_SESSION['usuarioC_id']);

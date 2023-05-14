@@ -17,7 +17,7 @@ class Request
 
   public function getAllRequest()
   {
-    $this->db->query("SELECT DISTINCT *, pedido.create_at as pe_create FROM pedido INNER JOIN escola ON pedido.escola = escola.id WHERE pedido.status = :status GROUP BY pedido.escola ORDER BY pedido.create_at DESC");
+    $this->db->query("SELECT DISTINCT *, pedido.create_at as pe_create, pedido.update_at as pe_update FROM pedido INNER JOIN escola ON pedido.escola = escola.id WHERE pedido.status = :status GROUP BY pedido.escola ORDER BY pedido.create_at DESC");
     $this->db->bind(":status", "1");
     $this->db->executa();
     if ($this->db->executa() and $this->db->total()) {
@@ -104,11 +104,12 @@ class Request
     }
   }
 
-  public function confirmRequest($id)
+  public function confirmRequest($id,$data)
   {
-    $this->db->query("UPDATE pedido SET pedido.status = :status, pedido.notify=:value,  pedido.update_at = CURRENT_TIMESTAMP() WHERE pedido.escola = :idClient");
+    $this->db->query("UPDATE pedido SET pedido.status = :status, pedido.notify=:value,  pedido.update_at = CURRENT_TIMESTAMP() WHERE pedido.escola = :idClient AND pedido.update_at = :data");
     $this->db->bind(":status", "2");
     $this->db->bind(":value", "OFF");
+    $this->db->bind(":data", $data);
     $this->db->bind(":idClient", $id);
     if ($this->db->executa() and $this->db->total()) {
       return true;

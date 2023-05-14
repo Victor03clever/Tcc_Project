@@ -12,11 +12,7 @@ use App\Models\saler\Request;
   <h1>Pedidos / Historico</h1>
   <?= Sessao::izitoast("history") ?>
   <?= Sessao::sms("sms") ?>
-  <!-- Modal trigger button -->
-  <!-- <button type="button" class="btn btn-primary  mb-3" data-bs-toggle="modal" data-bs-target="#userN">
-    + Cadastrar
-  </button> -->
-  <!-- <a href="<= URL ?>/admin/vendas/pedidos" class="btn btn-primary fs-3 mb-3 p-2"> Pedidos</a> -->
+
 
   <a href="<?=URL?>/saler/pedidos" class="btn btn-primary" style="
             padding: .7rem;
@@ -86,7 +82,7 @@ use App\Models\saler\Request;
                               // $pedidos = str_replace('(x) =>0kz,<br>', '', $pedidos);
                               $modal = str_replace('(x)<br>', '', $modal);
                               // $pedidos = str_replace('(x),<br>', '', $pedidos);
-                              if ($pedidos == '') {
+                              if ($modal == '') {
 
                                 $ref = Request::getRequestsRH($value['pe_update']);
                                 foreach (Request::getRequestsPH($value['pe_update']) as $key => $value) :
@@ -101,7 +97,7 @@ use App\Models\saler\Request;
 
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary p-1 fs-5" data-bs-dismiss="modal">fechar</button>
+                            <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">fechar</button>
 
                           </div>
                         </div>
@@ -125,48 +121,3 @@ use App\Models\saler\Request;
 
 
 
-<!-- Modal Body cadastrar -->
-<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-<div class="modal fade" id="userN" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered " role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalTitleId" style="color:var(--text)">Cadastrar Usuarios</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="<?= URL ?>/admin/Usuarios" method="POST">
-
-        <div class="modal-body">
-
-          <div class="mb-3">
-            <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control <?= $dados['error'] ? 'is-invalid' : '' ?>" id="nome" aria-describedby="textHelp" name="nome" placeholder='nome'>
-            <div id="textHelp" class="form-text">We'll never share your texts with anyone else.</div>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control <?= $dados['error'] ? 'is-invalid' : '' ?>" id="email" aria-describedby="emailHelp" name="email" placeholder='email'>
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-          </div>
-          <div class="mb-3">
-            <label for="senha" class="form-label">Senha</label>
-            <input type="password" class="form-control <?= $dados['error'] ? 'is-invalid' : '' ?>" id="senha" name="senha" aria-describedby="passwordHelp" placeholder='senha'>
-            <div id="passwordHelp" class="form-text">We'll never share your password with anyone else.</div>
-          </div>
-          <select class="form-select fs-4 <?= $dados['error'] ? 'is-invalid' : '' ?>" aria-label="Default select example" name="nivel">
-            <option selected value="" disabled>Nivel</option>
-            <option value="1">Admin</option>
-            <option value="2">Funcionario</option>
-          </select>
-          <div id="passwordHelp" class="invalid-feedback"><?= $dados['error'] ?></div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger fs-5 p-2" data-bs-dismiss="modal">Abortar</button>
-          <button type="submit" class="btn btn-primary p-2" name='save' value='submit'>salvar</button>
-        </div>
-      </form>
-
-    </div>
-  </div>
-</div>

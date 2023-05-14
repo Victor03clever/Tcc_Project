@@ -67,7 +67,7 @@ use App\Models\admin\Venda;
                           </div>
                           <div class="modal-body" style="color:var(--text)">
                             <!-- Organizando todos os pedidos -->
-                            <?php if (Venda::getP($value['v_id']) || Venda::getR('v_id')) :
+                            <?php if (Venda::getP($value['v_id']) || Venda::getR($value['v_id'])) :
                               $modal = "";  ?>
                               <?php $refresh = Venda::getP($value['v_id']); ?>
                               <?php foreach (Venda::getR($value['v_id']) as $key => $value) :

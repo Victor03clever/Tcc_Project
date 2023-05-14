@@ -55,7 +55,7 @@ use App\Helpers\Sessao;
           </div>
         <?php endforeach; ?>
       </div>
-      <h3>Total de Refrigerantes: KZ <?= $totalP ?></h3>
+      <h3>Total de Refrigera.. : KZ <?= $totalP ?></h3>
 
    </div> 
 
@@ -93,6 +93,6 @@ use App\Helpers\Sessao;
     </button>
   </form>
 
-  <a href="<?=URL?>" class="btn btn-dark p-3">Voltar</a>
+  <a href="<?=URL?>" class="btn btn-dark p-3 fs-4 " style="margin-bottom:9rem">Voltar</a>
 </main>
 <div class="cards d-none" data-url="<?= URL ?>"></div>

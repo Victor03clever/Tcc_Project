@@ -166,12 +166,13 @@ class  Saler  extends Controller
     if ($caixa and $venda) {
       Sessao::izitoast('sale', 'Success', 'Venda efectuada');
       Url::redireciona('saler/home');
-      try {
-        //code...
-        $this->printTickets($form);
-      } catch (\Exception $th) {
-        // simplesmente avança
-      }
+      // try {
+      //   //code...
+      //   $this->printTickets($form);
+      //   $this->printTickets($form);
+      // } catch (\Exception $th) {
+      //   // simplesmente avança
+      // }
       exit;
     } else {
       Sessao::izitoast('sale', 'Error', 'Erro na venda', 'error');
@@ -378,23 +379,25 @@ class  Saler  extends Controller
     if (!Sessao::nivel1()) :
       Url::redireciona("saler/login");
     endif;
+    
     $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     $id = filter_var($id, FILTER_VALIDATE_INT);
     $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
 
     if ($id and $metodo == 'POST') {
       if (isset($_POST['btnT'])) {
-        $confirm = $this->Request->confirmRequest($id);
+        $confirm = $this->Request->confirmRequest($id,$_POST['data']);
 
         if ($confirm) :
           Sessao::izitoast('notify', 'Success', 'pedido terminado com sucesso');
           Url::redireciona('saler/pedidos');
-          try {
-            //code...
-            $this->printTicketsP($data);
-          } catch (\Exception $th) {
-            // simplesmente avança
-          }
+          // try {
+          //   //code...
+          //   $this->printTicketsP($data);
+          //   $this->printTicketsP($data);
+          // } catch (\Exception $th) {
+          //   // simplesmente avança
+          // }
           exit;
         else :
           Sessao::izitoast('notify', 'Error', 'Algo deu errado, consulte BD', 'error');
@@ -415,7 +418,7 @@ class  Saler  extends Controller
   }
   public function historico()
   {
-    if (!Sessao::nivel1()) : 
+    if (!Sessao::nivel1()) :
       Url::redireciona("saler/login");
     endif;
     $history = $this->Request->historico();
@@ -427,31 +430,31 @@ class  Saler  extends Controller
   }
   // <!-- ========== End pedidos ========== -->
 
-// <!-- ========== Start saida ========== -->
-  public function saidas(){
+  // <!-- ========== Start saida ========== -->
+  public function saidas()
+  {
     if (!Sessao::nivel1()) :
       Url::redireciona("saler/login");
     endif;
-  $pratos=$this->Prato->prato_read();
-    if(isset($_POST['update'])){
-      $dado=trim($_POST['status']);
-      $id=trim($_POST['id']);
-      $update=$this->Prato->update_prato1($dado,$id);
-      if($update){
-        Sessao::izitoast('prato','Success','Prato actualizado');
+    $pratos = $this->Prato->prato_read();
+    if (isset($_POST['update'])) {
+      $dado = trim($_POST['status']);
+      $id = trim($_POST['id']);
+      $update = $this->Prato->update_prato1($dado, $id);
+      if ($update) {
+        Sessao::izitoast('prato', 'Success', 'Prato actualizado');
         Url::redireciona("saler/saidas");
         exit;
-      }else{
-        Sessao::izitoast('prato','Error','Prato não actualizado');
+      } else {
+        Sessao::izitoast('prato', 'Error', 'Prato não actualizado');
         Url::redireciona("saler/saidas");
         exit;
-        
       }
     }
     $file = "saidas";
-    $this->view('layouts/saler/app', compact('file','pratos'));
+    $this->view('layouts/saler/app', compact('file', 'pratos'));
   }
-// <!-- ========== End saida ========== -->
+  // <!-- ========== End saida ========== -->
 
   // Controllers para perfil
   public function config()

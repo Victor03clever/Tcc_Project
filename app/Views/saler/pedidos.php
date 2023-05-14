@@ -41,7 +41,7 @@ use App\Helpers\Sessao;
                     </h4>
                   </figure>
                   <span class="time">
-                    <?= DataActual::during($value['pe_create']) ?>
+                    <?= DataActual::during($value['pe_update']) ?>
                   </span>
                 </div>
                 <!-- Organizando todos os pedidos -->
@@ -89,6 +89,7 @@ use App\Helpers\Sessao;
                         <?php endif; ?>
                       </form>
                       <form action="<?= URL ?>/saler/confirm/<?= $value['escola'] ?>" method="post">
+                      <input type="text" readonly hidden name="data" value="<?=$value['pe_update']?>">
                       <input type="text" readonly hidden name="pedidos" value="<?=$modal?>">
                       <input type="text" readonly hidden name="cliente" value="<?=$username?>">
                       <input type="text" readonly hidden name="total" value="<?= Request::getSumTotal($value['escola'])['total']; ?>">
