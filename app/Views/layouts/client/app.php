@@ -12,6 +12,7 @@
   <script src="<?= asset(JQUERY) ?>"></script>
   <script src="<?= asset(IZOJS) ?>"></script>
   <link rel="stylesheet" href="<?= asset("css/client/main.css") ?>">
+  <link rel="stylesheet" href="<?= asset("font/bootstrap-icons.css") ?>">
   <link rel="shortcut icon" href="<?= asset("img/favicon.png") ?>" type="image/x-icon">
   <script>
     async function init() {

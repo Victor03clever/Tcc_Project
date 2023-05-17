@@ -631,19 +631,23 @@ class  Saler  extends Controller
 
   public function deletetofo()
   {
+
     if (!Sessao::nivel1()) :
       Url::redireciona("saler/login");
     endif;
     // $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
     $dados = ['id' => $_SESSION['usuarioS_id'], 'path' => 'img/user-logo.jpg'];
+  
     if ($this->Perfil->deletefotos($dados)) :
       $_SESSION['usuarioS_img'] = URL . '/public/img/user-logo.jpg';
 
-      Sessao::sms('upload', 'imagem deletado com sucesso');
-      Url::redireciona('admin/config');
+      Sessao::sms('upload', 'imagem deletada com sucesso');
+      Url::redireciona('saler/config');
+      exit;
     else :
-      Sessao::sms('upload', 'imagem não deletado, erro com a Model Perfil->deletefoto', 'alert alert-danger');
-    // Url::redireciona('admin/config');
+      Sessao::sms('upload', 'imagem não deletada, erro com a Model Perfil->deletefoto', 'alert alert-danger');
+    Url::redireciona('saler/config');
+    exit;
     endif;
   }
   // end Configuracion

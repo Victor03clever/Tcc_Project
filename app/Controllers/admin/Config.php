@@ -202,10 +202,10 @@ class Config extends Controller
         if ($this->Data->deletefotos($dados)) :
             $_SESSION['usuarios_img'] = URL . '/public/img/user-logo.jpg';
 
-            Sessao::sms('upload', 'imagem deletado com sucesso');
+            Sessao::sms('upload', 'imagem deletada com sucesso');
             Url::redireciona('admin/config');
         else :
-            Sessao::sms('upload', 'imagem não deletado, erro com a Model Perfil->deletefoto', 'alert alert-danger');
+            Sessao::sms('upload', 'imagem não deletada, erro com a Model Perfil->deletefoto', 'alert alert-danger');
         // Url::redireciona('admin/config');
         endif;
     }

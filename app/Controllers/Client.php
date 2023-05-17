@@ -372,10 +372,10 @@ class  Client  extends Controller
       unset($_SESSION['usuarioC_img']);
       $_SESSION['usuarioC_img'] = URL . '/public/img/user-logo.jpg';
 
-      Sessao::sms('upload', 'imagem deletado com sucesso');
+      Sessao::sms('upload', 'imagem deletada com sucesso');
       Url::redireciona('client/config');
     else :
-      Sessao::sms('upload', 'imagem não deletado, erro com a Model Perfil->deletefoto', 'alert alert-danger');
+      Sessao::sms('upload', 'imagem não deletada, erro com banco de dados', 'alert alert-danger');
     // Url::redireciona('admin/config');
     endif;
   }
@@ -395,14 +395,14 @@ class  Client  extends Controller
 
         if ($this->Food->makeRequestR($dados, $qtd)) {
           URL::redireciona("client");
-          Sessao::izitoast("pedido", "Success", "Pedido feito com sucesso");
+          // Sessao::izitoast("pedido", "Success", "Pedido feito com sucesso");
         } else {
           URL::redireciona("client");
-          Sessao::izitoast("pedido", "Alert", "Algo deu errado ", "warning");
+          Sessao::izitoast("pedido", "Alert", "Erro ao fazer o pedido", "warning");
         }
       } else {
         URL::redireciona("client");
-        Sessao::izitoast("pedido", "Alert", "Algo no model deu errado", "warning");
+        Sessao::izitoast("pedido", "Alert", "Erro com o banco de dados", "warning");
       }
     }
     if (isset($formulario['statusP1'])) {
@@ -416,14 +416,14 @@ class  Client  extends Controller
 
         if ($this->Products->makeRequestP($dados, $qtd)) {
           URL::redireciona("client");
-          Sessao::izitoast("pedido", "Success", "Pedido adicionado com sucesso, confirma!");
+          // Sessao::izitoast("pedido", "Success", "Pedido adicionado com sucesso, confirma!");
         } else {
           URL::redireciona("client");
-          Sessao::izitoast("pedido", "Alert", "Algo deu errado", "warning");
+          Sessao::izitoast("pedido", "Alert", "Erro ao fazer o pedido", "warning");
         }
       } else {
         URL::redireciona("client");
-        Sessao::izitoast("pedido", "Alert", "Algo deu errado", "warning");
+        Sessao::izitoast("pedido", "Alert", "Erro com banco de dados", "warning");
       }
     }
   }
