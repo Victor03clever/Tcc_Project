@@ -11,15 +11,28 @@ use App\Libraries\Controller;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+// twilio for sms
+use Twilio\Rest\Client;
 
 class Password extends Controller
 {
   private $credential;
   private $email;
+  private $account_sid;
+  private $auth_token;
+  private $twilio_number;
+  private $client;
   public function __construct()
   {
     $this->credential = $this->model("password\Password");
+    // phpmailer
     $this->email = new PHPMailer(true);
+    // twilio sms
+    $this->account_sid = getenv('TWILIO_ACCOUNT_SID');
+    $this->auth_token = getenv('TWILIO_AUTH_TOKEN');
+    $this->twilio_number = getenv('TWILIO_NUMBER');
+    $this->client = new Client($this->account_sid, $this->auth_token);
+
     if (Sessao::nivel0() || Sessao::nivel1() || Sessao::nivel2()) {
       session_destroy();
       Url::redireciona("client/login");
@@ -157,7 +170,7 @@ class Password extends Controller
     $key = $form['key'];
     if ($cred != null) {
       if (filter_var($cred, FILTER_VALIDATE_EMAIL)) {
-        $array=['key'=>$key,'email'=>$cred];
+        $array = ['key' => $key, 'email' => $cred];
         $checkKey = $this->credential->checkEmailKey($array);
         if ($checkKey) {
           $email = $cred;
@@ -188,10 +201,10 @@ class Password extends Controller
           exit;
         }
       } elseif (is_numeric($cred)) {
-        $array=['key'=>$key,'number'=>$cred];
+        $array = ['key' => $key, 'number' => $cred];
         $checkKey = $this->credential->checkNumberKey($array);
         if ($checkKey) {
-          
+
           $number = $cred;
           if (isset($form['btn'])) {
             $data = ['newpass' => trim($form['newpass']), 'number' => $number, 'error' => ''];
@@ -236,8 +249,25 @@ class Password extends Controller
 
   private function sendMessagePhone($key, $number)
   {
-    // echo URL . "/password/verify?number=" . $number . "?key=" . $key;
-    Url::redireciona("password/verify/" . $number . "?numero=" . $number);
+    $number="+244".str_replace("+244","",$number);
+    try {
+      $this->client->messages->create(
+        // Where to send a text message (your cell phone?)
+        $number,
+        array(
+          'from' => $this->twilio_number,
+          'body' => 'Este é o seu código de recuperação de senha: '.$key
+        )
+      );
+      // echo URL . "/password/verify?number=" . $number . "?key=" . $key;
+      Url::redireciona("password/verify/" . $number . "?numero=" . $number);
+      Sessao::sms('password', 'Mensagem enviada');
+      exit;
+    } catch (Exception $e) {
+      echo "Message could not be sent. Mailer Error: {$e->getMessage()}";
+    }
+    
+
   }
   private function sendEmail($key, $user)
   {
@@ -246,13 +276,13 @@ class Password extends Controller
       //Server settings
       // $this->email->SMTPDebug = SMTP::DEBUG_SERVER;                      
       $this->email->CharSet = "UTF-8";
-      $this->email->isSMTP();                                            
-      $this->email->Host       = getenv('MAIL_HOST');                   
-      $this->email->SMTPAuth   = true;                                   
-      $this->email->Username   = getenv('MAIL_USERNAME');                     
-      $this->email->Password   = getenv('MAIL_PASSWORD');                               
-      $this->email->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            
-      $this->email->Port       = getenv('MAIL_PORT');                                    
+      $this->email->isSMTP();
+      $this->email->Host       = getenv('MAIL_HOST');
+      $this->email->SMTPAuth   = true;
+      $this->email->Username   = getenv('MAIL_USERNAME');
+      $this->email->Password   = getenv('MAIL_PASSWORD');
+      $this->email->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+      $this->email->Port       = getenv('MAIL_PORT');
 
       //Recipients
       $this->email->setFrom('vectorclever00@gmail.com', "Refeitorio System");

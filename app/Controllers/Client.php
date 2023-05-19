@@ -155,10 +155,16 @@ class  Client  extends Controller
           $dados['erro_telefone'] = 'Preencha corretamente o numero; Angola.';
         } elseif (!Valida::regex($formulario['nome'])) {
           $dados['erro_nome'] = 'Nome Ínvalido; ex: Adilson Simão';
-        } elseif ($this->Data->checanome($formulario['nome'])) {
+        } 
+        elseif ($this->Data->checanome($formulario['nome'])) {
           $dados['erro_nome'] = 'Nome já Cadastrado no sistema;';
           Sessao::izitoast('signup', 'Error', 'Insira 1º e ultimo nome inscrito no IPPA', 'error');
-        } else {
+        } 
+        elseif ($this->Data->checanumber($formulario['telefone'])) {
+          $dados['erro_telefone'] = 'Número já Cadastrado no sistema;';
+          Sessao::izitoast('signup', 'Error', 'Não podem existir duas contas com mesmo número', 'error');
+        } 
+        else {
           $dados['senha'] = Valida::pass_segura($formulario['senha']);
 
           $cadastrar = $this->Data->storeuser($dados);

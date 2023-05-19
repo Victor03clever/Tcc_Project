@@ -40,6 +40,16 @@ class Usuarios {
             return false;
         endif;
     }
+    public function checanumber(string $number){
+        $this->db->query("SELECT numero FROM escola WHERE numero=:numero");
+        $this->db->bind(':numero',$number);
+        $this->db->executa();
+        if($this->db->executa() AND $this->db->total()):
+            return true;
+        else:
+            return false;
+        endif;
+    }
     public function storeuser($dados){
         $this->db->query("INSERT INTO escola(nome, numero, senha, imagem) VALUES(:nome, :telefone, :senha, :imagem)");
         $this->db->bind(':nome',$dados['nome']);

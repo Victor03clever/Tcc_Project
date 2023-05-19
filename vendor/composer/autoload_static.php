@@ -15,6 +15,10 @@ class ComposerStaticInitf3d1b9f3fe48200d9dac0b5d43fa3ab6
         array (
             'WilliamCosta\\DotEnv\\' => 20,
         ),
+        'T' => 
+        array (
+            'Twilio\\' => 7,
+        ),
         'S' => 
         array (
             'Svg\\' => 4,
@@ -51,6 +55,10 @@ class ComposerStaticInitf3d1b9f3fe48200d9dac0b5d43fa3ab6
         'WilliamCosta\\DotEnv\\' => 
         array (
             0 => __DIR__ . '/..' . '/william-costa/dot-env/src',
+        ),
+        'Twilio\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twilio/sdk/src/Twilio',
         ),
         'Svg\\' => 
         array (

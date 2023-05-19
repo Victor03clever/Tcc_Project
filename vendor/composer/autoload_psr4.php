@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'WilliamCosta\\DotEnv\\' => array($vendorDir . '/william-costa/dot-env/src'),
+    'Twilio\\' => array($vendorDir . '/twilio/sdk/src/Twilio'),
     'Svg\\' => array($vendorDir . '/phenx/php-svg-lib/src/Svg'),
     'Sabberworm\\CSS\\' => array($vendorDir . '/sabberworm/php-css-parser/src'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),

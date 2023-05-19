@@ -20,6 +20,7 @@
         "william-costa/dot-env": "^0.1.0",
         "phpmailer/phpmailer": "^6.8",
         "dompdf/dompdf": "^2.0",
-        "mike42/escpos-php": "^2.2"
+        "mike42/escpos-php": "^2.2",
+        "twilio/sdk": "^7.3"
     }
 }

@@ -28,6 +28,7 @@ use App\Helpers\Sessao;
         <label for="exampleInputText1" class="form-label fs-2">Código</label>
         <input type="text" class="form-control bg-transparent text-white <?= $data['error']?'is-invalid':'' ?>" id="exampleInputText1" aria-describedby="textHelp" placeholder="código" name="key">
         <div id="textHelp" class="form-text">Foi lhe enviado um codigo pelo seu email ou telemóvel</div>
+        <a href="<?=URL?>/password/forget" class="text-decoration-none">Reenviar</a>
       </div>
       <button type="submit" class="p-3 rounded-2" name="verify" value="submit">Submit</button>
     </form>
