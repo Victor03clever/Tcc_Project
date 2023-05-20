@@ -133,6 +133,7 @@ class Password extends Controller
         // var_dump($form);
         if (isset($form['verify'])) {
           $data = ['key' => trim($form['key']), 'number' => $number, 'error' => ''];
+          
           if (in_array("", $form)) {
             if (empty($form['key'])) {
               $data['error'] = "Campo obrigatorio*";
