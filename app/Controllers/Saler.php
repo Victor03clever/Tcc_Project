@@ -166,13 +166,13 @@ class  Saler  extends Controller
     if ($caixa and $venda) {
       Sessao::izitoast('sale', 'Success', 'Venda efectuada');
       Url::redireciona('saler/home');
-      // try {
-      //   //code...
-      //   $this->printTickets($form);
-      //   $this->printTickets($form);
-      // } catch (\Exception $th) {
-      //   // simplesmente avança
-      // }
+      try {
+        //code...
+        $this->printTickets($form);
+        $this->printTickets($form);
+      } catch (\Exception $th) {
+        // simplesmente avança
+      }
       exit;
     } else {
       Sessao::izitoast('sale', 'Error', 'Erro na venda', 'error');
@@ -342,6 +342,72 @@ class  Saler  extends Controller
     $file = "pedidos";
     $this->view('layouts/saler/app', compact('file', 'all'));
   }
+  public function payment($id)
+  {
+    if (!Sessao::nivel1()) :
+      Url::redireciona("saler/login");
+    endif;
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+    $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
+    $form = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+    
+    if ($id and $metodo == 'POST') {
+      if (isset($_POST['btnP'])) {
+        $pagar = $this->Request->paymentUser($id,$form['status']);
+        if ($pagar) :
+          Sessao::izitoast('notify', 'Success', 'Pagamento registrado');
+          Url::redireciona('saler/pedidos');
+          exit;
+        else :
+          Sessao::izitoast('notify', 'Error', 'Pagamento não registrado', 'error');
+          Url::redireciona('saler/pedidos');
+          exit;
+        endif;
+      } else {
+        Sessao::sms('erro', 'Não clicou no botão, intruso', 'alert alert-danger');
+        Url::redireciona('saler/pedidos');
+        exit;
+      }
+    } else {
+
+      Sessao::sms('erro', 'Metodo de envio \'GET\' não é permitido', 'alert alert-danger');
+      Url::redireciona('saler/pedidos');
+      exit;
+    }
+  }
+  public function deleteRq($id)
+  {
+    if (!Sessao::nivel1()) :
+      Url::redireciona("saler/login");
+    endif;
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+    $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
+    $form = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+    
+    if ($id and $metodo == 'POST') {
+      if (isset($_POST['btnD'])) {
+        $pagar = $this->Request->deleteRq($id,$form['status']);
+        if ($pagar) :
+          Sessao::izitoast('notify', 'Success', 'Deletado com sucesso');
+          Url::redireciona('saler/pedidos');
+          exit;
+        else :
+          Sessao::izitoast('notify', 'Error', 'Não deletado', 'error');
+          Url::redireciona('saler/pedidos');
+          exit;
+        endif;
+      } else {
+        Sessao::sms('erro', 'Não clicou no botão, intruso', 'alert alert-danger');
+        Url::redireciona('saler/pedidos');
+        exit;
+      }
+    } else {
+
+      Sessao::sms('erro', 'Metodo de envio \'GET\' não é permitido', 'alert alert-danger');
+      Url::redireciona('saler/pedidos');
+      exit;
+    }
+  }
   public function notify($id)
   {
     if (!Sessao::nivel1()) :
@@ -379,25 +445,24 @@ class  Saler  extends Controller
     if (!Sessao::nivel1()) :
       Url::redireciona("saler/login");
     endif;
-    
+
     $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     $id = filter_var($id, FILTER_VALIDATE_INT);
     $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
 
     if ($id and $metodo == 'POST') {
       if (isset($_POST['btnT'])) {
-        $confirm = $this->Request->confirmRequest($id,$_POST['data']);
+        $confirm = $this->Request->confirmRequest($id, $_POST['data']);
 
         if ($confirm) :
           Sessao::izitoast('notify', 'Success', 'pedido terminado com sucesso');
           Url::redireciona('saler/pedidos');
-          // try {
-          //   //code...
-          //   $this->printTicketsP($data);
-          //   $this->printTicketsP($data);
-          // } catch (\Exception $th) {
-          //   // simplesmente avança
-          // }
+          try {
+            //code...
+            $this->printTicketsP($data);
+          } catch (\Exception $th) {
+            // simplesmente avança
+          }
           exit;
         else :
           Sessao::izitoast('notify', 'Error', 'Algo deu errado, consulte BD', 'error');
@@ -637,7 +702,7 @@ class  Saler  extends Controller
     endif;
     // $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
     $dados = ['id' => $_SESSION['usuarioS_id'], 'path' => 'img/user-logo.jpg'];
-  
+
     if ($this->Perfil->deletefotos($dados)) :
       $_SESSION['usuarioS_img'] = URL . '/public/img/user-logo.jpg';
 
@@ -646,8 +711,8 @@ class  Saler  extends Controller
       exit;
     else :
       Sessao::sms('upload', 'imagem não deletada, erro com a Model Perfil->deletefoto', 'alert alert-danger');
-    Url::redireciona('saler/config');
-    exit;
+      Url::redireciona('saler/config');
+      exit;
     endif;
   }
   // end Configuracion

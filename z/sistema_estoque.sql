@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Maio-2023 às 17:25
+-- Tempo de geração: 28-Maio-2023 às 01:39
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 8.1.10
 
@@ -38,7 +38,6 @@ CREATE TABLE `categoria` (
   `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `codigo_barra`
@@ -49,6 +48,8 @@ CREATE TABLE `codigo_barra` (
   `cod` varchar(200) NOT NULL,
   `categoria` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 
 -- --------------------------------------------------------
 
@@ -69,6 +70,9 @@ CREATE TABLE `compra` (
   `usuario` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -86,6 +90,8 @@ CREATE TABLE `entrada_caixa` (
   `forma_pagamento` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+
 -- --------------------------------------------------------
 
 --
@@ -101,6 +107,8 @@ CREATE TABLE `entrada_estoque` (
   `usuario` int(10) UNSIGNED NOT NULL,
   `lote` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 
 -- --------------------------------------------------------
 
@@ -119,7 +127,7 @@ CREATE TABLE `escola` (
   `imagem` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+
 
 --
 -- Estrutura da tabela `faturas_compras`
@@ -133,7 +141,7 @@ CREATE TABLE `faturas_compras` (
   `create_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+
 
 --
 -- Estrutura da tabela `fornecedor`
@@ -147,7 +155,7 @@ CREATE TABLE `fornecedor` (
   `endereco` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+
 
 --
 -- Estrutura da tabela `lote`
@@ -160,7 +168,7 @@ CREATE TABLE `lote` (
   `data_prod` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+
 
 --
 -- Estrutura da tabela `nivel_usuario`
@@ -171,6 +179,14 @@ CREATE TABLE `nivel_usuario` (
   `nivel` tinyint(4) NOT NULL,
   `nome` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `nivel_usuario`
+--
+
+INSERT INTO `nivel_usuario` (`id`, `nivel`, `nome`) VALUES
+(1, 0, 'admin'),
+(2, 1, 'funcionario');
 
 -- --------------------------------------------------------
 
@@ -187,9 +203,12 @@ CREATE TABLE `pedido` (
   `update_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` enum('0','1','2') NOT NULL,
   `preco` int(11) NOT NULL,
+  `payment` int(11) NOT NULL DEFAULT 0,
   `qtd` int(11) NOT NULL,
   `notify` enum('ON','OFF') NOT NULL DEFAULT 'OFF'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 
 -- --------------------------------------------------------
 
@@ -208,6 +227,8 @@ CREATE TABLE `produto` (
   `codigo_barra` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+
 -- --------------------------------------------------------
 
 --
@@ -221,6 +242,8 @@ CREATE TABLE `refeicoes` (
   `preco` decimal(6,2) NOT NULL,
   `status` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 
 -- --------------------------------------------------------
 
@@ -278,8 +301,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `recover_pass`, `create_at`, `update_at`, `nivel_usuario`, `imagem`) VALUES
-(1, 'Clever', 'clevervictor03@gmail.com', '$2y$10$56y26MCck6JSQJg3npze3umZBf96iP01ovJKqbpRdWOBFzRBcpu3m', NULL, '2023-01-05 23:36:47', '2023-01-05 23:36:47', 1, 'uploads\\Users\\clevervictor03@gmail.com\\167579835_177761310839645_3211802789231516836_n.jpg'),
-(2, 'Sokito', 'victorlouren698@gmail.com', '$2y$10$9O4HpB/MAJo40KTLTDDDq.rvHWZUVH/scnrMPKSJJy6t7WUHqZBz.', NULL, '2023-04-04 19:18:51', '2023-04-04 19:18:51', 2, 'uploads\\Users\\victorlouren698@gmail.com\\Nkosi.jpg');
+(1, 'Clever', 'clevervictor03@gmail.com', '$2y$10$56y26MCck6JSQJg3npze3umZBf96iP01ovJKqbpRdWOBFzRBcpu3m', NULL, '2023-01-05 23:36:47', '2023-01-05 23:36:47', 1, 'uploads\\Users\\clevervictor03@gmail.com\\WhatsApp Image 2023-04-24 at 09.47.37.jpg'),
+(2, 'Psicopata', 'miguelleite200leite@gmail.com', '$2y$10$9O4HpB/MAJo40KTLTDDDq.rvHWZUVH/scnrMPKSJJy6t7WUHqZBz.', NULL, '2023-04-04 19:18:51', '2023-04-04 19:18:51', 2, 'uploads\\Users\\miguelleite200leite@gmail.com\\Screenshot 2023-05-11 100426-6465094eb8fe9.png');
 
 -- --------------------------------------------------------
 
@@ -297,6 +320,8 @@ CREATE TABLE `venda` (
   `refeicoes` int(10) UNSIGNED DEFAULT NULL,
   `escola` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 
 --
 -- Índices para tabelas despejadas
@@ -434,79 +459,79 @@ ALTER TABLE `venda`
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `codigo_barra`
 --
 ALTER TABLE `codigo_barra`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `entrada_caixa`
 --
 ALTER TABLE `entrada_caixa`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `entrada_estoque`
 --
 ALTER TABLE `entrada_estoque`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `escola`
 --
 ALTER TABLE `escola`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `faturas_compras`
 --
 ALTER TABLE `faturas_compras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `fornecedor`
 --
 ALTER TABLE `fornecedor`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `lote`
 --
 ALTER TABLE `lote`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `nivel_usuario`
 --
 ALTER TABLE `nivel_usuario`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `refeicoes`
 --
 ALTER TABLE `refeicoes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `saida_caixa`
@@ -530,7 +555,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `venda`
 --
 ALTER TABLE `venda`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restrições para despejos de tabelas

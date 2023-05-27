@@ -17,12 +17,24 @@ class Request
 
   public function getAllRequest()
   {
-    $this->db->query("SELECT DISTINCT *, pedido.create_at as pe_create, pedido.update_at as pe_update FROM pedido INNER JOIN escola ON pedido.escola = escola.id WHERE pedido.status = :status GROUP BY pedido.escola ORDER BY pedido.create_at DESC");
+    $this->db->query("SELECT DISTINCT *, pedido.create_at as pe_create, pedido.update_at as pe_update FROM pedido INNER JOIN escola ON pedido.escola = escola.id WHERE pedido.status = :status GROUP BY pedido.escola ORDER BY pedido.create_at AND pedido.payment DESC");
     $this->db->bind(":status", "1");
     $this->db->executa();
     if ($this->db->executa() and $this->db->total()) {
       $result = $this->db->resultados();
       return $result;
+    } else {
+      return false;
+    }
+  }
+
+  public function deleteRq($id,$status)
+  {
+    $this->db->query("DELETE FROM pedido WHERE pedido.escola = :idClient AND pedido.status=:status");
+    $this->db->bind(":status", $status);
+    $this->db->bind(":idClient", $id);
+    if ($this->db->executa() and $this->db->total()) {
+      return true;
     } else {
       return false;
     }
@@ -91,6 +103,18 @@ class Request
   }
 
 
+  public function paymentUser($id,$status)
+  {
+    $this->db->query("UPDATE pedido SET pedido.payment = :value WHERE pedido.escola = :idClient AND pedido.status=:status");
+    $this->db->bind(":value", '1');
+    $this->db->bind(":status", $status);
+    $this->db->bind(":idClient", $id);
+    if ($this->db->executa() and $this->db->total()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   public function notifyUser($id)
   {
     $this->db->query("UPDATE pedido SET pedido.notify = :value WHERE pedido.escola = :idClient AND pedido.status=:status");

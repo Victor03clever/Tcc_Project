@@ -12,9 +12,10 @@ use App\Helpers\Sessao;
   <?= Sessao::izitoast("notify") ?>
   <?= Sessao::sms("erro") ?>
 
-  <a href="<?=URL?>/saler/historico" class="btn btn-primary" style="
+  <a href="<?= URL ?>/saler/historico" class="btn btn-primary" style="
             padding: .7rem;
             font-size: 1.5rem; margin-bottom:1rem">Histórico</a>
+
   <div class="row">
 
 
@@ -37,8 +38,17 @@ use App\Helpers\Sessao;
                     </spanoo>
                     <h4 class="username fs-3">
                       <?php $username = $value['nome'];
-                      echo $username; ?>
-                    </h4>
+                      echo $username; ?> | </h4>
+                    <form action="<?= URL ?>/saler/notify/<?= $value['escola'] ?>" method="post">
+                      <!-- <input type="text" name="notify" value="<=$value['escola']?>" hidden readonly> -->
+                      <?php if ($value['notify'] === 'OFF') : ?>
+                        <button class="dropdown-item" type="submit" name="btnN" value=submit><i class="bi bi-bell"></i>
+                          Notificar</button>
+                      <?php else : ?>
+                        <button class="dropdown-item" type="button" onclick="notice()"><i class="bi bi-bell text-success"></i>
+                          Notificado</button>
+                      <?php endif; ?>
+                    </form>
                   </figure>
                   <span class="time">
                     <?= DataActual::during($value['pe_update']) ?>
@@ -55,14 +65,14 @@ use App\Helpers\Sessao;
                     $modal .= $value['re_nome'] . " (" . $value['qtd'] . "x) =>" . $value['re_preco'] * $value['qtd'] . "kz<br>" . $refresh[$key]['pr_nome'] . " (" . $refresh[$key]['qtd'] . "x) =>" . $refresh[$key]['pr_preco'] * $refresh[$key]['qtd'] . "kz<br>";
 
                   endforeach; ?>
-                  <?php 
-                  $modal=str_replace('(x) =>0kz<br>','',$modal);
-                  $pedidos=str_replace('(x) =>0kz,<br>','',$pedidos);
-                  $modal=str_replace('(x)<br>','',$modal);
-                  $pedidos=str_replace('(x),<br>','',$pedidos);
-                  if ( $pedidos == '') {
-                    
-                    $ref=Request::getRequestsR($value['escola']);
+                  <?php
+                  $modal = str_replace('(x) =>0kz<br>', '', $modal);
+                  $pedidos = str_replace('(x) =>0kz,<br>', '', $pedidos);
+                  $modal = str_replace('(x)<br>', '', $modal);
+                  $pedidos = str_replace('(x),<br>', '', $pedidos);
+                  if ($pedidos == '') {
+
+                    $ref = Request::getRequestsR($value['escola']);
                     foreach (Request::getRequestsP($value['escola']) as $key => $value) :
                       $pedidos .= $value['pr_nome'] . " (" . $value['qtd'] . "x),<br>";
                       $modal .=  $value['pr_nome'] . " (" . $value['qtd'] . "x) =>" . $value['pr_preco'] * $value['qtd'] . "kz<br>";
@@ -71,30 +81,34 @@ use App\Helpers\Sessao;
                   }
                   ?>
                 <?php endif; ?>
-                <div class="dropdown">
+                <div class="dropdown fs-4">
                   <span role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-three-dots"></i>
                   </span>
                   <ul class="dropdown-menu">
                     <?php if (Request::getRequestsR($value['escola'])) : $idClient = ''; ?>
 
-                      <form action="<?= URL ?>/saler/notify/<?= $value['escola'] ?>" method="post">
-                        <!-- <input type="text" name="notify" value="<=$value['escola']?>" hidden readonly> -->
-                        <?php if ($value['notify'] === 'OFF') : ?>
-                          <button class="dropdown-item" type="submit" name="btnN" value=submit><i class="bi bi-bell"></i>
-                            Notificar</button>
+                      <form action="<?= URL ?>/saler/payment/<?= $value['escola'] ?>" method="post">
+                        <input type="text" name="status" value="<?= $value['status'] ?>" hidden readonly>
+                        <?php if ($value['payment'] == '0') : ?>
+                          <button class="dropdown-item" type="submit" name="btnP" value=submit><i class="bi bi-cash-stack"></i>Pago</button>
                         <?php else : ?>
-                          <button class="dropdown-item" type="button" onclick="notice()"><i class="bi bi-bell"></i>
-                            Notificar</button>
+                          <button type="button" class="dropdown-item" onclick="pago()"><i class="bi bi-cash-stack"></i>Pago</button>
+
                         <?php endif; ?>
+
                       </form>
                       <form action="<?= URL ?>/saler/confirm/<?= $value['escola'] ?>" method="post">
-                      <input type="text" readonly hidden name="data" value="<?=$value['pe_update']?>">
-                      <input type="text" readonly hidden name="pedidos" value="<?=$modal?>">
-                      <input type="text" readonly hidden name="cliente" value="<?=$username?>">
-                      <input type="text" readonly hidden name="total" value="<?= Request::getSumTotal($value['escola'])['total']; ?>">
+                        <input type="text" readonly hidden name="data" value="<?= $value['pe_update'] ?>">
+                        <input type="text" readonly hidden name="pedidos" value="<?= $modal ?>">
+                        <input type="text" readonly hidden name="cliente" value="<?= $username ?>">
+                        <input type="text" readonly hidden name="total" value="<?= Request::getSumTotal($value['escola'])['total']; ?>">
                         <button class="dropdown-item" type="submit" name="btnT" value=submit><i class="bi bi-check2-circle"></i>
                           Terminado</button>
+                      </form>
+                      <form action="<?= URL ?>/saler/deleteRq/<?= $value['escola'] ?>" method="post">
+                        <input type="text" name="status" value="<?= $value['status'] ?>" hidden readonly>
+                        <button class="dropdown-item" type="submit" name="btnD" value=submit><i class="bi bi-trash3"></i>Deletar</button>
                       </form>
                     <?php endif; ?>
                     </li>
@@ -104,9 +118,8 @@ use App\Helpers\Sessao;
 
 
               <span class="fs-4">
-                <strong>
+                <strong class="<?= $value['payment'] == '0' ? 'text-danger' : 'text-success' ?>">
                   Pedidos
-
                 </strong>
               </span>
               <p class="card-text pedidos">
@@ -150,10 +163,18 @@ use App\Helpers\Sessao;
     ?>
   </div>
 
+
+
+
+
 </section>
 <script>
   // funcao disparada quando eu tiver que q clicar pela segunda vez em notificar
   function notice() {
     alert('A notificação já foi efectuada por favor agurde!');
+  }
+
+  function pago() {
+    alert('Já foi registrado o pagamento');
   }
 </script>
