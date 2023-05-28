@@ -108,6 +108,9 @@ use App\Helpers\Sessao;
                       </form>
                       <form action="<?= URL ?>/saler/deleteRq/<?= $value['escola'] ?>" method="post">
                         <input type="text" name="status" value="<?= $value['status'] ?>" hidden readonly>
+                        <input type="text" readonly hidden name="pedidos" value="<?= $modal ?>">
+                        <input type="text" readonly hidden name="cliente" value="<?= $username ?>">
+                        <input type="text" readonly hidden name="total" value="<?= Request::getSumTotal($value['escola'])['total']; ?>">
                         <button class="dropdown-item" type="submit" name="btnD" value=submit><i class="bi bi-trash3"></i>Deletar</button>
                       </form>
                     <?php endif; ?>

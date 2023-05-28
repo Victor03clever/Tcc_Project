@@ -347,6 +347,7 @@ class  Saler  extends Controller
     if (!Sessao::nivel1()) :
       Url::redireciona("saler/login");
     endif;
+    $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     $id = filter_var($id, FILTER_VALIDATE_INT);
     $metodo = filter_input(INPUT_SERVER, 'REQUEST_METHOD', FILTER_DEFAULT);
     $form = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -357,6 +358,13 @@ class  Saler  extends Controller
         if ($pagar) :
           Sessao::izitoast('notify', 'Success', 'Pagamento registrado');
           Url::redireciona('saler/pedidos');
+          try {
+            //code...
+            $this->printTicketsP($data);
+          } catch (\Exception $th) {
+            // simplesmente avança
+          }
+          
           exit;
         else :
           Sessao::izitoast('notify', 'Error', 'Pagamento não registrado', 'error');
@@ -457,12 +465,12 @@ class  Saler  extends Controller
         if ($confirm) :
           Sessao::izitoast('notify', 'Success', 'pedido terminado com sucesso');
           Url::redireciona('saler/pedidos');
-          try {
-            //code...
-            $this->printTicketsP($data);
-          } catch (\Exception $th) {
-            // simplesmente avança
-          }
+          // try {
+          //   //code...
+          //   $this->printTicketsP($data);
+          // } catch (\Exception $th) {
+          //   // simplesmente avança
+          // }
           exit;
         else :
           Sessao::izitoast('notify', 'Error', 'Algo deu errado, consulte BD', 'error');
