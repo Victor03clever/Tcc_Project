@@ -58,7 +58,7 @@ Sessao::izitoast("sale");
         <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="#" method="post" id="search">
+        <!-- <form action="#" method="post" id="search">
           <input class="form-control mb-3" list="datalistOptions" id="exampleDataList" placeholder="pesquise aqui">
           <datalist id="datalistOptions">
             <option value="San Francisco">
@@ -68,7 +68,7 @@ Sessao::izitoast("sale");
           <button type="submit" class="btn btn-primary p-0" style="height: 3rem;" title="adicionar">
             <i class="bi bi-plus text-white p-0"></i>
           </button>
-        </form>
+        </form> -->
         <!-- Table with stripped rows -->
         <table class="table table-striped">
           <thead>
@@ -101,8 +101,9 @@ Sessao::izitoast("sale");
             <div class="paymenttype">
               <select class="form-select text-black fs-4" aria-label="Default select example" name="f_pagamento" id="modepayment">
                 <option selected disabled value="">Selecione a forma de pagamento</option>
-                <option value="0">Cash</option>
+                <option value="0">Dinheiro</option>
                 <option value="1">Tpa</option>
+                <option value="2">Transf</option>
               </select>
             </div>
             <div class="clientname row">

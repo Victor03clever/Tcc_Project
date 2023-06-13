@@ -5,6 +5,9 @@
 svg.btn-subtract path,svg.btn-plus path{
   fill: var(--text);
 }
+svg.subtract path,svg.plus path{
+  fill: var(--text);
+}
 /*  */
 /* +++++BackToTopButton+++++++++++++++++++++++++++++ */
 

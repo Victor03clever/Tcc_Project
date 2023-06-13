@@ -9,7 +9,10 @@ use App\Helpers\Sessao;
 <?= Sessao::browser('browser'); ?>
 
 <link rel="stylesheet" href="<?= asset("css/client/style.css") ?>">
+
+<span  style="position:relative; top:18rem"><?=$_SESSION['usuarioC_nome']?><br></span>
 <span class="dataActual" style="position:relative; top:18rem"></span>
+
 <header class="wrapper header" id="header">
   <img src="<?= asset("img/pngegg 1.png") ?>" alt="Sabores">
   <span>
@@ -68,7 +71,7 @@ use App\Helpers\Sessao;
 
 <section id="produtos" class="">
   <div class="wrapper">
-    <h4>Refrigerantes</h4>
+    <h4>Bebidas</h4>
     <div class="cards">
     <?php if ($refresh) : ?>
         <?php foreach ($refresh as $key => $value) : ?>
@@ -76,7 +79,7 @@ use App\Helpers\Sessao;
           <div class="card">
 
             <img src="<?= asset($value['imagem']) ?>" alt="" width="100" height="100">
-            <h6 class="title"><?= $value['nome'] ?></h6>
+            <h6 class="title"><?= $value['p_nome'] ?></h6>
             <h6 class="price">Kz <?= $value['preco'] ?></h6>
             <div class="add">
               <form action="<?= URL ?>/client/makeRequest" method="post">

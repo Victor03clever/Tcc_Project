@@ -34,7 +34,7 @@ use App\Helpers\Sessao;
     </div>
 
      <div id="all" class="">
-      <h1>Refrigerantes</h1>
+      <h1>Bebidas</h1>
 
       <div class="pedidos">
         <?php $totalP = 0;
@@ -55,7 +55,7 @@ use App\Helpers\Sessao;
           </div>
         <?php endforeach; ?>
       </div>
-      <h3>Total de Refrigera.. : KZ <?= $totalP ?></h3>
+      <h3>Total de Bebidas : KZ <?= $totalP ?></h3>
 
    </div> 
 

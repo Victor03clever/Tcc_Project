@@ -45,7 +45,7 @@ use App\Helpers\Sessao;
         </p>
         <p>
             categoria <br>
-            <select class="form-select  <?= $dados['err_cat'] ? 'is-invalid' : '' ?>" aria-label="Default select example" name="cat">
+            <select class="form-select  <?= $dados['err_cat'] ? 'is-invalid' : '' ?> fs-4" aria-label="Default select example" name="cat">
                 <option selected disabled>Escolha a categoria</option>
                 <?php foreach ($dados['read_c'] as $value) : ?>
                     <option value='<?= $value['id'] ?>'><?= $value['nome'] ?></option>

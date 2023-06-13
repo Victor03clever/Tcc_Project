@@ -31,7 +31,7 @@ use App\Helpers\Sessao;
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Id</th>
+                <!-- <th scope="col">Id</th> -->
                 <th scope="col">Img</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Preço</th>
@@ -48,7 +48,7 @@ use App\Helpers\Sessao;
                     <tr>
 
                       <td><?= $i++ ?></td>
-                      <td><?= $value['id'] ?></td>
+                      <!-- <td><= $value['id'] ?></td> -->
                       <td><img src="<?= URL ?>/public/<?= $value['imagem'] ?>" alt="" width="35" height="40"></td>
                       <td><?= $value['p_nome'] ?></td>
                       <td><?= $value['preco'] ?></td>
@@ -68,7 +68,7 @@ use App\Helpers\Sessao;
                         <div class="modal-dialog        ">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="staticBackdropLabel" style="color:#000">Tem certeza que deseja delectar?</h5>
+                              <h5 class="modal-title" id="staticBackdropLabel" style="color:var('--primary-color');">Tem certeza que deseja delectar?</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body" style="color:#dc3545">
